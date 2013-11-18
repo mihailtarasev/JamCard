@@ -1,0 +1,483 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8436DDB1183A3A8900D7605F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436DDB0183A3A8900D7605F /* UIKit.framework */; };
+		8436DDB3183A3A8900D7605F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436DDB2183A3A8900D7605F /* Foundation.framework */; };
+		8436DDB5183A3A8900D7605F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436DDB4183A3A8900D7605F /* CoreGraphics.framework */; };
+		8436DDBB183A3A8900D7605F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8436DDB9183A3A8900D7605F /* InfoPlist.strings */; };
+		8436DDBD183A3A8900D7605F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436DDBC183A3A8900D7605F /* main.m */; };
+		8436DDC1183A3A8900D7605F /* PECAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436DDC0183A3A8900D7605F /* PECAppDelegate.m */; };
+		8436DDC3183A3A8900D7605F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8436DDC2183A3A8900D7605F /* Default.png */; };
+		8436DDC5183A3A8900D7605F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8436DDC4183A3A8900D7605F /* Default@2x.png */; };
+		8436DDC7183A3A8900D7605F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8436DDC6183A3A8900D7605F /* Default-568h@2x.png */; };
+		8436DDCA183A3A8900D7605F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8436DDC8183A3A8900D7605F /* MainStoryboard_iPhone.storyboard */; };
+		8436DDCD183A3A8900D7605F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8436DDCB183A3A8900D7605F /* MainStoryboard_iPad.storyboard */; };
+		8436DDD0183A3A8900D7605F /* PECViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436DDCF183A3A8900D7605F /* PECViewController.m */; };
+		8436DDD8183A3A8900D7605F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436DDD7183A3A8900D7605F /* SenTestingKit.framework */; };
+		8436DDD9183A3A8900D7605F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436DDB0183A3A8900D7605F /* UIKit.framework */; };
+		8436DDDA183A3A8900D7605F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436DDB2183A3A8900D7605F /* Foundation.framework */; };
+		8436DDE2183A3A8900D7605F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8436DDE0183A3A8900D7605F /* InfoPlist.strings */; };
+		8436DDE5183A3A8900D7605F /* JamCardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436DDE4183A3A8900D7605F /* JamCardTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8436DDDB183A3A8900D7605F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8436DDA5183A3A8900D7605F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8436DDAC183A3A8900D7605F;
+			remoteInfo = JamCard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8436DDAD183A3A8900D7605F /* JamCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8436DDB0183A3A8900D7605F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8436DDB2183A3A8900D7605F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8436DDB4183A3A8900D7605F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8436DDB8183A3A8900D7605F /* JamCard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JamCard-Info.plist"; sourceTree = "<group>"; };
+		8436DDBA183A3A8900D7605F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8436DDBC183A3A8900D7605F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8436DDBE183A3A8900D7605F /* JamCard-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JamCard-Prefix.pch"; sourceTree = "<group>"; };
+		8436DDBF183A3A8900D7605F /* PECAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PECAppDelegate.h; sourceTree = "<group>"; };
+		8436DDC0183A3A8900D7605F /* PECAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PECAppDelegate.m; sourceTree = "<group>"; };
+		8436DDC2183A3A8900D7605F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		8436DDC4183A3A8900D7605F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8436DDC6183A3A8900D7605F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8436DDC9183A3A8900D7605F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		8436DDCC183A3A8900D7605F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		8436DDCE183A3A8900D7605F /* PECViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PECViewController.h; sourceTree = "<group>"; };
+		8436DDCF183A3A8900D7605F /* PECViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PECViewController.m; sourceTree = "<group>"; };
+		8436DDD6183A3A8900D7605F /* JamCardTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamCardTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8436DDD7183A3A8900D7605F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		8436DDDF183A3A8900D7605F /* JamCardTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JamCardTests-Info.plist"; sourceTree = "<group>"; };
+		8436DDE1183A3A8900D7605F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8436DDE3183A3A8900D7605F /* JamCardTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JamCardTests.h; sourceTree = "<group>"; };
+		8436DDE4183A3A8900D7605F /* JamCardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JamCardTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8436DDAA183A3A8900D7605F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8436DDB1183A3A8900D7605F /* UIKit.framework in Frameworks */,
+				8436DDB3183A3A8900D7605F /* Foundation.framework in Frameworks */,
+				8436DDB5183A3A8900D7605F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8436DDD2183A3A8900D7605F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8436DDD8183A3A8900D7605F /* SenTestingKit.framework in Frameworks */,
+				8436DDD9183A3A8900D7605F /* UIKit.framework in Frameworks */,
+				8436DDDA183A3A8900D7605F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8436DDA4183A3A8900D7605F = {
+			isa = PBXGroup;
+			children = (
+				8436DDB6183A3A8900D7605F /* JamCard */,
+				8436DDDD183A3A8900D7605F /* JamCardTests */,
+				8436DDAF183A3A8900D7605F /* Frameworks */,
+				8436DDAE183A3A8900D7605F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8436DDAE183A3A8900D7605F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8436DDAD183A3A8900D7605F /* JamCard.app */,
+				8436DDD6183A3A8900D7605F /* JamCardTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8436DDAF183A3A8900D7605F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8436DDB0183A3A8900D7605F /* UIKit.framework */,
+				8436DDB2183A3A8900D7605F /* Foundation.framework */,
+				8436DDB4183A3A8900D7605F /* CoreGraphics.framework */,
+				8436DDD7183A3A8900D7605F /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8436DDB6183A3A8900D7605F /* JamCard */ = {
+			isa = PBXGroup;
+			children = (
+				8436DDBF183A3A8900D7605F /* PECAppDelegate.h */,
+				8436DDC0183A3A8900D7605F /* PECAppDelegate.m */,
+				8436DDC8183A3A8900D7605F /* MainStoryboard_iPhone.storyboard */,
+				8436DDCB183A3A8900D7605F /* MainStoryboard_iPad.storyboard */,
+				8436DDCE183A3A8900D7605F /* PECViewController.h */,
+				8436DDCF183A3A8900D7605F /* PECViewController.m */,
+				8436DDB7183A3A8900D7605F /* Supporting Files */,
+			);
+			path = JamCard;
+			sourceTree = "<group>";
+		};
+		8436DDB7183A3A8900D7605F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8436DDB8183A3A8900D7605F /* JamCard-Info.plist */,
+				8436DDB9183A3A8900D7605F /* InfoPlist.strings */,
+				8436DDBC183A3A8900D7605F /* main.m */,
+				8436DDBE183A3A8900D7605F /* JamCard-Prefix.pch */,
+				8436DDC2183A3A8900D7605F /* Default.png */,
+				8436DDC4183A3A8900D7605F /* Default@2x.png */,
+				8436DDC6183A3A8900D7605F /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8436DDDD183A3A8900D7605F /* JamCardTests */ = {
+			isa = PBXGroup;
+			children = (
+				8436DDE3183A3A8900D7605F /* JamCardTests.h */,
+				8436DDE4183A3A8900D7605F /* JamCardTests.m */,
+				8436DDDE183A3A8900D7605F /* Supporting Files */,
+			);
+			path = JamCardTests;
+			sourceTree = "<group>";
+		};
+		8436DDDE183A3A8900D7605F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8436DDDF183A3A8900D7605F /* JamCardTests-Info.plist */,
+				8436DDE0183A3A8900D7605F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8436DDAC183A3A8900D7605F /* JamCard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8436DDE8183A3A8900D7605F /* Build configuration list for PBXNativeTarget "JamCard" */;
+			buildPhases = (
+				8436DDA9183A3A8900D7605F /* Sources */,
+				8436DDAA183A3A8900D7605F /* Frameworks */,
+				8436DDAB183A3A8900D7605F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JamCard;
+			productName = JamCard;
+			productReference = 8436DDAD183A3A8900D7605F /* JamCard.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8436DDD5183A3A8900D7605F /* JamCardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8436DDEB183A3A8900D7605F /* Build configuration list for PBXNativeTarget "JamCardTests" */;
+			buildPhases = (
+				8436DDD1183A3A8900D7605F /* Sources */,
+				8436DDD2183A3A8900D7605F /* Frameworks */,
+				8436DDD3183A3A8900D7605F /* Resources */,
+				8436DDD4183A3A8900D7605F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8436DDDC183A3A8900D7605F /* PBXTargetDependency */,
+			);
+			name = JamCardTests;
+			productName = JamCardTests;
+			productReference = 8436DDD6183A3A8900D7605F /* JamCardTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8436DDA5183A3A8900D7605F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = PEC;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Paladin-Engineering";
+			};
+			buildConfigurationList = 8436DDA8183A3A8900D7605F /* Build configuration list for PBXProject "JamCard" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8436DDA4183A3A8900D7605F;
+			productRefGroup = 8436DDAE183A3A8900D7605F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8436DDAC183A3A8900D7605F /* JamCard */,
+				8436DDD5183A3A8900D7605F /* JamCardTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8436DDAB183A3A8900D7605F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8436DDBB183A3A8900D7605F /* InfoPlist.strings in Resources */,
+				8436DDC3183A3A8900D7605F /* Default.png in Resources */,
+				8436DDC5183A3A8900D7605F /* Default@2x.png in Resources */,
+				8436DDC7183A3A8900D7605F /* Default-568h@2x.png in Resources */,
+				8436DDCA183A3A8900D7605F /* MainStoryboard_iPhone.storyboard in Resources */,
+				8436DDCD183A3A8900D7605F /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8436DDD3183A3A8900D7605F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8436DDE2183A3A8900D7605F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8436DDD4183A3A8900D7605F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8436DDA9183A3A8900D7605F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8436DDBD183A3A8900D7605F /* main.m in Sources */,
+				8436DDC1183A3A8900D7605F /* PECAppDelegate.m in Sources */,
+				8436DDD0183A3A8900D7605F /* PECViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8436DDD1183A3A8900D7605F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8436DDE5183A3A8900D7605F /* JamCardTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8436DDDC183A3A8900D7605F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8436DDAC183A3A8900D7605F /* JamCard */;
+			targetProxy = 8436DDDB183A3A8900D7605F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8436DDB9183A3A8900D7605F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8436DDBA183A3A8900D7605F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8436DDC8183A3A8900D7605F /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8436DDC9183A3A8900D7605F /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		8436DDCB183A3A8900D7605F /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8436DDCC183A3A8900D7605F /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		8436DDE0183A3A8900D7605F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8436DDE1183A3A8900D7605F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8436DDE6183A3A8900D7605F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8436DDE7183A3A8900D7605F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8436DDE9183A3A8900D7605F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JamCard/JamCard-Prefix.pch";
+				INFOPLIST_FILE = "JamCard/JamCard-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8436DDEA183A3A8900D7605F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JamCard/JamCard-Prefix.pch";
+				INFOPLIST_FILE = "JamCard/JamCard-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		8436DDEC183A3A8900D7605F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JamCard.app/JamCard";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JamCard/JamCard-Prefix.pch";
+				INFOPLIST_FILE = "JamCardTests/JamCardTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		8436DDED183A3A8900D7605F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JamCard.app/JamCard";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JamCard/JamCard-Prefix.pch";
+				INFOPLIST_FILE = "JamCardTests/JamCardTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8436DDA8183A3A8900D7605F /* Build configuration list for PBXProject "JamCard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8436DDE6183A3A8900D7605F /* Debug */,
+				8436DDE7183A3A8900D7605F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8436DDE8183A3A8900D7605F /* Build configuration list for PBXNativeTarget "JamCard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8436DDE9183A3A8900D7605F /* Debug */,
+				8436DDEA183A3A8900D7605F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8436DDEB183A3A8900D7605F /* Build configuration list for PBXNativeTarget "JamCardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8436DDEC183A3A8900D7605F /* Debug */,
+				8436DDED183A3A8900D7605F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8436DDA5183A3A8900D7605F /* Project object */;
+}
