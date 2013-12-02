@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PECViewController : UIViewController
+@interface PECViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+- (IBAction)pageChanged:(UIPageControl *)sender;
+- (void)buttonCardClicked: (id)sender;
+
++(NSMutableArray*)getObjJSON;
 
 @end

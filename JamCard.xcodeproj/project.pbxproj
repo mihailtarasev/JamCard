@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84316596184743B5006C846B /* PECMyCardsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 84316595184743B5006C846B /* PECMyCardsViewCtrl.m */; };
+		8431659918475954006C846B /* PECModelDataCards.m in Sources */ = {isa = PBXBuildFile; fileRef = 8431659818475954006C846B /* PECModelDataCards.m */; };
+		8431659E184764F2006C846B /* PECBuilderModelCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8431659D184764F2006C846B /* PECBuilderModelCard.m */; };
+		843165A018488522006C846B /* card2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8431659F18488522006C846B /* card2.jpg */; };
+		843165A2184A28B2006C846B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843165A1184A28B2006C846B /* QuartzCore.framework */; };
+		843165A5184C7267006C846B /* PECAutorizationViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 843165A4184C7267006C846B /* PECAutorizationViewCtrl.m */; };
+		843165A8184C94AF006C846B /* PECBuilderCards.m in Sources */ = {isa = PBXBuildFile; fileRef = 843165A7184C94AF006C846B /* PECBuilderCards.m */; };
 		8436DDB1183A3A8900D7605F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436DDB0183A3A8900D7605F /* UIKit.framework */; };
 		8436DDB3183A3A8900D7605F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436DDB2183A3A8900D7605F /* Foundation.framework */; };
 		8436DDB5183A3A8900D7605F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436DDB4183A3A8900D7605F /* CoreGraphics.framework */; };
@@ -24,6 +31,10 @@
 		8436DDDA183A3A8900D7605F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436DDB2183A3A8900D7605F /* Foundation.framework */; };
 		8436DDE2183A3A8900D7605F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8436DDE0183A3A8900D7605F /* InfoPlist.strings */; };
 		8436DDE5183A3A8900D7605F /* JamCardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436DDE4183A3A8900D7605F /* JamCardTests.m */; };
+		84E8EE3718436AA9001D8CD9 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E8EE3618436AA9001D8CD9 /* Icon-Small.png */; };
+		84E8EE3C1843838F001D8CD9 /* ZG.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E8EE3B1843838F001D8CD9 /* ZG.png */; };
+		84E8EE441844A549001D8CD9 /* PECDetailActionViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8EE431844A549001D8CD9 /* PECDetailActionViewCtrl.m */; };
+		84E8EE471844CFD8001D8CD9 /* PECDetailCardViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8EE461844CFD8001D8CD9 /* PECDetailCardViewCtrl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +48,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84316594184743B5006C846B /* PECMyCardsViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECMyCardsViewCtrl.h; sourceTree = "<group>"; };
+		84316595184743B5006C846B /* PECMyCardsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECMyCardsViewCtrl.m; sourceTree = "<group>"; };
+		8431659718475954006C846B /* PECModelDataCards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECModelDataCards.h; sourceTree = "<group>"; };
+		8431659818475954006C846B /* PECModelDataCards.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECModelDataCards.m; sourceTree = "<group>"; };
+		8431659C184764F2006C846B /* PECBuilderModelCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECBuilderModelCard.h; sourceTree = "<group>"; };
+		8431659D184764F2006C846B /* PECBuilderModelCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECBuilderModelCard.m; sourceTree = "<group>"; };
+		8431659F18488522006C846B /* card2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = card2.jpg; sourceTree = "<group>"; };
+		843165A1184A28B2006C846B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		843165A3184C7267006C846B /* PECAutorizationViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECAutorizationViewCtrl.h; sourceTree = "<group>"; };
+		843165A4184C7267006C846B /* PECAutorizationViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECAutorizationViewCtrl.m; sourceTree = "<group>"; };
+		843165A6184C94AF006C846B /* PECBuilderCards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECBuilderCards.h; sourceTree = "<group>"; };
+		843165A7184C94AF006C846B /* PECBuilderCards.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECBuilderCards.m; sourceTree = "<group>"; };
 		8436DDAD183A3A8900D7605F /* JamCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8436DDB0183A3A8900D7605F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8436DDB2183A3A8900D7605F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -53,13 +76,23 @@
 		8436DDC9183A3A8900D7605F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		8436DDCC183A3A8900D7605F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		8436DDCE183A3A8900D7605F /* PECViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PECViewController.h; sourceTree = "<group>"; };
-		8436DDCF183A3A8900D7605F /* PECViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PECViewController.m; sourceTree = "<group>"; };
+		8436DDCF183A3A8900D7605F /* PECViewController.m */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.c.objc; path = PECViewController.m; sourceTree = "<group>"; };
 		8436DDD6183A3A8900D7605F /* JamCardTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamCardTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8436DDD7183A3A8900D7605F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		8436DDDF183A3A8900D7605F /* JamCardTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JamCardTests-Info.plist"; sourceTree = "<group>"; };
 		8436DDE1183A3A8900D7605F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8436DDE3183A3A8900D7605F /* JamCardTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JamCardTests.h; sourceTree = "<group>"; };
 		8436DDE4183A3A8900D7605F /* JamCardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JamCardTests.m; sourceTree = "<group>"; };
+		84A0D6BE183CBC0E00762095 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		84A0D6BF183CBC0E00762095 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		84A0D6C0183CBC0E00762095 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84A0D6C1183CBC0E00762095 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84E8EE3618436AA9001D8CD9 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		84E8EE3B1843838F001D8CD9 /* ZG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZG.png; sourceTree = "<group>"; };
+		84E8EE421844A549001D8CD9 /* PECDetailActionViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECDetailActionViewCtrl.h; sourceTree = "<group>"; };
+		84E8EE431844A549001D8CD9 /* PECDetailActionViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECDetailActionViewCtrl.m; sourceTree = "<group>"; };
+		84E8EE451844CFD8001D8CD9 /* PECDetailCardViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECDetailCardViewCtrl.h; sourceTree = "<group>"; };
+		84E8EE461844CFD8001D8CD9 /* PECDetailCardViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECDetailCardViewCtrl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843165A2184A28B2006C846B /* QuartzCore.framework in Frameworks */,
 				8436DDB1183A3A8900D7605F /* UIKit.framework in Frameworks */,
 				8436DDB3183A3A8900D7605F /* Foundation.framework in Frameworks */,
 				8436DDB5183A3A8900D7605F /* CoreGraphics.framework in Frameworks */,
@@ -86,6 +120,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84274982183E26380081305E /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8436DDC8183A3A8900D7605F /* MainStoryboard_iPhone.storyboard */,
+				8436DDCB183A3A8900D7605F /* MainStoryboard_iPad.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		8431659A1847634C006C846B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8431659718475954006C846B /* PECModelDataCards.h */,
+				8431659818475954006C846B /* PECModelDataCards.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8431659B1847639C006C846B /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				8436DDBF183A3A8900D7605F /* PECAppDelegate.h */,
+				8436DDC0183A3A8900D7605F /* PECAppDelegate.m */,
+				8431659C184764F2006C846B /* PECBuilderModelCard.h */,
+				8431659D184764F2006C846B /* PECBuilderModelCard.m */,
+				843165A6184C94AF006C846B /* PECBuilderCards.h */,
+				843165A7184C94AF006C846B /* PECBuilderCards.m */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
 		8436DDA4183A3A8900D7605F = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +173,7 @@
 		8436DDAF183A3A8900D7605F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				843165A1184A28B2006C846B /* QuartzCore.framework */,
 				8436DDB0183A3A8900D7605F /* UIKit.framework */,
 				8436DDB2183A3A8900D7605F /* Foundation.framework */,
 				8436DDB4183A3A8900D7605F /* CoreGraphics.framework */,
@@ -119,12 +185,11 @@
 		8436DDB6183A3A8900D7605F /* JamCard */ = {
 			isa = PBXGroup;
 			children = (
-				8436DDBF183A3A8900D7605F /* PECAppDelegate.h */,
-				8436DDC0183A3A8900D7605F /* PECAppDelegate.m */,
-				8436DDC8183A3A8900D7605F /* MainStoryboard_iPhone.storyboard */,
-				8436DDCB183A3A8900D7605F /* MainStoryboard_iPad.storyboard */,
-				8436DDCE183A3A8900D7605F /* PECViewController.h */,
-				8436DDCF183A3A8900D7605F /* PECViewController.m */,
+				84E8EE3A184370E9001D8CD9 /* Images */,
+				8431659B1847639C006C846B /* Controls */,
+				84E8EE38184370A9001D8CD9 /* ViewControllers */,
+				8431659A1847634C006C846B /* Model */,
+				84274982183E26380081305E /* Storyboard */,
 				8436DDB7183A3A8900D7605F /* Supporting Files */,
 			);
 			path = JamCard;
@@ -161,6 +226,33 @@
 				8436DDE0183A3A8900D7605F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84E8EE38184370A9001D8CD9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				84E8EE421844A549001D8CD9 /* PECDetailActionViewCtrl.h */,
+				84E8EE431844A549001D8CD9 /* PECDetailActionViewCtrl.m */,
+				84E8EE451844CFD8001D8CD9 /* PECDetailCardViewCtrl.h */,
+				84E8EE461844CFD8001D8CD9 /* PECDetailCardViewCtrl.m */,
+				8436DDCE183A3A8900D7605F /* PECViewController.h */,
+				8436DDCF183A3A8900D7605F /* PECViewController.m */,
+				84316594184743B5006C846B /* PECMyCardsViewCtrl.h */,
+				84316595184743B5006C846B /* PECMyCardsViewCtrl.m */,
+				843165A3184C7267006C846B /* PECAutorizationViewCtrl.h */,
+				843165A4184C7267006C846B /* PECAutorizationViewCtrl.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		84E8EE3A184370E9001D8CD9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8431659F18488522006C846B /* card2.jpg */,
+				84E8EE3B1843838F001D8CD9 /* ZG.png */,
+				84E8EE3618436AA9001D8CD9 /* Icon-Small.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +310,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ru,
 			);
 			mainGroup = 8436DDA4183A3A8900D7605F;
 			productRefGroup = 8436DDAE183A3A8900D7605F /* Products */;
@@ -236,10 +329,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8436DDBB183A3A8900D7605F /* InfoPlist.strings in Resources */,
+				84E8EE3718436AA9001D8CD9 /* Icon-Small.png in Resources */,
+				84E8EE3C1843838F001D8CD9 /* ZG.png in Resources */,
 				8436DDC3183A3A8900D7605F /* Default.png in Resources */,
 				8436DDC5183A3A8900D7605F /* Default@2x.png in Resources */,
 				8436DDC7183A3A8900D7605F /* Default-568h@2x.png in Resources */,
 				8436DDCA183A3A8900D7605F /* MainStoryboard_iPhone.storyboard in Resources */,
+				843165A018488522006C846B /* card2.jpg in Resources */,
 				8436DDCD183A3A8900D7605F /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,9 +371,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843165A8184C94AF006C846B /* PECBuilderCards.m in Sources */,
 				8436DDBD183A3A8900D7605F /* main.m in Sources */,
+				84E8EE441844A549001D8CD9 /* PECDetailActionViewCtrl.m in Sources */,
+				8431659E184764F2006C846B /* PECBuilderModelCard.m in Sources */,
+				8431659918475954006C846B /* PECModelDataCards.m in Sources */,
 				8436DDC1183A3A8900D7605F /* PECAppDelegate.m in Sources */,
+				84E8EE471844CFD8001D8CD9 /* PECDetailCardViewCtrl.m in Sources */,
+				84316596184743B5006C846B /* PECMyCardsViewCtrl.m in Sources */,
 				8436DDD0183A3A8900D7605F /* PECViewController.m in Sources */,
+				843165A5184C7267006C846B /* PECAutorizationViewCtrl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +407,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8436DDBA183A3A8900D7605F /* en */,
+				84A0D6C0183CBC0E00762095 /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -312,6 +416,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8436DDC9183A3A8900D7605F /* en */,
+				84A0D6BE183CBC0E00762095 /* ru */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
@@ -320,6 +425,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8436DDCC183A3A8900D7605F /* en */,
+				84A0D6BF183CBC0E00762095 /* ru */,
 			);
 			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
@@ -328,6 +434,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8436DDE1183A3A8900D7605F /* en */,
+				84A0D6C1183CBC0E00762095 /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -360,7 +467,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -385,7 +492,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -396,10 +503,13 @@
 		8436DDE9183A3A8900D7605F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JamCard/JamCard-Prefix.pch";
 				INFOPLIST_FILE = "JamCard/JamCard-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -407,10 +517,13 @@
 		8436DDEA183A3A8900D7605F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JamCard/JamCard-Prefix.pch";
 				INFOPLIST_FILE = "JamCard/JamCard-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -468,6 +581,7 @@
 				8436DDEA183A3A8900D7605F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8436DDEB183A3A8900D7605F /* Build configuration list for PBXNativeTarget "JamCardTests" */ = {
 			isa = XCConfigurationList;
@@ -476,6 +590,7 @@
 				8436DDED183A3A8900D7605F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
