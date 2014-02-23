@@ -8,14 +8,27 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PECAutorizationViewCtrl : UIViewController
+@class TPKeyboardAvoidingScrollView;
+
+@interface PECAutorizationViewCtrl : UIViewController <UITextFieldDelegate, UIScrollViewDelegate, UIPickerViewDelegate>
 
 
-@property (retain, nonatomic) IBOutlet UITextField *uiTextUserName;
-@property (retain, nonatomic) IBOutlet UITextField *uiTextUserFamily;
-@property (retain, nonatomic) IBOutlet UITextField *uiTextUserNumberTel;
+// Hidden Keyboard
+- (IBAction)HideKeyboard:(id)sender;
+- (IBAction)HideKeyboardBg:(id)sender;
 
-- (IBAction)butClickOkAutorization:(id)sender;
+// Scroll
+- (IBAction)secAuthCtrlClick:(UISegmentedControl *)sender;
+@property (retain, nonatomic) IBOutlet UISegmentedControl *segAuthCtrl;
 
+// Button Back
+- (IBAction)butBack:(UIButton *)sender;
+
+- (IBAction)butOne:(UIButton *)sender;
+- (IBAction)butTwo:(UIButton *)sender;
+- (IBAction)butThree:(UIButton *)sender;
+
+
+@property (nonatomic, retain) IBOutlet TPKeyboardAvoidingScrollView *scrollView;
 
 @end

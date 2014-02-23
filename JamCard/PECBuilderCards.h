@@ -10,4 +10,17 @@
 
 @interface PECBuilderCards : NSObject
 
+- (BOOL)addCardsToScrollView : (NSMutableArray*) objJSON
+                  contentView:(UIView*) contentView
+             headerScrollView:(UIScrollView*) headerScrollView
+            headerPageControl:(UIPageControl*) headerPageControl
+                   uiViewCntr: (UIViewController*) uiViewCntr
+               dinamicContent: (BOOL) dinamicContent;
+
+
++(UIImage *)createImageViewFromObj: (NSObject*) obj keyData:(NSString*)keyData keyUrl:(NSString*)keyUrl;
+
++(void)setObjectData: (int)objDataloc;
+
+
 @end

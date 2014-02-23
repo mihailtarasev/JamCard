@@ -10,4 +10,10 @@
 
 @interface PECDetailActionViewCtrl : UIViewController
 
+@property int selectedAction;
+
+
+// Кнопка Назад
+- (IBAction)butBack:(UIButton *)sender;
+
 @end

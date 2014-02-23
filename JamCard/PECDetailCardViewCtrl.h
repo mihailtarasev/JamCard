@@ -7,9 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PECModelDataCards.h"
 
 @interface PECDetailCardViewCtrl : UIViewController
 
+// Текущая модель данных
 @property int selectedCard;
+
+// Кнопка активировать карточку/деАктивировать карточку
+- (IBAction)buttonActivateClicked:(id)sender;
+
+// Кнопка Назад
+- (IBAction)butBack:(UIButton *)sender;
+
+// Кнопка Новости
+- (IBAction)butNews:(UIButton *)sender;
+
+// Кнопка Адрес
+- (IBAction)butAddressEvent:(UIButton *)sender;
 
 @end

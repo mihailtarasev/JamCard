@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface PECViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface PECViewController : UIViewController
 
-- (IBAction)pageChanged:(UIPageControl *)sender;
-- (void)buttonCardClicked: (id)sender;
+// Segmens control
+- (IBAction)segmentCtrlClick:(UISegmentedControl *)sender;
 
-+(NSMutableArray*)getObjJSON;
-
+// Header
+- (IBAction)updateJamCard:(UIButton *)sender;
 @end
