@@ -295,4 +295,14 @@
    // Dispose of any resources that can be recreated.
 }
 
+/*
+ CATransition* transition = [CATransition animation];
+ transition.duration = 0.15;
+ transition.type = kCATransitionFade;
+ transition.subtype = kCATransitionFromTop;
+ [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+
+ */
+
+
 @end

@@ -112,17 +112,9 @@
 // autorization and details cards
 - (void)buttonCardClicked: (id)sender
 {
-    
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.15;
-    transition.type = kCATransitionFade;
-    transition.subtype = kCATransitionFromTop;
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-
-    
     PECDetailCardViewCtrl *detailCardController = [self.storyboard instantiateViewControllerWithIdentifier:@"detailCardController"];
     detailCardController.selectedCard = [sender tag];
-    [self.navigationController pushViewController: detailCardController animated:NO];
+    [self.navigationController pushViewController: detailCardController animated:YES];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

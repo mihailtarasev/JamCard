@@ -18,7 +18,7 @@
 - (void)getCardDataServer: (NSString*) params callback:(void (^)(id)) callback;
 
 // Скачивание данных всех партнеров с сервера и запись их в модель данных
-- (void)getPartnerDataServer: (NSString*) params callback:(void (^)(id)) callback;
+- (void)getPartnerDataServer: (NSString*) params callback:(void (^)(int)) callback;
 
 // Скачивание данных "Партнеров ближайших к пользователю" с сервера и запись их в модель данных
 - (void)getPartnerByLocDataServer: (int) cityId addrLong: (double) addrLong addrLat: (double) addrLat callback:(void (^)(id)) callback;
@@ -56,7 +56,7 @@
 - (void)getDataAtCardURL:(void (^)(id)) callback;
 
 // Запрос к серверу для получения всех категории партнеров
-- (void)getCategoryPartnersDServer:(void (^)(id)) callback;
+- (void)getCategoryPartnersDServer:(void (^)(int)) callback;
 
 // Запрос к серверу для Активации(выдачи) специального предложения
 - (void)activateActionServer:(int) actionId userId: (int) userId callback:(void (^)(id)) callback;

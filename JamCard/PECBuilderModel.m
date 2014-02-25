@@ -32,14 +32,13 @@ static NSMutableArray* sArrObjectsCards;
 // Общий для всех запросов парсинг ошибок и данных
 + (NSArray*)getArrayFromJsonDataServer:(NSData *)objectNotation error:(NSError **)error
 {
-    if(objectNotation==nil){NSLog(@"Warning: objectNotation == nil"); return false;}
+    NSArray *data = [[NSArray alloc]init];
+    
+    if(objectNotation==nil){NSLog(@"Warning: objectNotation == nil"); return data;}
     
     NSError *localError = nil;
     NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error:&localError];
-    NSArray *data = [[NSArray alloc]init];
     
-    //NSLog(@"parsedObject %@",parsedObject);
-
     // Если не возврощает блок данных инициируем плохой запрос и разбираем ошибки
     if(parsedObject.count<=2)
     {
@@ -58,6 +57,13 @@ static NSMutableArray* sArrObjectsCards;
                 
                 if([errorCode isEqualToString:@"7"])
                     [self cellAlertMsg:@"Эл почта с таким именем уже существует"];
+
+                if([errorCode isEqualToString:@"9"])
+                    [self cellAlertMsg:@"Нет свободных карточек"];
+
+                
+                if([errorCode isEqualToString:@"10"])
+                    [self cellAlertMsg:@"Карточка уже активирована"];
                 
                 if([errorCode isEqualToString:@"13"])
                     [self cellAlertMsg:@"Нет свободных спецпредложений"];
@@ -67,7 +73,7 @@ static NSMutableArray* sArrObjectsCards;
             });
         });
         
-        return nil;
+        return data;
     }else
 
     if (localError != nil)
@@ -93,7 +99,7 @@ static NSMutableArray* sArrObjectsCards;
     autoAlertView.transform = CGAffineTransformMake(1.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f);
     [autoAlertView performSelector:@selector(dismissWithClickedButtonIndex:animated:)
                         withObject:nil
-                        afterDelay:0.0f];
+                        afterDelay:1.0f];
     [autoAlertView show];
 }
 
@@ -214,7 +220,7 @@ static NSMutableArray* sArrObjectsCards;
         PECModelDataCards *resParse   = [[PECModelDataCards alloc]init];
         
         // Берем предыдущую информацию
-        resParse = obj;
+        resParse = obj; resParse.statusCard = 0;
         
         // Нахожу в массиве уже существующих карточек нужную карточку
         // и обновляю ее информацию в соответствии с найденным совпадением в массиве карточек
@@ -633,6 +639,7 @@ static NSMutableArray* sArrObjectsCards;
 
     if([PECModelsData getModelSettings]!=nil)
         settingsUser = [PECModelsData getModelSettings];
+    
     if(countCardInView!=-1)
         settingsUser.countCardInView = countCardInView;
 
@@ -681,14 +688,10 @@ static NSMutableArray* sArrObjectsCards;
 
     PECNetworkDataCtrl *netCtrl = [[PECNetworkDataCtrl alloc] init];
     
-    //NSLog(@"numberCityLocation %i",numberCityLocation);
-    
     if(localication && numberCityLocation!=0){
         // Если определение локации включено
         
-        
         // Заполняю модель ближайших акции
-        //
 
         // Скачиваю информацию по ближайшим к пользователю спецпредложениям
         [netCtrl getLocActionUserDServer:numberCityLocation addrLong:addrLong addrLat:addrLat callback:^(id sender){
@@ -716,13 +719,15 @@ static NSMutableArray* sArrObjectsCards;
         [netCtrl getAllMSODataServer:^(id sender){
 
             // Скачиваю информацию про всех партнеров
-            [netCtrl getPartnerDataServer:@"" callback:^(id sender){
+            [netCtrl getPartnerDataServer:@"" callback:^void(int param){
                 
                 // Заполняю модель карточек информацией на основании информации о всех партнерах
                 [PECModelsData setModelCard:[PECBuilderModel parsPartnerAllByCard:[PECModelsData getModelPartners] error:nil]];
                 
                 // Определяю авторизоvан пользователь и скачиваю информацию по его карточкам и акциям
-                [PECBuilderModel getDataAutUser:autorizationUser callback:^(id sender){ callback(self); }];
+                [PECBuilderModel getDataAutUser:autorizationUser callback:^(id sender){
+                    callback(self);
+                }];
             }];
 
             

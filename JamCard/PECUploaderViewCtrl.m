@@ -62,7 +62,7 @@
     NSString *message;
     NSLog(@"locationManager ERROR");
     
-    int loc = -1;
+    int loc = 0;
     
     switch([anError code])
     {
@@ -70,7 +70,6 @@
         {
             message = @"Ваш город не найден";
             NSLog(@"Ваш город не найден");
-            loc = 1;
             break;
         }
             
@@ -78,7 +77,6 @@
         {
             message = @"Некоторый функционал приложения будет отключен";
             NSLog(@"Некоторый функционал приложения будет отключен");
-            loc = 0;
             break;
         }
             
@@ -95,10 +93,22 @@
                                    idCountry:0
                                          lat:0.0f
                                       longit:0.0f
-                                  locationEn:loc
+                                  locationEn:0
                                      autoriz:-1
                                   uploadData:0x7];
+    
+    [locationManager stopUpdatingLocation];
+    locationManager.delegate = nil;
+    locationManager = nil;
+    
+    [self cellAlertMsg:message];
+    
+    readyLocation = true;
+    [self controllerLoadInfo];
 
+    
+
+    /*
     // Заполняю модель карточек и партнеров
     [PECBuilderModel createModelDataCardFromDataPartnerLoc:[PECModelsData getModelSettings].locationEn
                                           autorizationUser:[PECModelsData getModelSettings].autoriz
@@ -116,6 +126,7 @@
                                                       readyLocation = true;
                                                       [self controllerLoadInfo];
                                                   }];
+     */
 }
 
 
@@ -153,6 +164,16 @@
                                                      autoriz:-1
                                                   uploadData:0x7];
                     
+                    [locationManager stopUpdatingLocation];
+                    locationManager.delegate = nil;
+                    locationManager = nil;
+                    
+                    readyLocation = true;
+                    [self controllerLoadInfo];
+
+                    
+                    
+                    /*
                     // Заполняю модель карточек и партнеров
                     [PECBuilderModel createModelDataCardFromDataPartnerLoc:[PECModelsData getModelSettings].locationEn
                                                           autorizationUser:[PECModelsData getModelSettings].autoriz
@@ -168,6 +189,7 @@
                                                                       readyLocation = true;
                                                                       [self controllerLoadInfo];
                                                                   }];
+                     */
 
                 } else{
                     // Произошла ошибка при поиске города
@@ -216,10 +238,19 @@
     PECNetworkDataCtrl *netCtrl = [[PECNetworkDataCtrl alloc] init];
     
     // Скачиваю информацию про всех партнеров
-    [netCtrl getPartnerDataServer:@"" callback:^(id sender){ readyDataPartners = true; [self controllerLoadInfo]; }];
+    [netCtrl getPartnerDataServer:@"" callback:^void(int param)
+    {
+        readyDataPartners = param;
+        [self controllerLoadInfo];
+    }];
+    
     
     // Скачиваю информацию по всем категориям партнеров
-    [netCtrl getCategoryPartnersDServer:^(id sender){ readyDataCategory = true; [self controllerLoadInfo]; }];
+    [netCtrl getCategoryPartnersDServer:^void(int param)
+    {
+        readyDataCategory = param;
+        [self controllerLoadInfo];
+    }];
 }
 
 
@@ -275,7 +306,7 @@
     NSString *UserTel = [defaults objectForKey:@"user_tel"];
     
     // Сценарий 1 Данные по партнерам скачаны но пользователь не авторитизирован
-    if(UserTel==NULL)
+    /*if(UserTel==NULL)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             // Перехожу на следующий экран
@@ -283,22 +314,23 @@
         });
         
         return;
-    }
+    }*/
     // Сценарий 2 Данные по партнерам скачаны пользователь авторитизирован
+    
+    bool authorization = UserTel!= NULL;
     
     // Делаю запрос для проверки существования номера в базе данных
     PECNetworkDataCtrl *netCtrl = [[PECNetworkDataCtrl alloc]init];
     [netCtrl getUserInfoAtTelDServer:UserTel callback:^(id sender){
         
-        if([PECModelsData getModelUser].count)
-        {
-            
+        //if([PECModelsData getModelUser].count)
+        //{
             [PECBuilderModel uploadModelDataSettings:-1
                                            idCountry:-1
                                                  lat:-1
                                               longit:-1
                                           locationEn:-1
-                                             autoriz:1
+                                             autoriz:authorization
                                           uploadData:0x7];
             
             // Заполняю модель карточек и партнеров
@@ -316,13 +348,13 @@
 
     
                                                           }];
-        }else
+        /*}else
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 // Перехожу на следующий экран
                 [self reqNavController];
             });
-        }
+        }*/
     }];
 }
 
@@ -363,7 +395,6 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
     
-    
     UIAlertView *autoAlertView = [[UIAlertView alloc] initWithTitle:@""
                                                             message:msg
                                                            delegate:self
@@ -380,17 +411,9 @@
 
 - (void)reqNavController
 {
-    
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.15;
-    transition.type = kCATransitionFade;
-    transition.subtype = kCATransitionFromTop;
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-
-    
-        PECViewController *viewCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"viewStoryID"];
-        UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:viewCtrl] init];
-        [self presentViewController:navController animated:NO completion:nil];
+    PECViewController *viewCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"viewStoryID"];
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:viewCtrl] init];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

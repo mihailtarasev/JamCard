@@ -31,8 +31,6 @@
 	// Do any additional setup after loading the view.
     tableData = [PECModelsData getModelCategory];
     
-    autorizationTRUE = ([PECModelsData getModelUser].count);
-    
     // 3.5 inch screen
     if ([UIScreen mainScreen].bounds.size.height<568)
     {
@@ -73,25 +71,17 @@
 
 - (void) buttonClickCategoryTableCell: (id)sender
 {
-    
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.15;
-    transition.type = kCATransitionFade;
-    transition.subtype = kCATransitionFromTop;
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-
-    
-    autorizationTRUE = true;
+    autorizationTRUE = ([PECModelsData getModelUser].count);
     
     if(autorizationTRUE)
     {
         PECCategoryDetailViewCtrl *detailCategoryController = [self.storyboard instantiateViewControllerWithIdentifier:@"categoryDetailStoryID"];
         detailCategoryController.selectedCategory = [sender tag];
-        [self.navigationController pushViewController: detailCategoryController animated:NO];
+        [self.navigationController pushViewController: detailCategoryController animated:YES];
     }else
     {
         PECAutorizationViewCtrl *autorizationCardController = [self.storyboard instantiateViewControllerWithIdentifier:@"autorizationStoryID"];
-        [self.navigationController pushViewController: autorizationCardController animated:NO];
+        [self.navigationController pushViewController: autorizationCardController animated:YES];
     }
 }
 

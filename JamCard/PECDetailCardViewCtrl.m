@@ -399,7 +399,7 @@
                 
                 [_loadingContainer setHidden:true];
                 
-                [self cellAlertMsg:@"Нет свободных карточек"];
+               // [self cellAlertMsg:@"Нет свободных карточек"];
             });
         
         }
@@ -537,15 +537,7 @@
     dispatch_async(queue, ^{
         
         dispatch_sync(dispatch_get_main_queue(), ^{
-            
-            CATransition* transition = [CATransition animation];
-            transition.duration = 0.15;
-            transition.type = kCATransitionFade;
-            transition.subtype = kCATransitionFromTop;
-            [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-
-            
-            [[self navigationController] popViewControllerAnimated:NO];
+            [[self navigationController] popViewControllerAnimated:YES];
         });
     });
 
@@ -561,15 +553,9 @@
         dispatch_sync(dispatch_get_main_queue(),
                       ^{
             
-                          CATransition* transition = [CATransition animation];
-                          transition.duration = 0.15;
-                          transition.type = kCATransitionFade;
-                          transition.subtype = kCATransitionFromTop;
-                          [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-                          
                           PECNewsPartnerViewCtrl *newsController = [self.storyboard instantiateViewControllerWithIdentifier:@"newsPartenrController"];
                           newsController.idCurrentPartner = currentModelPartner.idPartner;//[sender tag];
-                          [self.navigationController pushViewController: newsController animated:NO];
+                          [self.navigationController pushViewController: newsController animated:YES];
         });
     }];
 }
@@ -577,47 +563,27 @@
 // Кнопочка Адрес
 - (IBAction)butAddressEvent:(UIButton *)sender
 {
-    NSLog(@"address");
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.15;
-    transition.type = kCATransitionFade;
-    transition.subtype = kCATransitionFromTop;
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-
     
     PECAddressPartnerViewCtrl *addressController = [self.storyboard instantiateViewControllerWithIdentifier:@"addressPartenrController"];
     addressController.idCurrentPartner = currentModelPartner.idPartner;
-    [self.navigationController pushViewController: addressController animated:NO];
+    [self.navigationController pushViewController: addressController animated:YES];
 }
 
 // Кнопочка Адрес
 - (IBAction)butAddressEvent2:(UIButton *)sender
 {
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.15;
-    transition.type = kCATransitionFade;
-    transition.subtype = kCATransitionFromTop;
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-
     NSLog(@"address");
     PECAddressPartnerViewCtrl *addressController = [self.storyboard instantiateViewControllerWithIdentifier:@"addressPartenrController"];
     addressController.idCurrentPartner = currentModelPartner.idPartner;
-    [self.navigationController pushViewController: addressController animated:NO];
+    [self.navigationController pushViewController: addressController animated:YES];
 }
 
 // Кнопочка О ПАРТНЕРЕ
 - (IBAction)bAboutPartnerEvent:(UIButton *)sender
 {
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.15;
-    transition.type = kCATransitionFade;
-    transition.subtype = kCATransitionFromTop;
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-
-    
     PECAboutPartnerViewCtrl *addressController = [self.storyboard instantiateViewControllerWithIdentifier:@"aboutPartenrController"];
     addressController.idCurrentPartner = currentModelPartner.idPartner;
-    [self.navigationController pushViewController: addressController animated:NO];
+    [self.navigationController pushViewController: addressController animated:YES];
 }
 
 

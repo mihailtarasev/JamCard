@@ -160,25 +160,17 @@
     PECAnnotation *ann = [[PECAnnotation alloc]init];
     ann = view.annotation;
     
-    
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.15;
-    transition.type = kCATransitionFade;
-    transition.subtype = kCATransitionFromTop;
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-
-    
     bool autorizationTRUE = ([PECModelsData getModelUser].count);
     if(autorizationTRUE)
     {
         NSLog(@"calloutAccessoryControlTapped %d", ann.idAnnotation);
         PECDetailCardViewCtrl *detailCardController = [self.storyboard instantiateViewControllerWithIdentifier:@"detailCardController"];
         detailCardController.selectedCard = ann.idAnnotation;
-        [self.navigationController pushViewController: detailCardController animated:NO];
+        [self.navigationController pushViewController: detailCardController animated:YES];
     }else
     {
         PECAutorizationViewCtrl *autorizationCardController = [self.storyboard instantiateViewControllerWithIdentifier:@"autorizationStoryID"];
-        [self.navigationController pushViewController: autorizationCardController animated:NO];
+        [self.navigationController pushViewController: autorizationCardController animated:YES];
     }
     
 }

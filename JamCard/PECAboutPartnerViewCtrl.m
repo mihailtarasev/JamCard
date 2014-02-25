@@ -59,14 +59,7 @@
 // Кнопочка назад
 - (IBAction)butBack:(UIButton *)sender
 {
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.15;
-    transition.type = kCATransitionFade;
-    transition.subtype = kCATransitionFromTop;
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-
-    
-    [[self navigationController] popViewControllerAnimated:NO];
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

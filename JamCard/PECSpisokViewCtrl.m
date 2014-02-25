@@ -192,25 +192,17 @@
 // Авторизация и детализация карточки
 - (void)buttonCardClicked: (id)sender
 {
-    
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.15;
-    transition.type = kCATransitionFade;
-    transition.subtype = kCATransitionFromTop;
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-
-    
     bool autorizationTRUE = ([PECModelsData getModelUser].count);
     
     if(autorizationTRUE)
     {
         PECDetailCardViewCtrl *detailCardController = [self.storyboard instantiateViewControllerWithIdentifier:@"detailCardController"];
         detailCardController.selectedCard = [sender tag];
-        [self.navigationController pushViewController: detailCardController animated:NO];
+        [self.navigationController pushViewController: detailCardController animated:YES];
     }else
     {
         PECAutorizationViewCtrl *autorizationCardController = [self.storyboard instantiateViewControllerWithIdentifier:@"autorizationStoryID"];
-        [self.navigationController pushViewController: autorizationCardController animated:NO];
+        [self.navigationController pushViewController: autorizationCardController animated:YES];
     }
 }
 

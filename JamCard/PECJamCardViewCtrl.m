@@ -135,22 +135,15 @@
 - (void)buttonCardClicked: (id)sender
 {
     
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.15;
-    transition.type = kCATransitionFade;
-    transition.subtype = kCATransitionFromTop;
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-
-    
     if(autorizationTRUE)
     {
         PECDetailCardViewCtrl *detailCardController = [self.storyboard instantiateViewControllerWithIdentifier:@"detailCardController"];
         detailCardController.selectedCard = [sender tag];
-        [self.navigationController pushViewController: detailCardController animated:NO];
+        [self.navigationController pushViewController: detailCardController animated:YES];
     }else
     {
         PECAutorizationViewCtrl *autorizationCardController = [self.storyboard instantiateViewControllerWithIdentifier:@"autorizationStoryID"];
-        [self.navigationController pushViewController: autorizationCardController animated:NO];
+        [self.navigationController pushViewController: autorizationCardController animated:YES];
     }
 }
 
@@ -287,23 +280,15 @@
 // ?Обработка нажатия на Акции в таблице
 - (void) buttonClickTableCell: (id)sender
 {
-    //autorizationTRUE = true;
-    
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.15;
-    transition.type = kCATransitionFade;
-    transition.subtype = kCATransitionFromTop;
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-    
     if(autorizationTRUE)
     {
         PECDetailActionViewCtrl *detailActionController = [self.storyboard instantiateViewControllerWithIdentifier:@"showActionDetail"];
         detailActionController.selectedAction = [sender tag];
-        [self.navigationController pushViewController: detailActionController animated:NO];
+        [self.navigationController pushViewController: detailActionController animated:YES];
     }else
     {
         PECAutorizationViewCtrl *autorizationCardController = [self.storyboard instantiateViewControllerWithIdentifier:@"autorizationStoryID"];
-        [self.navigationController pushViewController: autorizationCardController animated:NO];
+        [self.navigationController pushViewController: autorizationCardController animated:YES];
     }
 }
 

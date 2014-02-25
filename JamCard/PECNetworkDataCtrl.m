@@ -31,7 +31,7 @@ static NSString const *ACTIVATE_CARD_URL = @"mobilecards/activate";
 static NSString const *DEACTIVATE_CARD_URL = @"mobilecards/deactivate";
 
 // Данные карточек по идентификатору пользователя
-static NSString const * GET_DATA_CARD_U_ID_URL = @"mobilecards/get/byuser";
+static NSString const * GET_DATA_CARD_U_ID_URL = @"mobilecards/get/activated/byuser";//@"mobilecards/get/byuser";
 
 // Модель данных пользователей
 static NSString const *GET_USER_DATA_TELEPHONE = @"users/get/byphone";
@@ -78,9 +78,26 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
 
 @implementation PECNetworkDataCtrl{
     NSData *responseData;
+    NSError *gError;
 }
 
 // СИСТЕМНЫЕ
+
+// Сообщения
++(void)cellAlertMsg:(NSString*)msg
+{
+    UIAlertView *autoAlertView = [[UIAlertView alloc] initWithTitle:@""
+                                                            message:msg
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:nil];
+    
+    autoAlertView.transform = CGAffineTransformMake(1.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f);
+    [autoAlertView performSelector:@selector(dismissWithClickedButtonIndex:animated:)
+                        withObject:nil
+                        afterDelay:1.0f];
+    [autoAlertView show];
+}
 
 // Асинхронный Get запрос к серверу
 - (void)asynchronousRequestJamCard:(NSString*) url params: (NSString*) params callback:(void (^)(id)) callback
@@ -119,8 +136,10 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
                                        queue:[[NSOperationQueue alloc] init]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
      {
+         gError = error;
          responseData = nil;
          responseData = data;
+         
          callback(self);
      }];
 }
@@ -128,7 +147,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
 // ПАРТНЕРЫ
 
 // Скачивание данных всех "Партнеров" с сервера и запись их в модель данных
-- (void)getPartnerDataServer: (NSString*) cityId callback:(void (^)(id)) callback
+- (void)getPartnerDataServer: (NSString*) cityId callback:(void (^)(int)) callback
 {
     NSString *params = nil;
     //if(cityId != nil)
@@ -139,10 +158,14 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
                          url:url
                       params:params
                     callback:^(id sender){
-                        NSError *nError;
+                        NSError *nError = gError;
+                        
+                        int resp = 0;
+                        if(responseData!=NULL) resp = 1;
+                        
                         [PECModelsData setModelPartners:[PECBuilderModel parserJSONPartners:responseData error:&nError]];
                         //[PECBuilderModel parserJSONPoints:[PECModelsData getModelPartners] error:&nError];
-                        callback(self);
+                        callback(resp);
                     }];
 }
 
@@ -160,7 +183,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
                          url:url
                       params:params
                     callback:^(id sender){
-                        NSError *nError;
+                        NSError *nError = gError;
                         [PECModelsData setModelPartnersByLoc:[PECBuilderModel parserJSONPartnersByLoc:responseData error:&nError]];
                         callback(self);
                     }];
@@ -180,7 +203,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
                          url:url
                       params:params
                     callback:^(id sender){
-                        NSError *nError;
+                        NSError *nError = gError;
                         
                         [PECModelsData setModelNewsPartner:[PECBuilderModel parserJSONPartnersNews:responseData error:&nError]];
                         
@@ -194,6 +217,8 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
 // Скачивание данных карточек в соответствии с данными от пользователя по его u_id
 - (void)getCardUserDataServer: (int) userId callback:(void (^)(id)) callback
 {
+    //NSLog(@"userId %d",userId);
+    
     NSString *params = nil;
     params = [NSString stringWithFormat:@"{u_id:%d}",userId];
     
@@ -202,7 +227,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
                          url:url
                       params:params
                     callback:^(id sender){
-                        NSError *nError;
+                        NSError *nError = gError;
                         [PECModelsData setModelCard:[PECBuilderModel parsJSONCardPartnerInfo: responseData error:&nError]];
                         
                         //NSLog(@"!!!!!");
@@ -223,7 +248,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
                          url:url
                       params:params
                     callback:^(id sender){
-                        NSError *nError;
+                        NSError *nError = gError;
                         [PECModelsData setModelPartners:[PECBuilderModel parserJSONPartners:responseData error:&nError]];
                         //[PECBuilderModel parserJSONPoints:[PECModelsData getModelPartners] error:&nError];
                         callback(self);
@@ -258,7 +283,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
                          url:url
                       params:params
                     callback:^(id sender){
-                        NSError *nError;
+                        NSError *nError = gError;
                         int numSMSEq = [PECBuilderModel parserNumTelInDB:responseData error:&nError];
                         callback(numSMSEq);
                     }];
@@ -276,7 +301,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
                          url:url
                       params:params
                     callback:^(id sender){
-                        NSError *nError;
+                        NSError *nError = gError;
                         [PECModelsData setModelUser:[PECBuilderModel parserJSONUsers:responseData userTel: (NSString*)userTel error:&nError]];
                         callback(self);
                     }];
@@ -313,7 +338,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
                          url:url
                       params:params
                     callback:^(id sender){
-                        NSError *nError;
+                        NSError *nError = gError;
                         // return u_id
                         int userId = [PECBuilderModel parserAddUserU_ID:responseData error:&nError];
                         [PECModelsData setUserId:userId];
@@ -337,8 +362,8 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
                       params:params
                     callback:^(id sender){
                         
-                        NSError *nError;
-                        NSArray *data = [[NSArray alloc]initWithObjects:[PECBuilderModel getArrayFromJsonDataServer:responseData error:&nError], nil];
+                        NSError *nError = gError;
+                        NSArray *data = [PECBuilderModel getArrayFromJsonDataServer:responseData error:&nError];//[[NSArray alloc]initWithObjects:, nil];
                         callback(data);
                     }];
 }
@@ -361,16 +386,20 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
 }
 
 // Запрос к серверу для получения всех категории партнеров
-- (void)getCategoryPartnersDServer:(void (^)(id)) callback
+- (void)getCategoryPartnersDServer:(void (^)(int)) callback
 {
     NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",JAMCARD_BASE_URL, GET_CATEGORY_PARTNERS_URL]];
     [self asynPostReqJamCard:@"POST"
                          url:url
                       params:nil
                     callback:^(id sender){
-                        NSError *nError;
+                        NSError *nError = gError;
+                        
+                        int resp = 0;
+                        if(responseData!=NULL) resp = 1;
+                        
                         [PECModelsData setModelCategory:[PECBuilderModel parserJSONCategory:responseData error:&nError]];
-                        callback(self);
+                        callback(resp);
                     }];
 }
 
@@ -384,7 +413,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
                          url:url
                       params:nil
                     callback:^(id sender){
-                        NSError *nError;
+                        NSError *nError = gError;
                         [PECModelsData setModelAction:[PECBuilderModel parserJSONActions:responseData error:&nError]];
                         callback(self);
                     }];
@@ -405,7 +434,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
                          url:url
                       params:params
                     callback:^(id sender){
-                        NSError *nError;
+                        NSError *nError = gError;
                         [PECModelsData setModelAction:[PECBuilderModel parserJSONActions:responseData error:&nError]];
                         callback(self);
                     }];
@@ -425,7 +454,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
                          url:url
                       params:params
                     callback:^(id sender){
-                        NSError *nError;
+                        NSError *nError = gError;
                         
                         [PECModelsData setModelAction:[PECBuilderModel parserJSONActionsFromUserId:responseData error:&nError]];
                         
@@ -447,7 +476,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
                          url:url
                       params:params
                     callback:^(id sender){
-                        NSError *nError;
+                        NSError *nError = gError;
                         [PECModelsData setModelAction:[PECBuilderModel parserJSONActionsFromUserId:responseData error:&nError]];
                         callback(self);
                     }];
@@ -484,7 +513,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
     [self asynchronousRequestJamCard:urlAsString params:nil callback:^(id sender)
      {
          //NSLog(@"responseData3 %@", responseData);
-         NSError *nError;
+         NSError *nError = gError;
          [PECModelsData setModelCard:[PECBuilderModel groupsFromJSON:responseData error:&nError objectModel:@"PECModelDataCards"]];
          callback(self);
      }];
