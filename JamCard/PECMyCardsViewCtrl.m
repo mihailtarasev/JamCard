@@ -53,48 +53,22 @@
     
     if(maskBit!=0)
         maskBit = ((maskBit >> 0)&1);
-    
-    
-    
-    
+
     return settings.uploadData!=0;
 }
 
 - (void) viewWillAppear: (BOOL)animated
 {
-    
-    
-    
     // Если обновилась информация
     if ([self uploadDataSettings])
-    {
-        
-        
-        NSLog(@"upload viewWillAppear!");
-        
         [self viewDidLoad];
-    }
     
     [super viewWillAppear:NO];
 }
 
-/*
-- (void) loadView
-{
-    [super loadView];
-
-    if ([self uploadDataSettings])
-    {
-        
-        NSLog(@"upload loadView!");
-        [self viewDidLoad];
-    }
-}*/
 
 - (void)viewDidLoad
 {
-    NSLog(@"PECMyCardsViewCtrl!");
-    
     // update
     for(UIView *view in [_contentViewMy subviews])
         [view removeFromSuperview];

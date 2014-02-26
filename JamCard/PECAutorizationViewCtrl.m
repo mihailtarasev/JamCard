@@ -19,6 +19,7 @@
 #import "PECModelDataUser.h"
 #import "PECBuilderModel.h"
 #import "PECModelSettings.h"
+#import "Reachability.h"
 
 
 @interface PECAutorizationViewCtrl ()
@@ -231,7 +232,7 @@
     [super viewDidLoad];
     
     // Hidden Navigation bar
-    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    //[[self navigationController] setNavigationBarHidden:YES animated:YES];
     [_titleStatusBar setText:@"Профиль"];
     
     // Инициализирую все объекты на сцене
@@ -296,6 +297,9 @@
 // Нажал на кнопку "Выйти" из аккаунта
 - (void) bLogOutEvent: (id)sender
 {
+    // Если отсутствует интернет игнорируем действие
+    if([self notInternetConnection]) return;
+
     // обнуляю модель данных
     [PECModelsData setModelUser:nil];
     [PECModelsData setModelCard:nil];
@@ -306,7 +310,6 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject: NULL forKey:@"user_tel"];
     [defaults synchronize];
-
     
     // скачиваю информацию по партнерам
     // Обновляю пользовательские настройки
@@ -328,6 +331,20 @@
                                                       // Перехожу ко второму сценарию
                                                   }];
     [self editingNumberOnView];
+}
+
+// Определение наличия связи с интернет
+- (BOOL)notInternetConnection
+{
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable)
+    {
+        NSLog(@"There IS NO internet connection");
+        [self cellAlertMsg:@"Нет связи с интернет"];
+        return true;
+    }
+    return false;
 }
 
 // Заполнение полей ввода данными из модели данных пользователя
@@ -389,6 +406,9 @@
 // Пользователь ввел номер телефона и нажал кнопку "ОК" //+79516534442
 - (void) bOkDownEvent: (id)sender
 {
+    // Если отсутствует интернет игнорируем действие
+    if([self notInternetConnection]) return;
+    
     // Удаляю из номера все пробелы и лишние сиволы
     numTel = tfNumberPhone.text;
     numTel = [numTel stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -417,7 +437,12 @@
                     // Делаю запрос к серверу для получения смс кода от смс сервиса
                     generateSMSCode = [NSString stringWithFormat:@"%i%i%i%i",arc4random()%10,arc4random()%10,arc4random()%10,arc4random()%10];
                     NSLog(@"%@",generateSMSCode);
-                    [netCtrl smsAutServer:numTel confirm_code:generateSMSCode callback:^(id sender){}];
+                    
+                    [self cellAlertMsg:@"Дождитесь смс сообщение с кодом подтверждения. Это может занять некоторое время"];
+                    
+                    [netCtrl smsAutServer:numTel confirm_code:generateSMSCode callback:^(id sender)
+                    {
+                    }];
                 }
                 else
                     [self numberTelInBDServer];
@@ -427,7 +452,6 @@
             });
             return true;
         }];
-        
     }
 }
 
@@ -456,6 +480,10 @@
 // Запрос для проверки существования номера в базе данных
 - (void) numberTelInBDServer
 {
+    
+    // Если отсутствует интернет игнорируем действие
+    if([self notInternetConnection]) return;
+    
     [self.view endEditing:YES];
     [_loadingContainer setHidden:false];
     
@@ -546,6 +574,8 @@
 // Делаю запрос к серверу для регистрации нового пользователя в системе
 - (void) bSaveEvent: (id)sender
 {
+    // Если отсутствует интернет игнорируем действие
+    if([self notInternetConnection]) return;
     
     NSString *alert = @"";
     
@@ -708,7 +738,7 @@
     autoAlertView.transform = CGAffineTransformMake(1.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f);
     [autoAlertView performSelector:@selector(dismissWithClickedButtonIndex:animated:)
                         withObject:nil
-                        afterDelay:0.0f];
+                        afterDelay:2.0f];
     [autoAlertView show];
 }
 
@@ -806,11 +836,6 @@
 -(void)PAGE_SETTING_CONTROL{ [_titleStatusBar setText:@"Настройки"]; }
 -(void)PAGE_FAQ_CONTROL{ [_titleStatusBar setText:@"FAQ"]; }
 
-// Скрываю статус бар
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
-
 // Кастомизация ввода номера телефона
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
@@ -906,6 +931,12 @@
     
     if(viewPickerId==2)
     {
+        // Hidden Navigation bar
+//        [[self navigationController] setNavigationBarHidden:YES animated:YES];
+        
+        // Если отсутствует интернет игнорируем действие
+        if([self notInternetConnection]) return;
+        
         countryIdSettings.text = [CityArray objectAtIndex:row];
         
         // Заполняю модель карточек и партнеров
@@ -924,7 +955,7 @@
                                                                                         locationEn:-1
                                                                                            autoriz:-1
                                                                                         uploadData:0x7];
-
+                                                          
                                                       }];
     }
 }
@@ -936,10 +967,6 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     NSString *prettyVersion = [dateFormat stringFromDate:myDate];
-    
-    
-    NSLog(@"DATA %@",prettyVersion);
-    
     tfUsDate.text = prettyVersion;
 }
 
@@ -1054,5 +1081,9 @@
 {
     [super didReceiveMemoryWarning];
 }
+
+// Скрываю статус бар
+- (BOOL)prefersStatusBarHidden { return YES; }
+
 
 @end

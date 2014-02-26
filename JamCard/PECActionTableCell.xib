@@ -51,17 +51,23 @@
                         <color key="textColor" red="0.96862751250000001" green="0.96862751250000001" blue="0.96862751250000001" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wb-67-aLj">
-                        <rect key="frame" x="254" y="0.0" width="66" height="75"/>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbf-UX-f2p">
+                        <rect key="frame" x="1" y="0.0" width="319" height="75"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </button>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sxs-ri-Stq">
+                        <rect key="frame" x="80" y="0.0" width="166" height="75"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="buttonClickTableCell" destination="9Wb-67-aLj" id="vZm-9g-G8b"/>
+                <outlet property="buttonClickTableCell" destination="Xbf-UX-f2p" id="raa-Mh-Fww"/>
                 <outlet property="distanceLabelTableCell" destination="q7r-74-Mcr" id="3WN-b9-mWw"/>
                 <outlet property="imagDistTableCell" destination="ycZ-du-LbC" id="LsU-rD-UAS"/>
                 <outlet property="imagNoDistTableCell" destination="j3o-r8-Sqq" id="H4P-dE-ieI"/>

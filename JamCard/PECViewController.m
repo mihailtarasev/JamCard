@@ -275,7 +275,7 @@
    autoAlertView.transform = CGAffineTransformMake(1.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f);
    [autoAlertView performSelector:@selector(dismissWithClickedButtonIndex:animated:)
                        withObject:nil
-                       afterDelay:2.0f];
+                       afterDelay:1.0f];
    [autoAlertView show];
 }
 

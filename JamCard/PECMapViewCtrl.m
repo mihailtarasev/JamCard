@@ -50,14 +50,16 @@
 - (void)PAGE_MAPCARDS_CONTROL
 {
     // Настройка mapkit
-    //[_mapView setShowsUserLocation:YES];
-    //[_mapView setDelegate:self];
+    [_mapView setShowsUserLocation:YES];
+    [_mapView setDelegate:self];
+    
     // Начальная координата
-    // [_mapView setRegion:MKCoordinateRegionMake(CLLocationCoordinate2DMake(59.94397,30.107048), MKCoordinateSpanMake(0.4,0.4))];
+    [_mapView setRegion:MKCoordinateRegionMake(CLLocationCoordinate2DMake(59.94397,30.107048), MKCoordinateSpanMake(0.4,0.4))];
     
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
     self.locationManager.delegate = self;
+    
     [self.locationManager startUpdatingLocation];
 }
 
@@ -100,8 +102,8 @@
 {
     MKCoordinateRegion region;
     MKCoordinateSpan span;
-    span.latitudeDelta = 0.003;
-    span.longitudeDelta = 0.003;
+    span.latitudeDelta = 0.03;
+    span.longitudeDelta = 0.03;
     CLLocationCoordinate2D location;
     location.latitude = newLocation.coordinate.latitude;
     location.longitude = newLocation.coordinate.longitude;

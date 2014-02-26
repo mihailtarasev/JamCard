@@ -11,4 +11,6 @@
 
 @interface PECUploaderViewCtrl : UIViewController <CLLocationManagerDelegate>
 
+@property(retain, nonatomic) NSTimer *animationTimer;
+
 @end

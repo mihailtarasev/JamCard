@@ -78,7 +78,13 @@
         {
             [mArrayCard addObject:modelCards];
             [_lbTitle setText:modelCards.typeNameCard];
+            
+            NSLog(@"typeNameCard %@",modelCards.typeNameCard);
+            NSLog(@"typeIdCard %d",modelCards.typeIdCard);
         }
+    
+    NSLog(@"selectedCategory %d",self.selectedCategory);
+    
     
     _namesAllCardsFromTable = [PECBuilderModel sortArrayAtLiters: mArrayCard nameKey:@"" mode:true];
     NSArray *arrKey = [[_namesAllCardsFromTable allKeys] sortedArrayUsingSelector:@selector(compare:)];

@@ -26,6 +26,8 @@
 #import "PECBuilderCards.h"
 #import "PECModelDataAction.h"
 #import "PECModelSettings.h"
+#import <SystemConfiguration/SystemConfiguration.h>
+#import "Reachability.h"
 
 #import <CoreLocation/CoreLocation.h>
 
@@ -233,7 +235,7 @@
     readyDataPartners = false;
     readyDataCards = true;
     readyDataUser = true;
-    readyDataCategory = false;
+    readyDataCategory = true;
     
     PECNetworkDataCtrl *netCtrl = [[PECNetworkDataCtrl alloc] init];
     
@@ -244,13 +246,14 @@
         [self controllerLoadInfo];
     }];
     
-    
+    /*
     // Скачиваю информацию по всем категориям партнеров
     [netCtrl getCategoryPartnersDServer:^void(int param)
     {
         readyDataCategory = param;
         [self controllerLoadInfo];
     }];
+     */
 }
 
 
@@ -274,6 +277,51 @@
     // Hidden Navigation bar
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable)
+    {
+        NSLog(@"There IS NO internet connection");
+        [self cellAlertMsg:@"Нет связи с интернет"];
+        
+        self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:3.0f
+                                                               target:self
+                                                             selector:@selector(animationTick)
+                                                             userInfo:nil
+                                                              repeats:YES];
+    } else {
+        // Скачиваю настройки приложения
+        [self getSettingsUser];
+        
+        // Скачиваю все необходимые данные с сервера
+        [self uploadDataFromServer];
+        
+    }        
+
+}
+
+// Определение наличия связи с интернет
+- (BOOL)notInternetConnection
+{
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable)
+    {
+        NSLog(@"There IS NO internet connection");
+        [self cellAlertMsg:@"Нет связи с интернет"];
+        return true;
+    }
+    return false;
+}
+
+-(void)animationTick
+{
+    // Если отсутствует интернет игнорируем действие
+    if([self notInternetConnection]) return;
+
+    if([self.animationTimer isValid])
+            [self.animationTimer invalidate];
+    
     // Скачиваю настройки приложения
     [self getSettingsUser];
     
@@ -288,15 +336,6 @@
     
     [defaults setObject:responseData forKey:@"cards_data"];
     [defaults synchronize];
-}
-
-// Get Save Data
-- (void)getData
-{
-
-    
-    
-    
 }
 
 // Запрос для проверки существования номера в базе данных
@@ -315,6 +354,7 @@
         
         return;
     }*/
+    
     // Сценарий 2 Данные по партнерам скачаны пользователь авторитизирован
     
     bool authorization = UserTel!= NULL;
@@ -404,7 +444,7 @@
     autoAlertView.transform = CGAffineTransformMake(1.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f);
     [autoAlertView performSelector:@selector(dismissWithClickedButtonIndex:animated:)
                         withObject:nil
-                        afterDelay:2.0f];
+                        afterDelay:1.0f];
     [autoAlertView show];
     });
 }
@@ -424,6 +464,10 @@
     }
     return self;
 }
+
+// Скрываю статус бар
+- (BOOL)prefersStatusBarHidden { return YES; }
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -16,6 +16,7 @@
 #import "PECNewsPartnerViewCtrl.h"
 #import "PECAddressPartnerViewCtrl.h"
 #import "PECAboutPartnerViewCtrl.h"
+#import "Reachability.h"
 
 #import "ZXingObjC.h"
 
@@ -72,6 +73,8 @@
     
     UIButton *butAddress2;
     UIButton *butAboutPartners;
+    
+    UIButton *butTel;
     
     // Кнопка активировать карточку
     UIButton *butActAct;
@@ -139,6 +142,11 @@
     layerDeAct.masksToBounds = YES;
     
     cDeActNumTelephoneCompany = (UILabel*)[self.view viewWithTag:202];
+    
+    butTel = (UIButton*)[self.view viewWithTag:210];
+    [butTel addTarget:self action:@selector(bTelEvent:) forControlEvents:UIControlEventTouchDown];
+    
+    
     cDeActAddressCompany = (UILabel*)[self.view viewWithTag:203];
     cDeActTimeWorkCompany = (UILabel*)[self.view viewWithTag:204];
     cDeActDescCard = (UILabel*)[self.view viewWithTag:205];
@@ -211,9 +219,7 @@
         idUser = modelUser.idUser;
         autorizationUser = true;
     }else
-    {
         idUser = 0;
-    }
     
     // Получаю данные выбранной карточки
     for(PECModelDataCards *modelData in [PECModelsData getModelCard])
@@ -244,6 +250,11 @@
 
 // ~ КАРТОЧКА АКТИВИРОВАНА
 
+- (IBAction)bTelEvent:(id)sender
+{
+    NSString *callNumber = [NSString stringWithFormat:@"tel://%@", cDeActNumTelephoneCompany.text];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callNumber]];
+}
 
 - (IBAction)bViewBarCodeEvent:(id)sender
 {
@@ -260,7 +271,6 @@
         [whiteContainer setHidden:true];
         k=0.5; y = 370.0f;
     }
-    
     
     [UIView animateWithDuration:0.3
                           delay:0.0
@@ -311,35 +321,36 @@
 // Нажимаю на кнопку деактивировать карточку
 - (IBAction)bDeActEvent:(id)sender
 {
-    NSLog(@"cliack deack");
+    // Если отсутствует интернет игнорируем действие
+    if([self notInternetConnection]) return;
     
     // Делаю запрос к серверу для деактивации карточки
     PECNetworkDataCtrl *netCtrl = [[PECNetworkDataCtrl alloc] init];
     [netCtrl deActivateCardServer:[self selectedCard] userId:idUser callback:^(id sender){
-         
+        
         [_loadingContainer setHidden:false];
         
-         // Скачиваю и заполняю информацию о карточках по u_id
-         PECModelDataUser *modelUser = [[PECModelsData getModelUser] objectAtIndex:0];
-         
-         [netCtrl getCardUserDataServer: modelUser.idUser callback:^(id sender){
-             dispatch_sync(dispatch_get_main_queue(), ^{
-                 
-                 // Обновляю пользовательские настройки
-                 [PECBuilderModel uploadModelDataSettings:-1
-                                                idCountry:-1
-                                                      lat:-1
-                                                   longit:-1
-                                               locationEn:-1
-                                                  autoriz:-1
-                                               uploadData:0x7];
-                 
-                 [_loadingContainer setHidden:true];
-                 
-                 [self showDeActivateCard];
-             });
-          }];
-     }];
+        // Скачиваю и заполняю информацию о карточках по u_id
+        PECModelDataUser *modelUser = [[PECModelsData getModelUser] objectAtIndex:0];
+        
+        [netCtrl getCardUserDataServer: modelUser.idUser callback:^(id sender){
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                
+                // Обновляю пользовательские настройки
+                [PECBuilderModel uploadModelDataSettings:-1
+                                               idCountry:-1
+                                                     lat:-1
+                                                  longit:-1
+                                              locationEn:-1
+                                                 autoriz:-1
+                                              uploadData:0x7];
+                
+                [_loadingContainer setHidden:true];
+                
+                [self showDeActivateCard];
+            });
+        }];
+    }];
 }
 
 // Показать элементы экрана "Активированной" карты
@@ -364,48 +375,43 @@
 // Нажимаю на кнопку активировать карточку
 - (IBAction)bActEvent:(id)sender
 {
-    NSLog(@"cliack ack");
+    // Если отсутствует интернет игнорируем действие
+    if([self notInternetConnection]) return;
     
     PECNetworkDataCtrl *netCtrl = [[PECNetworkDataCtrl alloc] init];
-    
+        
     [netCtrl activateCardServer:[self selectedCard] userId:idUser callback:^(NSArray *sender){
         
         [_loadingContainer setHidden:false];
         
         if([sender count]!=0){
-        
-             // Скачиваю и заполняю информацию о карточках по u_id
-             PECModelDataUser *modelUser = [[PECModelsData getModelUser] objectAtIndex:0];
-             
-             [netCtrl getCardUserDataServer: modelUser.idUser callback:^(id sender){
-                 dispatch_sync(dispatch_get_main_queue(), ^{
-                     
-                     // Обновляю пользовательские настройки
-                     [PECBuilderModel uploadModelDataSettings:-1
-                                                    idCountry:-1
-                                                          lat:-1
-                                                       longit:-1
-                                                   locationEn:-1
-                                                      autoriz:-1
-                                                   uploadData:0x7];
-                     
-                     [_loadingContainer setHidden:true];
-                     
-                     [self showActivateCard];
-                 });
-              }];
+            
+            // Скачиваю и заполняю информацию о карточках по u_id
+            PECModelDataUser *modelUser = [[PECModelsData getModelUser] objectAtIndex:0];
+            
+            [netCtrl getCardUserDataServer: modelUser.idUser callback:^(id sender){
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    
+                    // Обновляю пользовательские настройки
+                    [PECBuilderModel uploadModelDataSettings:-1
+                                                   idCountry:-1
+                                                         lat:-1
+                                                      longit:-1
+                                                  locationEn:-1
+                                                     autoriz:-1
+                                                  uploadData:0x7];
+                    
+                    [_loadingContainer setHidden:true];
+                    
+                    [self showActivateCard];
+                });
+            }];
         }else{
             dispatch_sync(dispatch_get_main_queue(), ^{
-                
                 [_loadingContainer setHidden:true];
-                
-               // [self cellAlertMsg:@"Нет свободных карточек"];
             });
-        
         }
-        
     }];
-    
 }
 
 // ~ СИСТЕМНЫЕ
@@ -422,7 +428,7 @@
     autoAlertView.transform = CGAffineTransformMake(1.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f);
     [autoAlertView performSelector:@selector(dismissWithClickedButtonIndex:animated:)
                         withObject:nil
-                        afterDelay:0.0f];
+                        afterDelay:1.0f];
     [autoAlertView show];
 }
 
@@ -522,7 +528,6 @@
 
     [self animationHideShowUIView:_activationContainer showHide:false Select:0];
     [self animationHideShowUIView:_deActivationContainer showHide:true Select:0];
-
 }
 
 
@@ -546,18 +551,33 @@
 // Кнопочка новости
 - (IBAction)butNews:(UIButton *)sender
 {
+    // Если отсутствует интернет игнорируем действие
+    if([self notInternetConnection]) return;
     
     PECNetworkDataCtrl *netCtrl = [[PECNetworkDataCtrl alloc] init];
     [netCtrl getPartnerNewsServer:currentModelPartner.idPartner callback:^(id sender)
+     {
+         dispatch_sync(dispatch_get_main_queue(),
+                       ^{
+                           PECNewsPartnerViewCtrl *newsController = [self.storyboard instantiateViewControllerWithIdentifier:@"newsPartenrController"];
+                           newsController.idCurrentPartner = currentModelPartner.idPartner;//[sender tag];
+                           [self.navigationController pushViewController: newsController animated:YES];
+                       });
+     }];
+}
+
+// Определение наличия связи с интернет
+- (BOOL)notInternetConnection
+{
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable)
     {
-        dispatch_sync(dispatch_get_main_queue(),
-                      ^{
-            
-                          PECNewsPartnerViewCtrl *newsController = [self.storyboard instantiateViewControllerWithIdentifier:@"newsPartenrController"];
-                          newsController.idCurrentPartner = currentModelPartner.idPartner;//[sender tag];
-                          [self.navigationController pushViewController: newsController animated:YES];
-        });
-    }];
+        NSLog(@"There IS NO internet connection");
+        [self cellAlertMsg:@"Нет связи с интернет"];
+        return true;
+    }
+    return false;
 }
 
 // Кнопочка Адрес

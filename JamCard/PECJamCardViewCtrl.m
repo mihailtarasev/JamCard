@@ -77,20 +77,12 @@
     
     [super viewWillAppear:YES];
 }
-/*
-- (void) loadView
-{
-    [super loadView];
-    [self viewDidLoad];
-}
-*/
- 
+
 - (void)viewDidLoad
 {
     
     // Scroll Cards
     [self PAGE_MAIN_CONTROL];
-    
     
     // 3.5 inch screen
     if ([UIScreen mainScreen].bounds.size.height<568)
@@ -134,7 +126,6 @@
 // autorization and details cards
 - (void)buttonCardClicked: (id)sender
 {
-    
     if(autorizationTRUE)
     {
         PECDetailCardViewCtrl *detailCardController = [self.storyboard instantiateViewControllerWithIdentifier:@"detailCardController"];
@@ -198,9 +189,7 @@
 // Высота строки Акции в таблице
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     if(indexPath.row==0)return 235.0f;
-    
     return 74.0f;
 }
 
@@ -214,7 +203,6 @@
         cell = [nib objectAtIndex:0];
     }
     
-    
     if(indexPath.row==0)
     {
         UITableViewCell *cellMain = [[UITableViewCell alloc]init];
@@ -224,12 +212,10 @@
         return cellMain;
     }
     
-    
     // Обработка таблицы Акции
     PECModelDataAction *actions = [[PECModelDataAction alloc] init];
     actions = [tableData objectAtIndex:indexPath.row];
     cell.nameLabelTableCell.text = actions.textAction;
-    
     
     if(actions.distAction!=0)
     {

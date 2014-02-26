@@ -39,6 +39,8 @@
 		844812BD18718B24005DE6E9 /* PECModelsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 844812BC18718B24005DE6E9 /* PECModelsData.m */; };
 		844812C018756E74005DE6E9 /* PECNetworkDataCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 844812BF18756E74005DE6E9 /* PECNetworkDataCtrl.m */; };
 		844812C31875C173005DE6E9 /* PECModelPartnerByLoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 844812C21875C173005DE6E9 /* PECModelPartnerByLoc.m */; };
+		8469AE1C18BCE304009BE501 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8469AE1B18BCE304009BE501 /* SystemConfiguration.framework */; };
+		8469AE1F18BCE389009BE501 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8469AE1E18BCE389009BE501 /* Reachability.m */; };
 		849757F71856183F00089E53 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849757F01856183F00089E53 /* TPKeyboardAvoidingCollectionView.m */; };
 		849757F81856183F00089E53 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849757F21856183F00089E53 /* TPKeyboardAvoidingScrollView.m */; };
 		849757F91856183F00089E53 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849757F41856183F00089E53 /* TPKeyboardAvoidingTableView.m */; };
@@ -384,6 +386,9 @@
 		844812BF18756E74005DE6E9 /* PECNetworkDataCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECNetworkDataCtrl.m; sourceTree = "<group>"; };
 		844812C11875C173005DE6E9 /* PECModelPartnerByLoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECModelPartnerByLoc.h; sourceTree = "<group>"; };
 		844812C21875C173005DE6E9 /* PECModelPartnerByLoc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECModelPartnerByLoc.m; sourceTree = "<group>"; };
+		8469AE1B18BCE304009BE501 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8469AE1D18BCE389009BE501 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		8469AE1E18BCE389009BE501 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		849757EF1856183F00089E53 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
 		849757F01856183F00089E53 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
 		849757F11856183F00089E53 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
@@ -911,6 +916,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8469AE1C18BCE304009BE501 /* SystemConfiguration.framework in Frameworks */,
 				849D426A187ACEF30036C426 /* CoreVideo.framework in Frameworks */,
 				849D4268187ACEDB0036C426 /* ImageIO.framework in Frameworks */,
 				849D4266187ACECE0036C426 /* CoreMedia.framework in Frameworks */,
@@ -1012,6 +1018,8 @@
 		8431659B1847639C006C846B /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				8469AE1D18BCE389009BE501 /* Reachability.h */,
+				8469AE1E18BCE389009BE501 /* Reachability.m */,
 				8436DDBF183A3A8900D7605F /* PECAppDelegate.h */,
 				8436DDC0183A3A8900D7605F /* PECAppDelegate.m */,
 				84AA4A2118576DA800B8E6A3 /* Cards */,
@@ -1044,6 +1052,7 @@
 		8436DDAF183A3A8900D7605F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8469AE1B18BCE304009BE501 /* SystemConfiguration.framework */,
 				849D4269187ACEF30036C426 /* CoreVideo.framework */,
 				849D4267187ACEDB0036C426 /* ImageIO.framework */,
 				849D4265187ACECE0036C426 /* CoreMedia.framework */,
@@ -2424,6 +2433,7 @@
 				849D4277187C32DE0036C426 /* PECNewsPartnerViewCtrl.m in Sources */,
 				840349A2186DB3F100648FA1 /* PECSpisokViewCtrl.m in Sources */,
 				849D4219187ACBBC0036C426 /* ZXCode39Reader.m in Sources */,
+				8469AE1F18BCE389009BE501 /* Reachability.m in Sources */,
 				849D4256187ACBBC0036C426 /* ZXBinaryBitmap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,6 +24,7 @@
 @implementation PECAboutPartnerViewCtrl
 {
     PECModelPartner *currentModelPartner;
+    UIButton *butTel;
 }
 
 
@@ -51,8 +52,21 @@
             _phoneNumberPartners.text = points.addressTeleph1Partner;
         }
     }
+    
+    butTel = (UIButton*)[self.view viewWithTag:210];
+    [butTel addTarget:self action:@selector(bTelEvent:) forControlEvents:UIControlEventTouchDown];
 }
 
+
+- (IBAction)bTelEvent:(id)sender
+{
+    
+    NSString *callNumber = [NSString stringWithFormat:@"tel://%@", _phoneNumberPartners.text];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callNumber]];
+    
+    NSLog(@"%@",callNumber);
+    
+}
 
 // ~ СИСТЕМНЫЕ
 

@@ -14,6 +14,7 @@
 #import "PECModelsData.h"
 #import "PECModelDataUser.h"
 #import "PECAddressPartnerViewCtrl.h"
+#import "Reachability.h"
 
 #import "ZXingObjC.h"
 
@@ -64,24 +65,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    
-    //NSLog(@"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!---------");
-//    /*
+
     [self initElementsAutorizController];
     
     // 3.5 inch screen
     if ([UIScreen mainScreen].bounds.size.height<568)
     {
-        //scrollViewAction.frame = (CGRect){scrollViewAction.frame.origin, CGSizeMake(320, 446)};
         scrollViewAction.contentSize = CGSizeMake(320, 590);
-        
         containerCode.frame = CGRectOffset( containerCode.frame, 0.0f, -90.0f);
-        
-        
-        //contCardViewBarCode.frame = CGRectOffset( contCardViewBarCode.frame, 0.0f, -90.0f);
-        //contCardViewQRCode.frame = CGRectOffset( contCardViewQRCode.frame, 0.0f, -90.0f);
-        
     }
     
     
@@ -104,7 +95,6 @@
     
     // Определяю какой сценарий сцены выполнять (активирована или нет)
     [self scenaInitAction];
-  //  */
 }
 
 // Отображаю нужный сценарий
@@ -131,10 +121,10 @@
 // Нажимаю на кнопку активировать карточку
 - (IBAction)bActEvent:(id)sender
 {
+    // Если отсутствует интернет игнорируем действие
+    if([self notInternetConnection]) return;
+    
     PECNetworkDataCtrl *netCtrl = [[PECNetworkDataCtrl alloc] init];
-    
-    NSLog(@"act action");
-    
     // Запрос к серверу для Активации(выдачи) специального предложения
     [netCtrl activateActionServer:currentModelDataAction.idAction userId:idUser callback:^(id sender)
      {
@@ -142,6 +132,36 @@
              [self scenaInitAction];
          });
      }];
+}
+
+// Определение наличия связи с интернет
+- (BOOL)notInternetConnection
+{
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable)
+    {
+        NSLog(@"There IS NO internet connection");
+        [self cellAlertMsg:@"Нет связи с интернет"];
+        return true;
+    }
+    return false;
+}
+
+// Сообщения
+-(void)cellAlertMsg:(NSString*)msg
+{
+    UIAlertView *autoAlertView = [[UIAlertView alloc] initWithTitle:@""
+                                                            message:msg
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:nil];
+    
+    autoAlertView.transform = CGAffineTransformMake(1.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f);
+    [autoAlertView performSelector:@selector(dismissWithClickedButtonIndex:animated:)
+                        withObject:nil
+                        afterDelay:1.0f];
+    [autoAlertView show];
 }
 
 - (void)ZXingCode:(BOOL)typeCode imgView: (UIImageView*)imgView

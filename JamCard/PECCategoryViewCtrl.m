@@ -33,10 +33,7 @@
     
     // 3.5 inch screen
     if ([UIScreen mainScreen].bounds.size.height<568)
-    {
         _tableViewCategorySpisok.frame = (CGRect){_tableViewCategorySpisok.frame.origin, CGSizeMake(320, 330)};
-    }
-    
 }
 
 // ~ ОБРАБОТКА ТАБЛИЦЫ

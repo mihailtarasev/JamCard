@@ -88,7 +88,6 @@
     PECModelPoints *addressesPartner = [[PECModelPoints alloc] init];
     addressesPartner = [tableData objectAtIndex:indexPath.row];
     
-    
     cell.addressCellAddressPartner.text = addressesPartner.addressTextPartrner;
     cell.metroCellAddressPartner.text = addressesPartner.addressMetroPartrner;
     

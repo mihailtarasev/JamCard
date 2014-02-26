@@ -210,8 +210,8 @@ static NSMutableArray* sArrObjectsCards;
     if(data==nil)
         return ObjCards;
     
-    if([data count]==0)
-        return ObjCards;
+    //if([data count]==0)
+    //    return ObjCards;
     
     NSMutableArray *groups = [[NSMutableArray alloc] init];
     
@@ -442,6 +442,8 @@ static NSMutableArray* sArrObjectsCards;
     
     NSMutableArray *groups = [[NSMutableArray alloc] init];
     
+    NSMutableDictionary *categoryDic = [[NSMutableDictionary alloc]init];
+    
     for (PECModelPartnerByLoc *items in objectNotation)
     {
         PECModelDataCards *resParse   = [[PECModelDataCards alloc]init];
@@ -456,7 +458,19 @@ static NSMutableArray* sArrObjectsCards;
         resParse.typeNameCard   = items.typeNamePartrner;
         
         [groups addObject:resParse];
+        
+        // Change model Category
+        PECModelCategoty *resCategory   = [[PECModelCategoty alloc]init];
+        resCategory.idCategory           = items.typeIdPartrner;
+        resCategory.nameCategory         = items.typeNamePartrner;
+        NSString *keyDic = [NSString stringWithFormat:@"%d", resCategory.idCategory];
+        if([categoryDic valueForKey:keyDic]==nil)
+            [categoryDic setValue:resCategory forKey:keyDic];
+
     }
+    
+    NSMutableArray *arrCategory = [[NSMutableArray alloc] initWithArray:[categoryDic allValues]];
+    [PECModelsData setModelCategory:arrCategory];
     
     return groups;
 }
@@ -487,6 +501,8 @@ static NSMutableArray* sArrObjectsCards;
 {
     NSMutableArray *groups = [[NSMutableArray alloc] init];
     
+    NSMutableDictionary *categoryDic = [[NSMutableDictionary alloc]init];
+    
     for (PECModelPartner *items in objectNotation)
     {
         PECModelDataCards *resParse   = [[PECModelDataCards alloc]init];
@@ -500,7 +516,19 @@ static NSMutableArray* sArrObjectsCards;
         resParse.typeNameCard = items.typeNamePartrner;
         
         [groups addObject:resParse];
+        
+        // Change model Category
+        PECModelCategoty *resCategory   = [[PECModelCategoty alloc]init];
+        resCategory.idCategory           = items.typeIdPartrner;
+        resCategory.nameCategory         = items.typeNamePartrner;
+        NSString *keyDic = [NSString stringWithFormat:@"%d", resCategory.idCategory];
+        if([categoryDic valueForKey:keyDic]==nil)
+            [categoryDic setValue:resCategory forKey:keyDic];
+
     }
+    
+    NSMutableArray *arrCategory = [[NSMutableArray alloc] initWithArray:[categoryDic allValues]];
+    [PECModelsData setModelCategory:arrCategory];
     
     return groups;
 }
