@@ -486,7 +486,7 @@
             <objects>
                 <viewController id="0cc-25-Uoh" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7hn-Ch-HQU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="470"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="3jl-UH-GBD">
@@ -2219,6 +2219,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bn9-bR-f1d"/>
+        <segue reference="Ivz-e6-52o"/>
     </inferredMetricsTieBreakers>
 </document>

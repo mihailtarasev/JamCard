@@ -70,10 +70,14 @@ static NSMutableArray* sArrObjectsCards;
                 
                 if([errorCode isEqualToString:@"15"])
                     [self cellAlertMsg:@"Срок действия специального предложения истек"];
+                
+                if([errorCode isEqualToString:@"21"])
+                    [self cellAlertMsg:@"Неверно введена электронная почта"];
+
             });
         });
         
-        return data;
+        return nil;
     }else
 
     if (localError != nil)
@@ -99,7 +103,7 @@ static NSMutableArray* sArrObjectsCards;
     autoAlertView.transform = CGAffineTransformMake(1.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f);
     [autoAlertView performSelector:@selector(dismissWithClickedButtonIndex:animated:)
                         withObject:nil
-                        afterDelay:1.0f];
+                        afterDelay:2.0f];
     [autoAlertView show];
 }
 
@@ -163,6 +167,7 @@ static NSMutableArray* sArrObjectsCards;
     long userId = 0;
     NSArray *data = [[NSArray alloc]initWithObjects:[self getArrayFromJsonDataServer:objectNotation error:error], nil];
     
+    if(data==nil) return 0;
     if([data count]==0) return 0;
     
     for (NSDictionary *items in data)

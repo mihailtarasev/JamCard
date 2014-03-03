@@ -345,57 +345,79 @@
     NSString *UserTel = [defaults objectForKey:@"user_tel"];
     
     // Сценарий 1 Данные по партнерам скачаны но пользователь не авторитизирован
-    /*if(UserTel==NULL)
+    
+    if(UserTel==NULL)
     {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Перехожу на следующий экран
-            [self reqNavController];
-        });
+        [PECBuilderModel uploadModelDataSettings:-1
+                                       idCountry:-1
+                                             lat:-1
+                                          longit:-1
+                                      locationEn:-1
+                                         autoriz:false
+                                      uploadData:0x7];
         
-        return;
-    }*/
-    
-    // Сценарий 2 Данные по партнерам скачаны пользователь авторитизирован
-    
-    bool authorization = UserTel!= NULL;
-    
-    // Делаю запрос для проверки существования номера в базе данных
-    PECNetworkDataCtrl *netCtrl = [[PECNetworkDataCtrl alloc]init];
-    [netCtrl getUserInfoAtTelDServer:UserTel callback:^(id sender){
-        
-        //if([PECModelsData getModelUser].count)
-        //{
-            [PECBuilderModel uploadModelDataSettings:-1
-                                           idCountry:-1
-                                                 lat:-1
-                                              longit:-1
-                                          locationEn:-1
-                                             autoriz:authorization
-                                          uploadData:0x7];
-            
-            // Заполняю модель карточек и партнеров
-            [PECBuilderModel createModelDataCardFromDataPartnerLoc:[PECModelsData getModelSettings].locationEn
-                                                  autorizationUser:[PECModelsData getModelSettings].autoriz
-                                                numberCityLocation:[PECModelsData getModelSettings].idCountry
-                                                          addrLong:[PECModelsData getModelSettings].longit
-                                                           addrLat:[PECModelsData getModelSettings].lat
-                                                          callback:^(id sender){
-                                                              
-                                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                                  // Перехожу на следующий экран
-                                                                  [self reqNavController];
-                                                              });
+        // Заполняю модель карточек и партнеров
+        [PECBuilderModel createModelDataCardFromDataPartnerLoc:[PECModelsData getModelSettings].locationEn
+                                              autorizationUser:[PECModelsData getModelSettings].autoriz
+                                            numberCityLocation:[PECModelsData getModelSettings].idCountry
+                                                      addrLong:[PECModelsData getModelSettings].longit
+                                                       addrLat:[PECModelsData getModelSettings].lat
+                                                      callback:^(id sender){
+                                                          
+                                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                                              // Перехожу на следующий экран
+                                                              [self reqNavController];
+                                                          });
+                                                          
+                                                          
+                                                      }];
 
+        
+        
+    }else{
     
-                                                          }];
-        /*}else
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // Перехожу на следующий экран
-                [self reqNavController];
-            });
-        }*/
-    }];
+        // Сценарий 2 Данные по партнерам скачаны пользователь авторитизирован
+        
+        bool authorization = UserTel!= NULL;
+        
+        // Делаю запрос для проверки существования номера в базе данных
+        PECNetworkDataCtrl *netCtrl = [[PECNetworkDataCtrl alloc]init];
+        [netCtrl getUserInfoAtTelDServer:UserTel callback:^(id sender){
+            
+            //if([PECModelsData getModelUser].count)
+            //{
+                [PECBuilderModel uploadModelDataSettings:-1
+                                               idCountry:-1
+                                                     lat:-1
+                                                  longit:-1
+                                              locationEn:-1
+                                                 autoriz:authorization
+                                              uploadData:0x7];
+                
+                // Заполняю модель карточек и партнеров
+                [PECBuilderModel createModelDataCardFromDataPartnerLoc:[PECModelsData getModelSettings].locationEn
+                                                      autorizationUser:[PECModelsData getModelSettings].autoriz
+                                                    numberCityLocation:[PECModelsData getModelSettings].idCountry
+                                                              addrLong:[PECModelsData getModelSettings].longit
+                                                               addrLat:[PECModelsData getModelSettings].lat
+                                                              callback:^(id sender){
+                                                                  
+                                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                                      // Перехожу на следующий экран
+                                                                      [self reqNavController];
+                                                                  });
+
+        
+                                                              }];
+            /*}else
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    // Перехожу на следующий экран
+                    [self reqNavController];
+                });
+            }*/
+        }];
+    }
 }
 
 // ~ СИСТЕМНЫЕ ОБЩИЕ

@@ -31,11 +31,11 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *headerScrollView;
 @property (strong, nonatomic) IBOutlet UIPageControl *headerPageControl;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (strong, nonatomic) IBOutlet UIView *mainContainerCards;
+
 
 @property (strong, nonatomic) IBOutlet UITableView *tableViewControl;
 @property (strong, nonatomic) IBOutlet UIView *topViewCardsControl;
-
-@property (strong, nonatomic) IBOutlet UIView *mainContainerCards;
 
 
 @end

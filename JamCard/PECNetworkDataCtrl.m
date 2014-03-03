@@ -117,7 +117,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
 - (void)asynPostReqJamCard:(NSString*)metod url: (NSURL*) url params: (NSString*) params callback:(void (^)(id)) callback
 {
     NSString *post =[[NSString alloc] initWithFormat:@"%@",params];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     
@@ -128,8 +128,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
     [request setHTTPMethod:metod];
     
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
-    
+    [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     
     [NSURLConnection sendAsynchronousRequest:request

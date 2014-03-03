@@ -119,15 +119,15 @@ static int countCardsAtWidth;
         // Create Object Card
         UIView *ObjCardView = [objCard inWithParamImageCard:nil cardImagesFrame:cardImagesFrame tagFromObject:((PECModelDataCards*)obj).idCard uiViewCntr:uiViewCntr activationCard:ackCard distanceGeo:((PECModelDataCards*)obj).distanceCard obj:obj];
 
-                if (dinamicContent)
-                {
-                    if(ackCard)
-                        [containerCards addSubview:ObjCardView];
-                }else
-                    [containerCards addSubview:ObjCardView];
-                
-            // Add container cards to Scroll
-            [contentView addSubview:containerCards];
+        if (dinamicContent)
+        {
+            if(ackCard)
+                [containerCards addSubview:ObjCardView];
+        }else
+            [containerCards addSubview:ObjCardView];
+        
+        // Add container cards to Scroll
+        [contentView addSubview:containerCards];
     }
     return existCardInContainer;
     
