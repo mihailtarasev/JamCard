@@ -51,29 +51,45 @@ static NSMutableArray* sArrObjectsCards;
         dispatch_async(queue, ^{
             
             dispatch_sync(dispatch_get_main_queue(), ^{
-                
+
+                if([errorCode isEqualToString:@"4"])
+                    [self cellAlertMsg:@"Плохой запрос"];
+
+                if([errorCode isEqualToString:@"5"])
+                    [self cellAlertMsg:@"Внутренняя ошибка сервера"];
+
                 if([errorCode isEqualToString:@"6"])
                     [self cellAlertMsg:@"Такой телефонный номер уже существует"];
                 
                 if([errorCode isEqualToString:@"7"])
                     [self cellAlertMsg:@"Эл почта с таким именем уже существует"];
 
+                if([errorCode isEqualToString:@"8"])
+                    [self cellAlertMsg:@"пользователь с таким ID не существует"];
+                
                 if([errorCode isEqualToString:@"9"])
                     [self cellAlertMsg:@"Нет свободных карточек"];
-
                 
                 if([errorCode isEqualToString:@"10"])
+                    [self cellAlertMsg:@"Карточка уже активирована"];
+
+                if([errorCode isEqualToString:@"11"])
+                    [self cellAlertMsg:@"Карточка уже деактивирована"];
+
+                if([errorCode isEqualToString:@"12"])
                     [self cellAlertMsg:@"Карточка уже активирована"];
                 
                 if([errorCode isEqualToString:@"13"])
                     [self cellAlertMsg:@"Нет свободных спецпредложений"];
-                
+
+                if([errorCode isEqualToString:@"14"])
+                    [self cellAlertMsg:@"У пользователя уже активировано данное специальное предложение"];
+
                 if([errorCode isEqualToString:@"15"])
                     [self cellAlertMsg:@"Срок действия специального предложения истек"];
                 
                 if([errorCode isEqualToString:@"21"])
                     [self cellAlertMsg:@"Неверно введена электронная почта"];
-
             });
         });
         

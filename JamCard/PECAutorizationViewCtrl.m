@@ -91,6 +91,7 @@
     
     
     UIView *datePickerContainer;
+    UIView *datePickerSubContainer;
     UIButton *closeContainerPicker;
     UIDatePicker *datePicker;
     UIPickerView *viewPicker1;
@@ -186,7 +187,8 @@
     
     // Контейнер содержащий datePicker и
     datePickerContainer = (UIView*)[self.view viewWithTag:300];
-
+    datePickerSubContainer = (UIView*)[self.view viewWithTag:305];
+    
     closeContainerPicker = (UIButton*)[self.view viewWithTag:301];
     [closeContainerPicker addTarget:self action:@selector(closeContainerPickerEvent:) forControlEvents:UIControlEventTouchDown];
 
@@ -246,6 +248,8 @@
         vSavePanel.frame = CGRectOffset( vSavePanel.frame, 0.0f, -90.0f);
     }
     
+    //[datePickerContainer addSubview:datePickerSubContainer];
+    
     // Скрываю контейнер даты и пола
     [datePickerContainer setHidden:true];
     
@@ -287,6 +291,14 @@
     tfUsMail.enabled = false;
     tfUsSex.enabled = false;
     tfNumberPhone.enabled = false;
+
+    [tfUsName setBorderStyle:UITextBorderStyleNone];
+    [tfUsFamily setBorderStyle:UITextBorderStyleNone];
+    [tfUsDate setBorderStyle:UITextBorderStyleNone];
+    [tfUsMail setBorderStyle:UITextBorderStyleNone];
+    [tfUsSex setBorderStyle:UITextBorderStyleNone];
+    [tfNumberPhone setBorderStyle:UITextBorderStyleNone];
+    
     [bEdit setHidden:false];
     [bOk setHidden:true];
     [bOkImage setHidden:true];
@@ -388,6 +400,14 @@
     tfUsMail.enabled = false;
     tfUsSex.enabled = false;
     
+    [tfUsName setBorderStyle:UITextBorderStyleNone];
+    [tfUsFamily setBorderStyle:UITextBorderStyleNone];
+    [tfUsDate setBorderStyle:UITextBorderStyleNone];
+    [tfUsMail setBorderStyle:UITextBorderStyleNone];
+    [tfUsSex setBorderStyle:UITextBorderStyleNone];
+
+    [tfNumberPhone setBorderStyle:UITextBorderStyleLine];
+    
     tfNumberPhone.enabled = true;
     [tfNumberPhone becomeFirstResponder];
     
@@ -458,7 +478,7 @@
 // Нажал на кнопку подтверждения номера телефона после ввода кода с СМСки
 - (void) bSmsPassPanelOkEvent: (id)sender
 {
-    [vSmsPassPanel setHidden:true];
+    
     
     // Проверяю правильность введенного пароля
     
@@ -470,10 +490,13 @@
     tfSmsPassPanel4.text = @"";
     
     if([tfConcat isEqualToString:generateSMSCode] || [tfConcat isEqualToString:@"1687"])
+    {
+        [vSmsPassPanel setHidden:true];        
         [self numberTelInBDServer];
+    }
     else{
         [self cellAlertMsg:@"Возможно вы ошиблись. Попробуйте еще раз."];
-        [self editingNumberOnView];
+       // [self editingNumberOnView];
     }
 }
 
@@ -558,7 +581,17 @@
     tfUsDate.enabled = true;
     tfUsMail.enabled = true;
     tfUsSex.enabled = true;
+    
+    [tfUsName setBorderStyle:UITextBorderStyleLine];
+    [tfUsFamily setBorderStyle:UITextBorderStyleLine];
+    [tfUsDate setBorderStyle:UITextBorderStyleLine];
+    [tfUsMail setBorderStyle:UITextBorderStyleLine];
+    [tfUsSex setBorderStyle:UITextBorderStyleLine];
+
+    
     tfNumberPhone.enabled = false;
+    
+    [tfNumberPhone setBorderStyle:UITextBorderStyleNone];
     
     [bEdit setHidden:true];
     [bOk setHidden:true];
@@ -988,7 +1021,7 @@
         [viewPicker2 removeFromSuperview];
         
         if(![datePicker superview])
-            [datePickerContainer addSubview:datePicker];
+            [datePickerSubContainer addSubview:datePicker];
         [self animationPicker:true];
     }
     else
@@ -1002,7 +1035,7 @@
         viewPickerId = 1;
         
         if(![viewPicker1 superview])
-            [datePickerContainer addSubview:viewPicker1];
+            [datePickerSubContainer addSubview:viewPicker1];
         [self animationPicker:true];
     }
     else
@@ -1018,7 +1051,7 @@
         viewPickerId = 2;
         
         if(![viewPicker2 superview])
-            [datePickerContainer addSubview:viewPicker2];
+            [datePickerSubContainer addSubview:viewPicker2];
         [self animationPicker:true];
     }
     else

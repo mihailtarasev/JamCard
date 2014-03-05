@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface PECAddressPartnerViewCtrl : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface PECAddressPartnerViewCtrl : UIViewController<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
 @property int idCurrentPartner;
 @property int selectedType; // 0 - Cards 1 - Actions

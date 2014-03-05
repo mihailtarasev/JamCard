@@ -102,8 +102,8 @@
 {
     MKCoordinateRegion region;
     MKCoordinateSpan span;
-    span.latitudeDelta = 0.03;
-    span.longitudeDelta = 0.03;
+    span.latitudeDelta = 1.03;
+    span.longitudeDelta = 1.03;
     CLLocationCoordinate2D location;
     location.latitude = newLocation.coordinate.latitude;
     location.longitude = newLocation.coordinate.longitude;

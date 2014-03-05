@@ -107,6 +107,8 @@
     bool barCodeBig;
     bool qrCodeBig;
     
+    UILabel *codeBarActiveContainer;
+    
 }
 
 // ~ ИНИЦИАЛИЗАЦИЯ
@@ -190,6 +192,8 @@
     CALayer *layerQRCode = contCardViewQRCode.layer;
     layerQRCode.cornerRadius = 5;
     layerQRCode.masksToBounds = YES;
+    
+        codeBarActiveContainer = (UILabel*)[self.view viewWithTag:306];
     
 }
 
@@ -435,14 +439,40 @@
 
 - (void)ZXingCode:(BOOL)typeCode imgView: (UIImageView*)imgView
 {
+
+    NSString *parseNumberCard;
+    
     if([currentModelDataCard.numberCard length]==7)
-    {
+        parseNumberCard  = [NSString stringWithFormat:@"%@00000",currentModelDataCard.numberCard];
+    else
+        if([currentModelDataCard.numberCard length]==8)
+            parseNumberCard  = [NSString stringWithFormat:@"%@0000",currentModelDataCard.numberCard];
+        else
+            if([currentModelDataCard.numberCard length]==9)
+                parseNumberCard  = [NSString stringWithFormat:@"%@000",currentModelDataCard.numberCard];
+            else
+                if([currentModelDataCard.numberCard length]==10)
+                    parseNumberCard  = [NSString stringWithFormat:@"%@00",currentModelDataCard.numberCard];
+            else
+                if([currentModelDataCard.numberCard length]==11)
+                            parseNumberCard  = [NSString stringWithFormat:@"%@0",currentModelDataCard.numberCard];
+            else
+                if([currentModelDataCard.numberCard length]==12)
+                    parseNumberCard  = [NSString stringWithFormat:@"%@",currentModelDataCard.numberCard];
+                else{
+                    [imgView setHidden:true];
+                    return;
+                }
+    
+    
+    
         [imgView setHidden:false];
     
-        NSString *parseNumberCard = [NSString stringWithFormat:@"%@00000",currentModelDataCard.numberCard];
         int checksum = [self getCheckSum:parseNumberCard];
         parseNumberCard = [NSString stringWithFormat:@"%@%i",parseNumberCard,checksum];
         NSError* error = nil;
+    
+        [codeBarActiveContainer setText:parseNumberCard];
         
         ZXMultiFormatWriter* writer = [ZXMultiFormatWriter writer];
         
@@ -472,9 +502,6 @@
         } else {
             NSString* errorMessage = [error localizedDescription];
         }
-    }else{
-        [imgView setHidden:true];
-    }
 }
 
 -(int) getCheckSum :(NSString *)s

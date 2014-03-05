@@ -327,6 +327,10 @@
                                         <rect key="frame" x="0.0" y="80" width="320" height="470"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_auth.jpg" id="2f9-cL-ISM">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="TuX-Sa-QDV">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="470"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -338,7 +342,7 @@
                                                             <containerView contentMode="scaleToFill" id="Who-aR-TMa">
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="470"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <connections>
                                                                     <segue destination="ivc-Dq-YxD" kind="embed" id="XXo-4c-B6i"/>
                                                                 </connections>
@@ -346,7 +350,7 @@
                                                             <containerView contentMode="scaleToFill" id="RVb-Mv-k9Y">
                                                                 <rect key="frame" x="320" y="0.0" width="320" height="470"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <connections>
                                                                     <segue destination="0cc-25-Uoh" kind="embed" id="aF2-Yg-L21"/>
                                                                 </connections>
@@ -354,7 +358,7 @@
                                                             <containerView contentMode="scaleToFill" id="yy9-Fc-Gf9">
                                                                 <rect key="frame" x="640" y="0.0" width="320" height="470"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <connections>
                                                                     <segue destination="fve-Ih-wQu" kind="embed" id="hHx-q9-Cg6"/>
                                                                 </connections>
@@ -367,18 +371,27 @@
                                                                     <segue destination="w08-c2-2FP" kind="embed" id="YOg-Tl-Sxw"/>
                                                                 </connections>
                                                             </containerView>
-                                                            <view hidden="YES" tag="300" contentMode="scaleToFill" id="Dca-xd-8K6">
-                                                                <rect key="frame" x="0.0" y="325" width="320" height="143"/>
+                                                            <view hidden="YES" clipsSubviews="YES" tag="300" contentMode="scaleToFill" id="Dca-xd-8K6">
+                                                                <rect key="frame" x="0.0" y="320" width="320" height="150"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow_bottom.png" id="6yx-KP-l88">
                                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     </imageView>
-                                                                    <button opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DTJ-Lg-SeI">
-                                                                        <rect key="frame" x="237" y="4" width="63" height="30"/>
+                                                                    <view tag="305" contentMode="scaleToFill" id="tbD-qg-pSM">
+                                                                        <rect key="frame" x="0.0" y="-30" width="320" height="180"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <state key="normal" title="Закрыть">
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                                    </view>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close.png" highlightedImage="close.png" id="jt0-oa-qKZ">
+                                                                        <rect key="frame" x="290" y="10" width="15" height="15"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    </imageView>
+                                                                    <button opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DTJ-Lg-SeI">
+                                                                        <rect key="frame" x="237" y="4" width="75" height="30"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <state key="normal">
                                                                             <color key="titleColor" red="0.0" green="0.58431372550000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </state>
@@ -387,9 +400,10 @@
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
                                                 </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <inset key="contentInset" minX="0.0" minY="0.0" maxX="960" maxY="0.0"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="GVJ-kI-iEd" id="IPN-6Q-Lnl"/>
@@ -457,7 +471,7 @@
                                         <color key="color" red="0.0" green="0.58431372550000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -486,7 +500,7 @@
             <objects>
                 <viewController id="0cc-25-Uoh" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7hn-Ch-HQU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="470"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="3jl-UH-GBD">
@@ -502,6 +516,7 @@
                                     <segmentedControl opaque="NO" tag="400" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="f64-wU-i5A">
                                         <rect key="frame" x="72" y="98" width="177" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <segments>
                                             <segment title="1"/>
                                             <segment title="4"/>
@@ -527,7 +542,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -612,7 +627,7 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" minimumFontSize="6" id="Vw2-hl-9c6">
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" minimumFontSize="12" id="Vw2-hl-9c6">
                                                         <rect key="frame" x="20" y="58" width="280" height="149"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <string key="text">Apple в переводе с англ. — «яблоко») — американская корпорация, производитель персональных и планшетных компьютеров, аудиоплееров, телефонов, программного обеспечения. Один из пионеров в области персональных компьютеров[5] и современных многозадачных операционных систем с графическим интерфейсом. Штаб-квартира — в Купертино, штат Калифорния.</string>
@@ -826,9 +841,17 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view hidden="YES" alpha="0.75" tag="400" contentMode="scaleToFill" id="qzX-JY-UaW">
+                                            <view hidden="YES" alpha="0.80000000000000004" tag="400" contentMode="scaleToFill" id="qzX-JY-UaW">
                                                 <rect key="frame" x="0.0" y="-75" width="320" height="650"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="306" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет штрихкода" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L7n-UJ-O43">
+                                                        <rect key="frame" x="20" y="372" width="280" height="36"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             </view>
                                             <view hidden="YES" tag="111" contentMode="scaleToFill" id="O0N-GB-YA5" customClass="UIControl">
@@ -926,76 +949,107 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Имя" minimumFontSize="17" id="DGA-rv-Rfc">
-                                                        <rect key="frame" x="56" y="11" width="208" height="30"/>
+                                                        <rect key="frame" x="56" y="10" width="208" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="next"/>
                                                     </textField>
+                                                    <view contentMode="scaleToFill" id="ZW5-zb-J6E">
+                                                        <rect key="frame" x="20" y="42" width="280" height="1"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    </view>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Фамилия" minimumFontSize="17" id="QlI-ss-tqt">
-                                                        <rect key="frame" x="56" y="49" width="208" height="30"/>
+                                                        <rect key="frame" x="56" y="45" width="208" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="next"/>
                                                     </textField>
+                                                    <view contentMode="scaleToFill" id="00D-OL-07N">
+                                                        <rect key="frame" x="20" y="77" width="280" height="1"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    </view>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="102" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="День рождения" minimumFontSize="17" id="1eq-0d-RTk">
-                                                        <rect key="frame" x="56" y="87" width="208" height="30"/>
+                                                        <rect key="frame" x="56" y="80" width="208" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     </textField>
+                                                    <view contentMode="scaleToFill" id="II2-3P-QQP">
+                                                        <rect key="frame" x="20" y="112" width="280" height="1"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    </view>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="date_ico.png" id="lk6-fH-Wz6">
-                                                        <rect key="frame" x="31" y="93" width="17" height="17"/>
+                                                        <rect key="frame" x="31" y="86" width="17" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="103" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Номер телефона" minimumFontSize="17" id="gYg-OO-ZvV">
-                                                        <rect key="frame" x="56" y="125" width="208" height="30"/>
+                                                        <rect key="frame" x="56" y="115" width="208" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                                     </textField>
+                                                    <view contentMode="scaleToFill" id="gxN-WN-EYK">
+                                                        <rect key="frame" x="20" y="147" width="280" height="1"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    </view>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_ico.png" id="vLj-pD-Eq4">
-                                                        <rect key="frame" x="31" y="131" width="17" height="17"/>
+                                                        <rect key="frame" x="31" y="121" width="17" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="104" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Электронный адрес" minimumFontSize="17" id="RDJ-ZI-nZ9">
-                                                        <rect key="frame" x="56" y="163" width="208" height="30"/>
+                                                        <rect key="frame" x="56" y="150" width="208" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                                     </textField>
+                                                    <view contentMode="scaleToFill" id="IR2-JG-4tw">
+                                                        <rect key="frame" x="20" y="182" width="280" height="1"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    </view>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_ico.png" id="ULA-Ku-PRT">
-                                                        <rect key="frame" x="31" y="169" width="17" height="17"/>
+                                                        <rect key="frame" x="31" y="156" width="17" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Пол" minimumFontSize="17" id="GWm-WI-Chb">
-                                                        <rect key="frame" x="56" y="201" width="208" height="30"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Сударь" minimumFontSize="17" id="GWm-WI-Chb">
+                                                        <rect key="frame" x="56" y="185" width="208" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="done"/>
                                                     </textField>
+                                                    <view contentMode="scaleToFill" id="JPk-sw-zCe">
+                                                        <rect key="frame" x="20" y="218" width="280" height="1"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    </view>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gender_ico.png" id="GdV-0O-I87">
-                                                        <rect key="frame" x="31" y="207" width="17" height="17"/>
+                                                        <rect key="frame" x="31" y="191" width="17" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" id="06a-Eq-LI2">
-                                                        <rect key="frame" x="20" y="267" width="280" height="1"/>
+                                                        <rect key="frame" x="20" y="254" width="280" height="1"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     </view>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Промо код" textAlignment="center" minimumFontSize="17" id="FRN-Df-4ln">
                                                         <rect key="frame" x="56" y="278" width="208" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                     <imageView userInteractionEnabled="NO" tag="120" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ok_ico.png" id="1Cn-6u-zQt">
-                                                        <rect key="frame" x="272" y="127" width="26" height="26"/>
+                                                        <rect key="frame" x="272" y="117" width="26" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <button opaque="NO" tag="106" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nDK-vM-gF5">
-                                                        <rect key="frame" x="257" y="114" width="62" height="54"/>
+                                                        <rect key="frame" x="254" y="103" width="62" height="54"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <state key="normal">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1041,15 +1095,15 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_ico.png" id="OM8-2S-G3U">
-                                                        <rect key="frame" x="31" y="22" width="17" height="17"/>
+                                                        <rect key="frame" x="31" y="17" width="17" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="points_ico.png" id="Xiq-VR-K1t">
-                                                        <rect key="frame" x="31" y="241" width="17" height="17"/>
+                                                        <rect key="frame" x="31" y="222" width="17" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 баллов" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bpc-CU-bpH">
-                                                        <rect key="frame" x="65" y="239" width="199" height="21"/>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 баллов" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="Bpc-CU-bpH">
+                                                        <rect key="frame" x="63" y="220" width="199" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <nil key="highlightedColor"/>
@@ -1067,7 +1121,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                 </viewController>
@@ -1117,13 +1171,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7oU-au-k9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3639" y="-296"/>
+            <point key="canvasLocation" x="-2449" y="-998"/>
         </scene>
         <!--Spisok View Ctrl-->
         <scene sceneID="XjH-nw-2dg">
@@ -1173,7 +1227,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView hidden="YES" contentMode="scaleToFill" id="Yg3-7W-R7z">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="530"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1181,7 +1235,7 @@
                                 </connections>
                             </containerView>
                             <containerView hidden="YES" contentMode="scaleToFill" id="tSy-P7-T9c">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="426"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="424"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1189,7 +1243,7 @@
                                 </connections>
                             </containerView>
                             <containerView contentMode="scaleToFill" id="OZ0-Fj-9YF">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="426"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="424"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1197,20 +1251,33 @@
                                 </connections>
                             </containerView>
                             <view tag="300" contentMode="scaleToFill" id="3GD-im-ddi">
-                                <rect key="frame" x="0.0" y="424" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="393" width="320" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow_bottom.png" id="iFx-pp-hkF">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="4"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" id="jw6-3F-wdf">
-                                        <rect key="frame" x="0.0" y="4" width="320" height="40"/>
+                                    <view contentMode="scaleToFill" id="ri7-n9-DVo">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow_bottom.png" highlightedImage="shadow_bottom.png" id="iFx-pp-hkF">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="jw6-3F-wdf">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ok_ico.png" highlightedImage="ok_ico.png" id="dNr-JZ-TMS">
+                                                <rect key="frame" x="140" y="0.0" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="54d-5n-Xng">
-                                        <rect key="frame" x="20" y="10" width="280" height="29"/>
+                                        <rect key="frame" x="20" y="41" width="280" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="Список"/>
@@ -1676,12 +1743,20 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view hidden="YES" alpha="0.74999999999999978" tag="400" contentMode="scaleToFill" id="6wx-AA-XUk">
+                                    <view hidden="YES" alpha="0.79999999999999982" tag="400" contentMode="scaleToFill" id="6wx-AA-XUk">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="306" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет штрихкода" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aov-2s-Ajd">
+                                                <rect key="frame" x="20" y="257" width="280" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
-                                    <view tag="111" contentMode="scaleToFill" id="2Ys-5k-x8z" customClass="UIControl">
+                                    <view opaque="NO" tag="111" contentMode="scaleToFill" id="2Ys-5k-x8z" customClass="UIControl">
                                         <rect key="frame" x="20" y="370" width="143" height="74"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
@@ -1847,7 +1922,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wyR-0F-7f2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2737" y="307"/>
+            <point key="canvasLocation" x="-2865" y="-2244"/>
         </scene>
         <!--Address Partner View Ctrl-->
         <scene sceneID="on5-EO-ZeJ">
@@ -1917,7 +1992,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="IFz-iM-Ubg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="506"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="243"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <connections>
@@ -1925,6 +2000,13 @@
                                                             <outlet property="delegate" destination="exC-NS-oWt" id="2aE-gm-ZP3"/>
                                                         </connections>
                                                     </tableView>
+                                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="E2T-XG-JDe">
+                                                        <rect key="frame" x="0.0" y="251" width="320" height="255"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="exC-NS-oWt" id="hmt-YN-6Dv"/>
+                                                        </connections>
+                                                    </mapView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             </view>
@@ -1937,6 +2019,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="E2T-XG-JDe" id="WmK-m6-HDF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4tf-kC-TFF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2191,10 +2276,12 @@
         <image name="arrow_next_ico.png" width="46" height="46"/>
         <image name="back.png" width="24" height="42"/>
         <image name="bg.png" width="640" height="1136"/>
+        <image name="bg_auth.jpg" width="640" height="1136"/>
         <image name="card_default.jpg" width="265" height="165"/>
         <image name="card_ico.png" width="17" height="17"/>
         <image name="city_button.png" width="418" height="86"/>
         <image name="clock_ico.png" width="34" height="34"/>
+        <image name="close.png" width="30" height="30"/>
         <image name="date_ico.png" width="34" height="34"/>
         <image name="delete_button.png" width="112" height="27"/>
         <image name="edit_ico.png" width="52" height="52"/>
@@ -2219,6 +2306,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Ivz-e6-52o"/>
+        <segue reference="bn9-bR-f1d"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -59,6 +59,8 @@
     
     UIControl *whiteContainer;
     
+    UILabel *codeBarActiveContainer;
+    
 }
 
 - (void)viewDidLoad
@@ -168,15 +170,42 @@
 {
     imgView.image = [UIImage imageNamed:@"card_default.jpg"];
     
+    NSString *parseNumberCard;
+    
     if([currentModelDataAction.cardNumberAction length]==7)
-    {
+        parseNumberCard  = [NSString stringWithFormat:@"%@00000",currentModelDataAction.cardNumberAction];
+else
+    if([currentModelDataAction.cardNumberAction length]==8)
+        parseNumberCard  = [NSString stringWithFormat:@"%@0000",currentModelDataAction.cardNumberAction];
+else
+    if([currentModelDataAction.cardNumberAction length]==9)
+        parseNumberCard  = [NSString stringWithFormat:@"%@000",currentModelDataAction.cardNumberAction];
+else
+    if([currentModelDataAction.cardNumberAction length]==10)
+        parseNumberCard  = [NSString stringWithFormat:@"%@00",currentModelDataAction.cardNumberAction];
+else
+    if([currentModelDataAction.cardNumberAction length]==11)
+        parseNumberCard  = [NSString stringWithFormat:@"%@0",currentModelDataAction.cardNumberAction];
+else
+    if([currentModelDataAction.cardNumberAction length]==12)
+        parseNumberCard  = [NSString stringWithFormat:@"%@",currentModelDataAction.cardNumberAction];
+
+    else{
+        [imgView setHidden:false];
+        return;
+    }
+    
+    
+    
         [imgView setHidden:false];
         
-        NSString *parseNumberCard = [NSString stringWithFormat:@"%@00000",currentModelDataAction.cardNumberAction];
+    
         int checksum = [self getCheckSum:parseNumberCard];
         parseNumberCard = [NSString stringWithFormat:@"%@%i",parseNumberCard,checksum];
         NSError* error = nil;
-        
+    
+        [codeBarActiveContainer setText:parseNumberCard];
+    
         ZXMultiFormatWriter* writer = [ZXMultiFormatWriter writer];
         
         ZXBitMatrix* result;
@@ -207,9 +236,6 @@
             NSString* errorMessage = [error localizedDescription];
             //imgView.image=[UIImage imageNamed:@"card_default.jpg"];
         }
-    }else{
-        //[imgView setHidden:true];
-    }
 }
 
 -(int) getCheckSum :(NSString *)s
@@ -252,6 +278,7 @@
     {
         [whiteContainer setAlpha:0.0];
         [whiteContainer setHidden:false];
+
         k=2; y = 130.0f;
     }else{
         [whiteContainer setHidden:true];
@@ -355,6 +382,8 @@
     layerQRCode.masksToBounds = YES;
     
     whiteContainer = (UIControl*)[self.view viewWithTag:400];
+    
+    codeBarActiveContainer = (UILabel*)[self.view viewWithTag:306];
 
 }
 

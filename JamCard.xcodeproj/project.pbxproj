@@ -11,6 +11,8 @@
 		8403499F186D94FA00648FA1 /* PECMapViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403499E186D94FA00648FA1 /* PECMapViewCtrl.m */; };
 		840349A2186DB3F100648FA1 /* PECSpisokViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 840349A1186DB3F100648FA1 /* PECSpisokViewCtrl.m */; };
 		840349A9186DBB8C00648FA1 /* PECUploaderViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 840349A8186DBB8C00648FA1 /* PECUploaderViewCtrl.m */; };
+		8424460F18C6110000162F3E /* bg_auth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8424460E18C610FF00162F3E /* bg_auth.jpg */; };
+		8424461118C61DE000162F3E /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 8424461018C61DE000162F3E /* close.png */; };
 		84316596184743B5006C846B /* PECMyCardsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 84316595184743B5006C846B /* PECMyCardsViewCtrl.m */; };
 		8431659918475954006C846B /* PECModelDataCards.m in Sources */ = {isa = PBXBuildFile; fileRef = 8431659818475954006C846B /* PECModelDataCards.m */; };
 		8431659E184764F2006C846B /* PECBuilderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8431659D184764F2006C846B /* PECBuilderModel.m */; };
@@ -342,6 +344,8 @@
 		840349A1186DB3F100648FA1 /* PECSpisokViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECSpisokViewCtrl.m; sourceTree = "<group>"; };
 		840349A7186DBB8C00648FA1 /* PECUploaderViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECUploaderViewCtrl.h; sourceTree = "<group>"; };
 		840349A8186DBB8C00648FA1 /* PECUploaderViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECUploaderViewCtrl.m; sourceTree = "<group>"; };
+		8424460E18C610FF00162F3E /* bg_auth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bg_auth.jpg; path = Images/bg_auth.jpg; sourceTree = "<group>"; };
+		8424461018C61DE000162F3E /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = close.png; path = Images/close.png; sourceTree = "<group>"; };
 		84316594184743B5006C846B /* PECMyCardsViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECMyCardsViewCtrl.h; sourceTree = "<group>"; };
 		84316595184743B5006C846B /* PECMyCardsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECMyCardsViewCtrl.m; sourceTree = "<group>"; };
 		8431659718475954006C846B /* PECModelDataCards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECModelDataCards.h; sourceTree = "<group>"; };
@@ -1983,6 +1987,8 @@
 		84E8EE3A184370E9001D8CD9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8424461018C61DE000162F3E /* close.png */,
+				8424460E18C610FF00162F3E /* bg_auth.jpg */,
 				84F7108318B0EBA700CE9AB7 /* points_ico.png */,
 				84ECC28418A3BED7002F4BC1 /* Default-568h@2x.png */,
 				84ECC28518A3BED7002F4BC1 /* Default.png */,
@@ -2141,8 +2147,10 @@
 				84D048A2186AFCCD0083E5E1 /* plus_card.png in Resources */,
 				84ECC28318A3BACD002F4BC1 /* icon_80.png in Resources */,
 				84D04898186AFCCD0083E5E1 /* email_ico.png in Resources */,
+				8424461118C61DE000162F3E /* close.png in Resources */,
 				84D04890186AFCCD0083E5E1 /* arrow.png in Resources */,
 				849D4270187C31D80036C426 /* card_ico@2x.png in Resources */,
+				8424460F18C6110000162F3E /* bg_auth.jpg in Resources */,
 				84D048A0186AFCCD0083E5E1 /* ok_ico.png in Resources */,
 				849D4293187E8D450036C426 /* more_button@2x.png in Resources */,
 				84ECC28C18A3BED7002F4BC1 /* icon_114@2x.png in Resources */,
