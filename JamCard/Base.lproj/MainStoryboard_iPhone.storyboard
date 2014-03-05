@@ -1250,34 +1250,50 @@
                                     <segue destination="ugW-gn-k1q" kind="embed" id="JfY-w5-UmM"/>
                                 </connections>
                             </containerView>
-                            <view tag="300" contentMode="scaleToFill" id="3GD-im-ddi">
-                                <rect key="frame" x="0.0" y="393" width="320" height="96"/>
+                            <view tag="222" contentMode="scaleToFill" id="jw6-3F-wdf">
+                                <rect key="frame" x="0.0" y="398" width="320" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" id="ri7-n9-DVo">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow_bottom.png" highlightedImage="shadow_bottom.png" id="iFx-pp-hkF">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" tag="225" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="find.png" id="dNr-JZ-TMS">
+                                        <rect key="frame" x="136" y="0.0" width="48" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow_bottom.png" highlightedImage="shadow_bottom.png" id="iFx-pp-hkF">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" id="jw6-3F-wdf">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+                                    </imageView>
+                                    <button opaque="NO" tag="223" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="j9K-en-hxd">
+                                        <rect key="frame" x="137" y="0.0" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ok_ico.png" highlightedImage="ok_ico.png" id="dNr-JZ-TMS">
-                                                <rect key="frame" x="140" y="0.0" width="40" height="40"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                        </subviews>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <searchBar tag="224" contentMode="redraw" searchBarStyle="minimal" placeholder="Поиск" id="leS-ul-qlT">
+                                        <rect key="frame" x="0.0" y="27" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Wxd-8Y-jdh" id="klh-Vq-F5E"/>
+                                        </connections>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view tag="300" contentMode="scaleToFill" id="3GD-im-ddi">
+                                <rect key="frame" x="0.0" y="423" width="320" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="a2h-8E-jVT">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="54d-5n-Xng">
-                                        <rect key="frame" x="20" y="41" width="280" height="29"/>
+                                        <rect key="frame" x="20" y="11" width="280" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="Список"/>
@@ -2286,6 +2302,7 @@
         <image name="delete_button.png" width="112" height="27"/>
         <image name="edit_ico.png" width="52" height="52"/>
         <image name="email_ico.png" width="34" height="34"/>
+        <image name="find.png" width="96" height="50"/>
         <image name="gender_ico.png" width="34" height="34"/>
         <image name="geo_ico.png" width="34" height="34"/>
         <image name="green_button_big.png" width="418" height="86"/>

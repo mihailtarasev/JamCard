@@ -219,7 +219,7 @@
     
     if(actions.distAction!=0)
     {
-        cell.distanceLabelTableCell.text = [NSString stringWithFormat:@"%i м",actions.distAction];
+        cell.distanceLabelTableCell.text = [NSString stringWithFormat:@"%.1f км",actions.distAction];
         [cell.distanceLabelTableCell setHidden:false];
         [cell.imagDistTableCell setHidden:false];
         [cell.imagNoDistTableCell setHidden:true];

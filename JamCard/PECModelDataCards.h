@@ -21,7 +21,7 @@
 @property (strong, nonatomic) NSString *descCard;
 
 // Поля партнеров
-@property int distanceCard;
+@property double distanceCard;
 @property (strong, nonatomic) NSString *urlImgCard;
 @property (strong, nonatomic) NSData *dataImgCard;
 @property (strong, nonatomic) NSString *nameCompany;

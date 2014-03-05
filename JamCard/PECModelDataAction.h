@@ -27,7 +27,7 @@
 
 @property (strong, nonatomic) NSArray *arrPoints;
 
-@property int distAction;
+@property double distAction;
 
 @property bool activationAction;
 

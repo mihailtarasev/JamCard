@@ -16,7 +16,7 @@
                    tagFromObject: (int) tagFromObject
                       uiViewCntr: (UIViewController*) uiViewCntr
                 activationCard: (int) activationCard
-                   distanceGeo:(int)diastanceGeo
+                   distanceGeo:(double)diastanceGeo
                            obj:(NSObject*)obj
 ;
 

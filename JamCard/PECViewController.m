@@ -171,6 +171,8 @@
    
    _usedScrollControl = YES;
    
+   [self.view endEditing:true];
+   
    // JamCard карточки
    if(sender.selectedSegmentIndex == 0)
       [_scrollContainer setContentOffset:CGPointMake(0, 0) animated:YES];

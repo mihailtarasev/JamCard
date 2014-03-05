@@ -354,7 +354,7 @@ static NSMutableArray* sArrObjectsCards;
         resParse.discountAction     = [items[@"mso_discount"] integerValue];
         resParse.partnerIdAction    = [items[@"mp_id"] integerValue];
         resParse.arrPoints          = items[@"addresses"];
-        resParse.distAction         = [items[@"address_distance"] integerValue];
+        resParse.distAction         = [items[@"address_distance"] doubleValue];
         
         //NSLog(@"address_distance %i",[items[@"address_distance"] integerValue]);
         
@@ -417,7 +417,7 @@ static NSMutableArray* sArrObjectsCards;
         resParse.openingHoursPartrner   = items[@"mp_opening_hours"];
         resParse.addrLongPartrner       = items[@"address_longitude"];
         resParse.addrLatPartrner        = items[@"address_latitude"];
-        resParse.addrDistPartrner       = [items[@"address_distance"] integerValue];
+        resParse.addrDistPartrner       = [items[@"address_distance"] doubleValue];
         resParse.logoPartrner           = items[@"mp_logo"];
         resParse.logoCardPartrner       = items[@"mp_card_logo"];
         
@@ -613,7 +613,7 @@ static NSMutableArray* sArrObjectsCards;
 }
 
 // ???Сортировка массива
-+(NSDictionary*)sortArrayAtLiters: (NSMutableArray*) arrayObjects nameKey:(NSString*) nameKey mode:(bool)mode
++(NSDictionary*)sortArrayAtLiters: (NSMutableArray*) arrayObjects nameKey:(NSString*) nameKey mode:(bool)mode searchText:(NSString*)searchText
 {
     NSMutableArray *keys = [[NSMutableArray alloc]init];
     NSMutableArray *values= [[NSMutableArray alloc]init];
@@ -622,8 +622,19 @@ static NSMutableArray* sArrObjectsCards;
     {
         NSString *valueKey = obj.nameCard;
         
-        //if(mode) valueKey = [valueKey substringToIndex:1];
-        
+        if((searchText!=nil) & !([searchText isEqualToString:@""]))
+        {
+            NSString *keyLow = [valueKey lowercaseString];
+            NSString *textLow = [searchText lowercaseString];
+            
+            if ([keyLow rangeOfString:textLow].location != NSNotFound)
+            {
+                [values addObject:obj];
+                [keys addObject:[NSString stringWithFormat:@"%@",valueKey]];
+
+            }else
+                continue;
+        }
         [values addObject:obj];
         [keys addObject:[NSString stringWithFormat:@"%@",valueKey]];
     }

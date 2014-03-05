@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSString *typeNamePartrner;
 
 
-@property int addrDistPartrner;
+@property double addrDistPartrner;
 @property (strong, nonatomic) NSString *logoPartrner;
 @property (strong, nonatomic) NSString *logoCardPartrner;
 

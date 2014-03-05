@@ -24,7 +24,7 @@
                     tagFromObject: (int) tagFromObject
                        uiViewCntr: (UIViewController*) uiViewCntr
                     activationCard:(int)activationCard
-                        distanceGeo:(int)diastanceGeo
+                        distanceGeo:(double)diastanceGeo
                                 obj:(NSObject*)obj
 {
     // Settings
@@ -62,10 +62,10 @@
         [uiCardNavPanel addSubview:imgGeo];
         
         // TextView Distance
-        CGRect cardDistance = CGRectMake( cardNavPanel.size.width-35, cardNavPanel.size.height-15, 40, 10);
+        CGRect cardDistance = CGRectMake( cardNavPanel.size.width-40, cardNavPanel.size.height-15, 45, 10);
         UILabel *lbCardDistance = [[UILabel alloc]initWithFrame:cardDistance];
         [lbCardDistance setFont:[UIFont fontWithName:@"Helvetica-Light" size:9]];
-        [lbCardDistance setText:[NSString stringWithFormat:@"%i м",diastanceGeo]];
+        [lbCardDistance setText:[NSString stringWithFormat:@"%.1f км",diastanceGeo]];
         [lbCardDistance setTag: 4];
         [uiCardNavPanel addSubview:lbCardDistance];
         

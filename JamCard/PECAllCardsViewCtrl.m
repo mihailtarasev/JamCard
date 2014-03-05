@@ -16,7 +16,16 @@
 #import "PECMapViewCtrl.h"
 //#import "PEC"
 
-@interface PECAllCardsViewCtrl ()
+@interface PECAllCardsViewCtrl ()<UISearchBarDelegate>
+{
+    UIView *searchContainer;
+    
+    UIButton *searchButton;
+    bool searchTrig;
+    UISearchBar *serachBar;
+    UIImageView *searchButtonImg;
+
+}
 
 // Page All Cards
 @property (strong, nonatomic) IBOutlet UISegmentedControl *secondSegmentCtrl;
@@ -34,12 +43,80 @@
     [super viewDidLoad];
     
     UIView *spisokContainer = (UIView*)[self.view viewWithTag:300];
+    
+    // Контейнер для хранения поиска
+    searchContainer = (UIView*)[self.view viewWithTag:222];
+
+    searchButton = (UIButton*)[self.view viewWithTag:223];
+    [searchButton addTarget:self action:@selector(searchButtonClick:) forControlEvents:UIControlEventTouchDown];
+    
+    serachBar = (UISearchBar*)[self.view viewWithTag:224];
+    serachBar.delegate =self;
+    
+    searchButtonImg = (UIImageView*)[self.view viewWithTag:225];
+    
     // 3.5 inch screen
     if ([UIScreen mainScreen].bounds.size.height<568)
     {
         spisokContainer.frame = CGRectOffset( spisokContainer.frame, 0.0f, -88.0f);
+        searchContainer.frame = CGRectOffset( spisokContainer.frame, 0.0f, -30.0f);
     }
 }
+
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    // update view!
+    for (UIViewController *childViewController in [self childViewControllers])
+    {
+        if ([childViewController isKindOfClass:[PECSpisokViewCtrl class]])
+        {
+            PECSpisokViewCtrl *installViewController = (PECSpisokViewCtrl *)childViewController;
+            installViewController.searchText = [searchBar text];
+            [installViewController viewWillAppear:NO];
+            break;
+        }
+    }
+}
+
+- (void) searchButtonClick: (id)sender
+{
+    if(!searchTrig){
+        [self animatedChangePositionMenuY:-220.0f alpha:1.0f];
+    }
+    else{
+        [self animatedChangePositionMenuY:220.0f alpha:0.0f];
+        [self.view endEditing:true];
+    }
+}
+
+// ANIMATION MENU
+- (void)animatedChangePositionMenuY :(float) posY alpha:(float)alpha
+{
+    CGRect endFrame = searchContainer.frame;
+    CGRect endFrameTemp = CGRectOffset(endFrame, 0, posY);
+    [UIView animateWithDuration:0.5
+                          delay:0.1
+                        options:UIViewAnimationTransitionNone
+                     animations:^{
+                         searchContainer.frame = endFrameTemp;
+                         
+                     }
+                     completion:^(BOOL finished) {
+                         
+                         if(!searchTrig){
+                             [serachBar becomeFirstResponder];
+                             [searchButtonImg setImage:[UIImage imageNamed:@"find_close.png"]];
+                         }
+                         else{
+                             
+                             [searchButtonImg setImage:[UIImage imageNamed:@"find.png"]];
+                         }
+                         
+                         searchTrig = !searchTrig;
+                         ;}];
+}
+
 
 - (IBAction)secSegmentCtrlClick:(UISegmentedControl *)sender
 {
@@ -67,6 +144,16 @@
         [self animationHideShowUIView:_mapContainerView showHide:1 Select:103];
     }
 }
+
+- (void) viewWillAppear: (BOOL)animated
+{
+//    if(!searchTrig)
+//        [self animatedChangePositionMenuY:220.0f alpha:1.0f];
+
+    [super viewWillAppear:NO];
+}
+
+
 
 // Анимация с эффектом Hide и Show
 -(void)animationHideShowUIView: (UIView*) curUIView showHide: (BOOL) showHide Select:(int)SelectPage

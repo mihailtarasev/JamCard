@@ -10,4 +10,6 @@
 
 @interface PECSpisokViewCtrl : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
+@property NSString *searchText;
+
 @end

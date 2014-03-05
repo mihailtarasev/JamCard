@@ -175,7 +175,7 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
     NSString *params = nil; cityId = 1;
     NSString *addrLat2 = [NSString stringWithFormat:@"%f", addrLat];
     NSString *addrLong2 = [NSString stringWithFormat:@"%f", addrLong];
-    params = [NSString stringWithFormat:@"{address_longitude:%@l,address_latitude:%@l,city_id:%i}",addrLat2, addrLong2, cityId];
+    params = [NSString stringWithFormat:@"{\"address_longitude\":\"%@\",\"address_latitude\":\"%@\",\"city_id\":\"%i\"}",addrLong2 ,addrLat2 , cityId];
     
     NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",JAMCARD_BASE_URL, GET_PARTNERS_BY_LOC_URL]];
     [self asynPostReqJamCard:@"POST"
@@ -426,7 +426,11 @@ static NSString const * GET_SMS_AUTH_URL = @"users/smsconfirm";
     NSString *addrLat2 = [NSString stringWithFormat:@"%f", addrLat];
     NSString *addrLong2 = [NSString stringWithFormat:@"%f", addrLong];
 //    params = [NSString stringWithFormat:@"{address_longitude:%@l,address_latitude:%@l,city_id:%i}",addrLat2, addrLong2, cityId];
-    params = [NSString stringWithFormat:@"{address_longitude:\"%@\",address_latitude:\"%@\",city_id:%i}",addrLat2, addrLong2, cityId];
+//    params = [NSString stringWithFormat:@"{\"address_longitude\":\"%@\",\"address_latitude\":\"%@\",\"city_id\":\"%i\"}",addrLong2, addrLat2, cityId];
+    
+    params = [NSString stringWithFormat:@"{\"address_longitude\":\"%@\",\"address_latitude\":\"%@\",\"city_id\":\"%i\"}",addrLong2 ,addrLat2 , cityId];
+    
+    NSLog(@"params %@", params);
     
     NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",JAMCARD_BASE_URL, GET_LOC_ACTION_URL]];
     [self asynPostReqJamCard:@"POST"

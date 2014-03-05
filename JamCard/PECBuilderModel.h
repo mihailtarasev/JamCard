@@ -14,7 +14,7 @@
 + (NSMutableArray *)groupsFromJSON:(NSData *)objectNotation error:(NSError **)error objectModel: (NSString*)model;
 //- (void)getDataAtCard: (NSString*)urlStr;
 + (NSMutableArray*)arrObjectsCards;
-+(NSDictionary*)sortArrayAtLiters: (NSMutableArray*) arrayObjects nameKey:(NSString*) nameKey mode:(bool)mode;
++(NSDictionary*)sortArrayAtLiters: (NSMutableArray*) arrayObjects nameKey:(NSString*) nameKey mode:(bool)mode searchText:(NSString*)searchText;
 
 // Общий для всех запросов парсинг ошибок и данных
 + (NSArray*)getArrayFromJsonDataServer:(NSData *)objectNotation error:(NSError **)error;

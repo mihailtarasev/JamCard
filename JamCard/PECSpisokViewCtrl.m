@@ -62,7 +62,7 @@
 - (void)dataInitDataTableActions
 {
     // Сортирую карточки
-    _namesAllCardsFromTable = [PECBuilderModel sortArrayAtLiters:[PECModelsData getModelCard] nameKey:@"" mode:true];
+    _namesAllCardsFromTable = [PECBuilderModel sortArrayAtLiters:[PECModelsData getModelCard] nameKey:@"" mode:true searchText:[self searchText]];
     NSArray *arrKey = [[_namesAllCardsFromTable allKeys] sortedArrayUsingSelector:@selector(compare:)];
     
     _keysAllCardsFromTable = arrKey;

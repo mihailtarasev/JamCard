@@ -86,7 +86,7 @@
     NSLog(@"selectedCategory %d",self.selectedCategory);
     
     
-    _namesAllCardsFromTable = [PECBuilderModel sortArrayAtLiters: mArrayCard nameKey:@"" mode:true];
+    _namesAllCardsFromTable = [PECBuilderModel sortArrayAtLiters: mArrayCard nameKey:@"" mode:true searchText:@""];
     NSArray *arrKey = [[_namesAllCardsFromTable allKeys] sortedArrayUsingSelector:@selector(compare:)];
     
     _keysAllCardsFromTable = arrKey;
