@@ -20,6 +20,7 @@
 #import "PECModelPartner.h"
 #import "PECDetailCardViewCtrl.h"
 #import "PECAutorizationViewCtrl.h"
+#import "PECObjectCard.h"
 
 
 #import <CoreLocation/CoreLocation.h>
@@ -38,7 +39,9 @@
 {
     // Table
     NSArray *tableData;
-    
+    UIView *mainContVerifi;
+    NSMutableDictionary *arrPhoneObj;
+    NSString *phoneNumAck ;
     
 }
 
@@ -107,8 +110,8 @@
 {
     MKCoordinateRegion region;
     MKCoordinateSpan span;
-    span.latitudeDelta = 1.03;
-    span.longitudeDelta = 1.03;
+    span.latitudeDelta = 0.3;
+    span.longitudeDelta = 0.3;
     CLLocationCoordinate2D location;
     location.latitude = newLocation.coordinate.latitude;
     location.longitude = newLocation.coordinate.longitude;
@@ -187,6 +190,16 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
+    
+    // Подтверждение звонка по номеру телефона
+    mainContVerifi = [PECObjectCard addContainerRingViewController:self txtNumPhone:@""];
+    [self.view addSubview:mainContVerifi];
+    [mainContVerifi setAlpha:0.0];
+
+    
+    arrPhoneObj = [[NSMutableDictionary alloc]init];
+    
+    
     if(_selectedType==0)
     {
         for(PECModelPartner *partner in [PECModelsData getModelPartners])
@@ -214,6 +227,21 @@
     [self PAGE_MAPCARDS_CONTROL];
     
 }
+
+// Анимация с эффектом Hide и Show
+-(void)animationHideShowUIView: (UIView*) curUIView showHide: (BOOL) showHide Select:(int)SelectPage
+{
+    float alpha;
+    if(showHide){ alpha = 1.0; }else{ alpha = 0.0; }
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseOut
+                     animations:^{
+                         curUIView.alpha = showHide;
+                     } completion:^(BOOL completed) {
+                     }];
+}
+
 
 // ~ ОБРАБОТКА ТАБЛИЦЫ
 
@@ -253,11 +281,35 @@
     cell.addressCellAddressPartner.text = addressesPartner.addressTextPartrner;
     cell.metroCellAddressPartner.text = addressesPartner.addressMetroPartrner;
     
+    cell.phoneTextCellAddressPartner.text = addressesPartner.addressTeleph1Partner;
+
+    [cell.phoneCellAddressPartner setTag:indexPath.row];
+    [cell.phoneCellAddressPartner addTarget:self action:@selector(buttonClickTableCell:) forControlEvents:UIControlEventTouchDown];
+    
+    [arrPhoneObj setValue:addressesPartner.addressTeleph1Partner forKey:[NSString stringWithFormat:@"%d", indexPath.row]];
+    
     return cell;
 }
 
+- (IBAction) buttonClickTableCell: (UIButton*)sender
+{
+    phoneNumAck = [arrPhoneObj valueForKey:[NSString stringWithFormat:@"%d", sender.tag]];
+    [self animationHideShowUIView:mainContVerifi showHide:true Select:0];
+}
+
+- (IBAction)bCloseEvent:(id)sender
+{
+    [self animationHideShowUIView:mainContVerifi showHide:false Select:0];
+}
+
+- (IBAction)bRingEvent:(id)sender
+{
+    NSString *callNumber = [NSString stringWithFormat:@"tel://%@", phoneNumAck];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callNumber]];
+}
+
 // Высота строки в таблице
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{return 50;}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{return 70;}
 
 
 // ~ СИСТЕМНЫЕ

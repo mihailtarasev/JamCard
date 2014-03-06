@@ -41,6 +41,8 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *bgImage;
 
+@property (strong, nonatomic) IBOutlet UIControl *containerTips;
+
 @end
 
 @implementation PECViewController
@@ -63,6 +65,31 @@
       _bgImage.image = [UIImage imageNamed:@"bg_3inch"];
       [_bgImage setAlpha:0.7f];
    }
+   
+   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+   int startupTips = [defaults integerForKey:@"startupTips"];
+   if(!startupTips)
+      [_containerTips setHidden:false];
+   
+   [defaults setInteger:1 forKey:@"startupTips"];
+
+   [defaults synchronize];
+   [_containerTips addTarget:self action:@selector(bTipsEvent:) forControlEvents:UIControlEventTouchDown];
+
+}
+
+
+- (IBAction)bTipsEvent:(id)sender
+{
+   [UIView animateWithDuration:0.3
+                         delay:0.0
+                       options:UIViewAnimationCurveEaseOut
+                    animations:^{
+                       _containerTips.alpha = 0.0f;
+                    } completion:^(BOOL completed) {
+                       [_containerTips setHidden:true];
+                    }];
+
 }
 
 
@@ -133,6 +160,7 @@
       }
    }
 }
+
 
 - (void) dataSettingsUploaded:(int)bit
 {
@@ -240,7 +268,9 @@
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{ _usedScrollControl = NO; }
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{ _usedScrollControl = NO; }
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{ _usedScrollControl = NO; [self.view endEditing:YES]; }
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{ [self.view endEditing:YES];}
+
 
 // ~ ШАПОЧКА
 // Нажал на значек JamCard слева

@@ -17,6 +17,7 @@
 #import "PECAddressPartnerViewCtrl.h"
 #import "PECAboutPartnerViewCtrl.h"
 #import "Reachability.h"
+#import "PECObjectCard.h"
 
 #import "ZXingObjC.h"
 
@@ -109,6 +110,8 @@
     
     UILabel *codeBarActiveContainer;
     
+    UIView *mainContVerifi;
+    
 }
 
 // ~ ИНИЦИАЛИЗАЦИЯ
@@ -197,6 +200,22 @@
     
 }
 
+- (IBAction)bTelEvent:(id)sender
+{
+    [self animationHideShowUIView:mainContVerifi showHide:true Select:0];
+}
+
+- (IBAction)bCloseEvent:(id)sender
+{
+    [self animationHideShowUIView:mainContVerifi showHide:false Select:0];
+}
+
+- (IBAction)bRingEvent:(id)sender
+{
+    NSString *callNumber = [NSString stringWithFormat:@"tel://%@", cDeActNumTelephoneCompany.text];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callNumber]];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -214,6 +233,11 @@
         
         activateContainer.frame = CGRectOffset( activateContainer.frame, 0.0f, -90.0f);
     }
+    
+    // Подтверждение звонка по номеру телефона
+    mainContVerifi = [PECObjectCard addContainerRingViewController:self txtNumPhone:@""];
+    [self.view addSubview:mainContVerifi];
+    [mainContVerifi setAlpha:0.0];
     
     autorizationUser = false;
     NSArray *arrModelUser = [PECModelsData getModelUser];
@@ -254,12 +278,6 @@
 
 // ~ КАРТОЧКА АКТИВИРОВАНА
 
-- (IBAction)bTelEvent:(id)sender
-{
-    NSString *callNumber = [NSString stringWithFormat:@"tel://%@", cDeActNumTelephoneCompany.text];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callNumber]];
-}
-
 - (IBAction)bViewBarCodeEvent:(id)sender
 {
     
@@ -283,7 +301,7 @@
                          
                          CGRect contFrame = contCardViewBarCode.frame;
                          [contCardViewBarCode setFrame:CGRectMake(20, y, contFrame.size.width*k, contFrame.size.height*k)];
-                         [whiteContainer setAlpha:0.8];
+                         [whiteContainer setAlpha:0.9];
                      }
                      completion:^(BOOL finished){
                          barCodeBig = !barCodeBig;
@@ -314,7 +332,7 @@
                          
                          CGRect contFrame = contCardViewQRCode.frame;
                          [contCardViewQRCode setFrame:CGRectMake(x, y, contFrame.size.width*k, contFrame.size.height*k)];
-                         [whiteContainer setAlpha:0.8];
+                         [whiteContainer setAlpha:0.9];
                      }
                      completion:^(BOOL finished){
                          qrCodeBig = !qrCodeBig;
@@ -439,69 +457,85 @@
 
 - (void)ZXingCode:(BOOL)typeCode imgView: (UIImageView*)imgView
 {
-
-    NSString *parseNumberCard;
+    // Красатульки
+    imgView.image = [UIImage imageNamed:@"card_default.jpg"];
+    [codeBarActiveContainer setText:currentModelDataCard.numberCard];
     
-    if([currentModelDataCard.numberCard length]==7)
-        parseNumberCard  = [NSString stringWithFormat:@"%@00000",currentModelDataCard.numberCard];
-    else
-        if([currentModelDataCard.numberCard length]==8)
-            parseNumberCard  = [NSString stringWithFormat:@"%@0000",currentModelDataCard.numberCard];
-        else
-            if([currentModelDataCard.numberCard length]==9)
-                parseNumberCard  = [NSString stringWithFormat:@"%@000",currentModelDataCard.numberCard];
-            else
-                if([currentModelDataCard.numberCard length]==10)
-                    parseNumberCard  = [NSString stringWithFormat:@"%@00",currentModelDataCard.numberCard];
-            else
-                if([currentModelDataCard.numberCard length]==11)
-                            parseNumberCard  = [NSString stringWithFormat:@"%@0",currentModelDataCard.numberCard];
-            else
-                if([currentModelDataCard.numberCard length]==12)
-                    parseNumberCard  = [NSString stringWithFormat:@"%@",currentModelDataCard.numberCard];
-                else{
-                    [imgView setHidden:true];
-                    return;
-                }
+    // Номер карточки
+    NSString *parseNumberCard = currentModelDataCard.numberCard;
     
+    // Формат карточки (8 13 128)
+    int formatCardInt = [currentModelDataCard.formatCard intValue];
+    ZXBarcodeFormat formatCode = kBarcodeFormatCode128;
     
-    
+    // Пустой запрос
+    if([parseNumberCard isEqualToString:@""])
+    {
         [imgView setHidden:false];
+        return;
+    }
     
+    int countZero;
+    
+    if(formatCardInt==8)
+        formatCode = kBarcodeFormatEan8;
+    if(formatCardInt==13)
+        formatCode = kBarcodeFormatEan13;
+    
+    if(formatCardInt==8 || formatCardInt==13)
+    {
+        // Цифр от сервера должно быть меньше чем формат
+        if([currentModelDataCard.numberCard length]>=formatCardInt)
+        {
+            [imgView setHidden:false];
+            return;
+        }
+        
+        // Количество цифр которые нужно дополнить нулями
+        countZero = (formatCardInt-1) - [parseNumberCard length];
+        
+        // Добавляю нули если цифр меньше 7 или 12 в зависимости от типа кодировки
+        for(int i = 0; i < countZero; i++)
+            parseNumberCard  = [NSString stringWithFormat:@"%@0",parseNumberCard];
+        
+        // Добавляю 8 или 13 цифру как контрольную сумму
         int checksum = [self getCheckSum:parseNumberCard];
         parseNumberCard = [NSString stringWithFormat:@"%@%i",parseNumberCard,checksum];
-        NSError* error = nil;
+        
+        [imgView setHidden:false];
+    }
     
-        [codeBarActiveContainer setText:parseNumberCard];
+    NSError* error = nil;
+    
+    ZXMultiFormatWriter* writer = [ZXMultiFormatWriter writer];
+    ZXBitMatrix* result;
+    if(typeCode)
+    {
+        result = [writer encode:parseNumberCard
+                         format:formatCode
+                          width:500
+                         height:500
+                          error:&error];
         
-        ZXMultiFormatWriter* writer = [ZXMultiFormatWriter writer];
+    }else{
+        result = [writer encode:parseNumberCard
+                         format:kBarcodeFormatQRCode
+                          width:1000
+                         height:1000
+                          error:&error];
+    }
+    
+    if (result) {
+        CGImageRef image = [[ZXImage imageWithMatrix:result] cgimage];
         
-        ZXBitMatrix* result;
+        UIImage * imageRes = [UIImage imageWithCGImage:image];
         
-        if(typeCode){
-            result = [writer encode:parseNumberCard
-                                          format:kBarcodeFormatEan13
-                                           width:500
-                                          height:500
-                                           error:&error];
-        }else{
-            result = [writer encode:parseNumberCard
-                             format:kBarcodeFormatQRCode
-                              width:1000
-                             height:1000
-                              error:&error];
+        imgView.image=imageRes;
         
-        }
-        
-        if (result) {
-            CGImageRef image = [[ZXImage imageWithMatrix:result] cgimage];
-            
-            UIImage * imageRes = [UIImage imageWithCGImage:image];
-            imgView.image=imageRes;
-            
-        } else {
-            NSString* errorMessage = [error localizedDescription];
-        }
+    } else {
+        NSString* errorMessage = [error localizedDescription];
+        //imgView.image=[UIImage imageNamed:@"card_default.jpg"];
+    }
 }
 
 -(int) getCheckSum :(NSString *)s

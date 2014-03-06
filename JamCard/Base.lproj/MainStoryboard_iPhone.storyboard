@@ -164,6 +164,20 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view hidden="YES" clipsSubviews="YES" alpha="0.74999999999999978" contentMode="scaleToFill" id="M1v-DS-qtT" customClass="UIControl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tips.png" highlightedImage="tips.png" id="lUy-Tc-hVU">
+                                        <rect key="frame" x="39" y="160" width="242" height="248"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="bTipsEvent:" destination="aZQ-Rw-LbV" eventType="valueChanged" id="1RJ-J4-D8d"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -179,6 +193,7 @@
                         <outlet property="containerJamcard" destination="yOK-vi-WGs" id="SnG-Xt-87j"/>
                         <outlet property="containerMain" destination="B23-YL-2dG" id="9K0-ej-3AB"/>
                         <outlet property="containerMycard" destination="gZI-xM-n90" id="U36-6I-f3N"/>
+                        <outlet property="containerTips" destination="M1v-DS-qtT" id="6hO-CX-FSk"/>
                         <outlet property="headerSegmentControl" destination="msK-kW-c8W" id="Zhm-zP-XJy"/>
                         <outlet property="scrollContainer" destination="tfP-Tx-mQ1" id="NHI-dT-NC5"/>
                         <outlet property="titleStatusBar" destination="65L-ML-8Ix" id="F1y-Cr-gK5"/>
@@ -309,7 +324,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Htq-ou-oMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3210" y="463"/>
+            <point key="canvasLocation" x="-3352" y="135"/>
         </scene>
         <!--Autorization View Ctrl-->
         <scene sceneID="Nd9-ab-ZsQ">
@@ -565,6 +580,10 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_auth.jpg" id="hEK-ef-ygq">
+                                        <rect key="frame" x="0.0" y="-10" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" id="jfp-5K-zyu">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -620,7 +639,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="506"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APPLE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="icK-lR-bcf">
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APPLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="icK-lR-bcf">
                                                         <rect key="frame" x="20" y="1" width="270" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="25"/>
@@ -628,7 +647,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" minimumFontSize="12" id="Vw2-hl-9c6">
-                                                        <rect key="frame" x="20" y="58" width="280" height="149"/>
+                                                        <rect key="frame" x="20" y="156" width="280" height="149"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <string key="text">Apple в переводе с англ. — «яблоко») — американская корпорация, производитель персональных и планшетных компьютеров, аудиоплееров, телефонов, программного обеспечения. Один из пионеров в области персональных компьютеров[5] и современных многозадачных операционных систем с графическим интерфейсом. Штаб-квартира — в Купертино, штат Калифорния.</string>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
@@ -636,23 +655,23 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" id="BRi-Gv-whr">
-                                                        <rect key="frame" x="20" y="215" width="280" height="1"/>
+                                                        <rect key="frame" x="20" y="50" width="280" height="1"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     </view>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_ico.png" id="oDF-go-4im">
-                                                        <rect key="frame" x="20" y="226" width="17" height="17"/>
+                                                        <rect key="frame" x="20" y="66" width="17" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="202" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+79008003000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xZE-il-edy">
-                                                        <rect key="frame" x="50" y="224" width="270" height="21"/>
+                                                        <rect key="frame" x="50" y="64" width="270" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" tag="210" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jsi-HZ-4vd">
-                                                        <rect key="frame" x="50" y="219" width="250" height="30"/>
+                                                        <rect key="frame" x="20" y="50" width="280" height="46"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <state key="normal">
@@ -660,23 +679,23 @@
                                                         </state>
                                                     </button>
                                                     <view contentMode="scaleToFill" id="mdV-3s-aKD">
-                                                        <rect key="frame" x="15" y="250" width="280" height="1"/>
+                                                        <rect key="frame" x="20" y="95" width="280" height="1"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     </view>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_ico.png" id="E3j-MI-JAF">
-                                                        <rect key="frame" x="20" y="259" width="17" height="17"/>
+                                                        <rect key="frame" x="20" y="110" width="17" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="info@mail.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hpo-nP-mHs">
-                                                        <rect key="frame" x="50" y="257" width="270" height="21"/>
+                                                        <rect key="frame" x="50" y="109" width="270" height="20"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" id="JLp-Ul-ZBH">
-                                                        <rect key="frame" x="15" y="284" width="280" height="1"/>
+                                                        <rect key="frame" x="20" y="140" width="280" height="1"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     </view>
@@ -701,7 +720,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0b-G3-thP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4116" y="-214"/>
+            <point key="canvasLocation" x="-2501" y="348"/>
         </scene>
         <!--Detail Action View Ctrl-->
         <scene sceneID="5QG-1J-MFb">
@@ -841,11 +860,11 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view hidden="YES" alpha="0.80000000000000004" tag="400" contentMode="scaleToFill" id="qzX-JY-UaW">
+                                            <view hidden="YES" tag="400" contentMode="scaleToFill" id="qzX-JY-UaW">
                                                 <rect key="frame" x="0.0" y="-75" width="320" height="650"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" tag="306" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет штрихкода" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L7n-UJ-O43">
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="306" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет штрихкода" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="L7n-UJ-O43">
                                                         <rect key="frame" x="20" y="372" width="280" height="36"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
@@ -991,7 +1010,7 @@
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" id="gxN-WN-EYK">
                                                         <rect key="frame" x="20" y="147" width="280" height="1"/>
@@ -1099,11 +1118,11 @@
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="points_ico.png" id="Xiq-VR-K1t">
-                                                        <rect key="frame" x="31" y="222" width="17" height="17"/>
+                                                        <rect key="frame" x="31" y="229" width="17" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 баллов" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="Bpc-CU-bpH">
-                                                        <rect key="frame" x="63" y="220" width="199" height="21"/>
+                                                        <rect key="frame" x="63" y="226" width="199" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <nil key="highlightedColor"/>
@@ -1759,11 +1778,11 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view hidden="YES" alpha="0.79999999999999982" tag="400" contentMode="scaleToFill" id="6wx-AA-XUk">
+                                    <view hidden="YES" tag="400" contentMode="scaleToFill" id="6wx-AA-XUk">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="306" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет штрихкода" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aov-2s-Ajd">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="306" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет штрихкода" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="aov-2s-Ajd">
                                                 <rect key="frame" x="20" y="257" width="280" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
@@ -1803,7 +1822,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvp-Ak-XVb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2379" y="307"/>
+            <point key="canvasLocation" x="-2131" y="-173"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="3Am-Ge-tI5">
@@ -1938,7 +1957,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wyR-0F-7f2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2865" y="-2244"/>
+            <point key="canvasLocation" x="-2841" y="410"/>
         </scene>
         <!--Address Partner View Ctrl-->
         <scene sceneID="on5-EO-ZeJ">
@@ -2008,7 +2027,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="IFz-iM-Ubg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="243"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <connections>
@@ -2017,7 +2036,7 @@
                                                         </connections>
                                                     </tableView>
                                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="E2T-XG-JDe">
-                                                        <rect key="frame" x="0.0" y="251" width="320" height="255"/>
+                                                        <rect key="frame" x="0.0" y="143" width="320" height="363"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="exC-NS-oWt" id="hmt-YN-6Dv"/>
@@ -2041,7 +2060,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4tf-kC-TFF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2429" y="899"/>
+            <point key="canvasLocation" x="-1943" y="-391"/>
         </scene>
         <!--News Partner View Ctrl-->
         <scene sceneID="u2e-K1-tKs">
@@ -2315,6 +2334,7 @@
         <image name="sale_ico.png" width="16" height="16"/>
         <image name="shadow.png" width="640" height="8"/>
         <image name="shadow_bottom.png" width="640" height="608"/>
+        <image name="tips.png" width="484" height="496"/>
         <image name="user_ico.png" width="34" height="34"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

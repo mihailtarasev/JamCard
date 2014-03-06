@@ -148,7 +148,8 @@ static int countCardsAtWidth;
         [obj setValue:data forKey:keyData];
     }
     UIImage *imgCard;
-    
+
+    //NSLog(@"keyUrl %@",[obj valueForKey:keyUrl]);
     if([UIImage imageWithData:data]==NULL)
         imgCard = [UIImage imageNamed:@"card_default.jpg"];
     else

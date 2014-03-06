@@ -207,6 +207,7 @@ static NSMutableArray* sArrObjectsCards;
         resParse.idCard             = [items[@"mp_id"] integerValue];
         resParse.numberCard         = items[@"mc_number"];
         resParse.formatCard         = items[@"mc_format"];
+        
         resParse.discountCard       = [items[@"mc_discount"] doubleValue];
         resParse.statusCard         = [items[@"mc_status"] integerValue];
         resParse.activationDateCards  = items[@"mc_activation_date"];
@@ -271,6 +272,7 @@ static NSMutableArray* sArrObjectsCards;
                 
                 resParse.numberCard         = items[@"mc_number"];
                 resParse.formatCard         = items[@"mc_format"];
+                
                 resParse.discountCard       = [items[@"mc_discount"] doubleValue];
                 resParse.statusCard         = [items[@"mc_status"] integerValue];
                 

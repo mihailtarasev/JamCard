@@ -166,76 +166,90 @@
     [autoAlertView show];
 }
 
+
+
+
 - (void)ZXingCode:(BOOL)typeCode imgView: (UIImageView*)imgView
 {
+    // Красатульки
     imgView.image = [UIImage imageNamed:@"card_default.jpg"];
+    [codeBarActiveContainer setText:currentModelDataAction.cardNumberAction];
     
-    NSString *parseNumberCard;
+    // Номер карточки
+    NSString *parseNumberCard = currentModelDataAction.cardNumberAction;
     
-    if([currentModelDataAction.cardNumberAction length]==7)
-        parseNumberCard  = [NSString stringWithFormat:@"%@00000",currentModelDataAction.cardNumberAction];
-else
-    if([currentModelDataAction.cardNumberAction length]==8)
-        parseNumberCard  = [NSString stringWithFormat:@"%@0000",currentModelDataAction.cardNumberAction];
-else
-    if([currentModelDataAction.cardNumberAction length]==9)
-        parseNumberCard  = [NSString stringWithFormat:@"%@000",currentModelDataAction.cardNumberAction];
-else
-    if([currentModelDataAction.cardNumberAction length]==10)
-        parseNumberCard  = [NSString stringWithFormat:@"%@00",currentModelDataAction.cardNumberAction];
-else
-    if([currentModelDataAction.cardNumberAction length]==11)
-        parseNumberCard  = [NSString stringWithFormat:@"%@0",currentModelDataAction.cardNumberAction];
-else
-    if([currentModelDataAction.cardNumberAction length]==12)
-        parseNumberCard  = [NSString stringWithFormat:@"%@",currentModelDataAction.cardNumberAction];
+    // Формат карточки (8 13 128)
+    int formatCardInt = [currentModelDataAction.cardFormatAction intValue];
+    ZXBarcodeFormat formatCode = kBarcodeFormatCode128;
 
-    else{
+    // Пустой запрос
+    if([parseNumberCard isEqualToString:@""])
+    {
         [imgView setHidden:false];
         return;
     }
     
+    int countZero;
     
-    
-        [imgView setHidden:false];
+    if(formatCardInt==8)
+        formatCode = kBarcodeFormatEan8;
+    if(formatCardInt==13)
+        formatCode = kBarcodeFormatEan13;
+
+    if(formatCardInt==8 || formatCardInt==13)
+    {
+        // Цифр от сервера должно быть меньше чем формат
+        if([currentModelDataAction.cardNumberAction length]>=formatCardInt)
+        {
+            [imgView setHidden:false];
+            return;
+        }
         
-    
+        // Количество цифр которые нужно дополнить нулями
+        countZero = (formatCardInt-1) - [parseNumberCard length];
+        
+        // Добавляю нули если цифр меньше 7 или 12 в зависимости от типа кодировки
+        for(int i = 0; i < countZero; i++)
+            parseNumberCard  = [NSString stringWithFormat:@"%@0",parseNumberCard];
+        
+        // Добавляю 8 или 13 цифру как контрольную сумму
         int checksum = [self getCheckSum:parseNumberCard];
         parseNumberCard = [NSString stringWithFormat:@"%@%i",parseNumberCard,checksum];
-        NSError* error = nil;
+        
+        [imgView setHidden:false];
+    }
     
-        [codeBarActiveContainer setText:parseNumberCard];
+    NSError* error = nil;
     
-        ZXMultiFormatWriter* writer = [ZXMultiFormatWriter writer];
+    ZXMultiFormatWriter* writer = [ZXMultiFormatWriter writer];
+    ZXBitMatrix* result;
+    if(typeCode)
+    {
+        result = [writer encode:parseNumberCard
+                         format:formatCode
+                          width:500
+                         height:500
+                          error:&error];
         
-        ZXBitMatrix* result;
+    }else{
+        result = [writer encode:parseNumberCard
+                         format:kBarcodeFormatQRCode
+                          width:1000
+                         height:1000
+                          error:&error];
+    }
+    
+    if (result) {
+        CGImageRef image = [[ZXImage imageWithMatrix:result] cgimage];
         
-        if(typeCode){
-            result = [writer encode:parseNumberCard
-                             format:kBarcodeFormatEan13
-                              width:500
-                             height:500
-                              error:&error];
-        }else{
-            result = [writer encode:parseNumberCard
-                             format:kBarcodeFormatQRCode
-                              width:1000
-                             height:1000
-                              error:&error];
-            
-        }
+        UIImage * imageRes = [UIImage imageWithCGImage:image];
         
-        if (result) {
-            CGImageRef image = [[ZXImage imageWithMatrix:result] cgimage];
-            
-            UIImage * imageRes = [UIImage imageWithCGImage:image];
-            
-            imgView.image=imageRes;
-            
-        } else {
-            NSString* errorMessage = [error localizedDescription];
-            //imgView.image=[UIImage imageNamed:@"card_default.jpg"];
-        }
+        imgView.image=imageRes;
+        
+    } else {
+        NSString* errorMessage = [error localizedDescription];
+        //imgView.image=[UIImage imageNamed:@"card_default.jpg"];
+    }
 }
 
 -(int) getCheckSum :(NSString *)s
@@ -293,12 +307,11 @@ else
                          
                          CGRect contFrame = contCardViewBarCode.frame;
                          [contCardViewBarCode setFrame:CGRectMake(20, y, contFrame.size.width*k, contFrame.size.height*k)];
-                         [whiteContainer setAlpha:0.8];
+                         [whiteContainer setAlpha:0.9];
                      }
                      completion:^(BOOL finished){
                          barCodeBig = !barCodeBig;
                      }];
-    
 }
 
 - (IBAction)bViewQRCodeEvent:(id)sender
@@ -324,12 +337,11 @@ else
                          
                          CGRect contFrame = contCardViewQRCode.frame;
                          [contCardViewQRCode setFrame:CGRectMake(x, y, contFrame.size.width*k, contFrame.size.height*k)];
-                         [whiteContainer setAlpha:0.8];
+                         [whiteContainer setAlpha:0.9];
                      }
                      completion:^(BOOL finished){
                          qrCodeBig = !qrCodeBig;
                      }];
-    
 }
 
 

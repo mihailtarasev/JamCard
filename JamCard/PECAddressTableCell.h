@@ -13,4 +13,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *addressCellAddressPartner;
 @property (nonatomic, weak) IBOutlet UILabel *metroCellAddressPartner;
 
+@property (nonatomic, weak) IBOutlet UILabel *distanceCellAddressPartner;
+@property (nonatomic, weak) IBOutlet UIButton *phoneCellAddressPartner;
+@property (nonatomic, weak) IBOutlet UILabel *phoneTextCellAddressPartner;
+
 @end

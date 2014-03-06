@@ -107,28 +107,6 @@
     
     readyLocation = true;
     [self controllerLoadInfo];
-
-    
-
-    /*
-    // Заполняю модель карточек и партнеров
-    [PECBuilderModel createModelDataCardFromDataPartnerLoc:[PECModelsData getModelSettings].locationEn
-                                          autorizationUser:[PECModelsData getModelSettings].autoriz
-                                        numberCityLocation:[PECModelsData getModelSettings].idCountry
-                                                  addrLong:[PECModelsData getModelSettings].longit
-                                                   addrLat:[PECModelsData getModelSettings].lat
-                                                  callback:^(id sender){
-                                                      
-                                                      [locationManager stopUpdatingLocation];
-                                                      locationManager.delegate = nil;
-                                                      locationManager = nil;
-                                                      
-                                                      [self cellAlertMsg:message];
-                                                      
-                                                      readyLocation = true;
-                                                      [self controllerLoadInfo];
-                                                  }];
-     */
 }
 
 
@@ -172,27 +150,6 @@
                     
                     readyLocation = true;
                     [self controllerLoadInfo];
-
-                    
-                    
-                    /*
-                    // Заполняю модель карточек и партнеров
-                    [PECBuilderModel createModelDataCardFromDataPartnerLoc:[PECModelsData getModelSettings].locationEn
-                                                          autorizationUser:[PECModelsData getModelSettings].autoriz
-                                                        numberCityLocation:[PECModelsData getModelSettings].idCountry
-                                                                  addrLong:[PECModelsData getModelSettings].longit
-                                                                   addrLat:[PECModelsData getModelSettings].lat
-                                                                  callback:^(id sender){
-                                                                      
-                                                                      [locationManager stopUpdatingLocation];
-                                                                      locationManager.delegate = nil;
-                                                                      locationManager = nil;
-                                                                      
-                                                                      readyLocation = true;
-                                                                      [self controllerLoadInfo];
-                                                                  }];
-                     */
-
                 } else{
                     // Произошла ошибка при поиске города
                     NSLog(@"%@", error.debugDescription);
@@ -245,15 +202,6 @@
         readyDataPartners = param;
         [self controllerLoadInfo];
     }];
-    
-    /*
-    // Скачиваю информацию по всем категориям партнеров
-    [netCtrl getCategoryPartnersDServer:^void(int param)
-    {
-        readyDataCategory = param;
-        [self controllerLoadInfo];
-    }];
-     */
 }
 
 
@@ -289,15 +237,14 @@
                                                              selector:@selector(animationTick)
                                                              userInfo:nil
                                                               repeats:YES];
-    } else {
+    } else
+    {
         // Скачиваю настройки приложения
         [self getSettingsUser];
         
         // Скачиваю все необходимые данные с сервера
         [self uploadDataFromServer];
-        
-    }        
-
+    }
 }
 
 // Определение наличия связи с интернет
@@ -371,9 +318,6 @@
                                                           
                                                           
                                                       }];
-
-        
-        
     }else{
     
         // Сценарий 2 Данные по партнерам скачаны пользователь авторитизирован
@@ -384,72 +328,53 @@
         PECNetworkDataCtrl *netCtrl = [[PECNetworkDataCtrl alloc]init];
         [netCtrl getUserInfoAtTelDServer:UserTel callback:^(id sender){
             
-            //if([PECModelsData getModelUser].count)
-            //{
-                [PECBuilderModel uploadModelDataSettings:-1
-                                               idCountry:-1
-                                                     lat:-1
-                                                  longit:-1
-                                              locationEn:-1
-                                                 autoriz:authorization
-                                              uploadData:0x7];
-                
-                // Заполняю модель карточек и партнеров
-                [PECBuilderModel createModelDataCardFromDataPartnerLoc:[PECModelsData getModelSettings].locationEn
-                                                      autorizationUser:[PECModelsData getModelSettings].autoriz
-                                                    numberCityLocation:[PECModelsData getModelSettings].idCountry
-                                                              addrLong:[PECModelsData getModelSettings].longit
-                                                               addrLat:[PECModelsData getModelSettings].lat
-                                                              callback:^(id sender){
-                                                                  
-                                                                  dispatch_async(dispatch_get_main_queue(), ^{
-                                                                      // Перехожу на следующий экран
-                                                                      [self reqNavController];
-                                                                  });
+            [PECBuilderModel uploadModelDataSettings:-1
+                                           idCountry:-1
+                                                 lat:-1
+                                              longit:-1
+                                          locationEn:-1
+                                             autoriz:authorization
+                                          uploadData:0x7];
+            
+            // Заполняю модель карточек и партнеров
+            [PECBuilderModel createModelDataCardFromDataPartnerLoc:[PECModelsData getModelSettings].locationEn
+                                                  autorizationUser:[PECModelsData getModelSettings].autoriz
+                                                numberCityLocation:[PECModelsData getModelSettings].idCountry
+                                                          addrLong:[PECModelsData getModelSettings].longit
+                                                           addrLat:[PECModelsData getModelSettings].lat
+                                                          callback:^(id sender){
+                                                              
+                                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                                  // Перехожу на следующий экран
+                                                                  [self reqNavController];
+                                                              });
 
-        
-                                                              }];
-            /*}else
-            {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    // Перехожу на следующий экран
-                    [self reqNavController];
-                });
-            }*/
+    
+                                                          }];
         }];
     }
 }
 
 // ~ СИСТЕМНЫЕ ОБЩИЕ
 
-
 // Скачиваю настройки приложения
 - (void)getSettingsUser
 {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"countCard %@", [defaults objectForKey:@"countCard"]);
+    
+    int countInt = [defaults integerForKey:@"countCard"];
+    if(!countInt) countInt = 2;
+    
     // Обновляю пользовательские настройки
-    [PECBuilderModel uploadModelDataSettings:2
+    [PECBuilderModel uploadModelDataSettings:countInt
                                    idCountry:-1
                                          lat:-1
                                       longit:-1
                                   locationEn:-1
                                      autoriz:-1
                                   uploadData:0x7];
-    
-    /*
-     // Определяю авторизован ли пользователь
-     modelUser = nil;
-     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-     modelUser = [defaults objectForKey:@"user_data"];
-     
-     autorizationUser = modelUser!=nil;
-     
-     if(autorizationUser)
-     {
-     NSMutableArray *arrModelUser = [[NSMutableArray alloc]initWithObjects:modelUser, nil];
-     [PECModelsData setModelUser:arrModelUser];
-     modelUser = [[PECModelsData getModelUser] objectAtIndex:0];
-     }*/
-    
 }
 
 // Сообщения

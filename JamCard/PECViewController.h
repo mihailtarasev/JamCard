@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface PECViewController : UIViewController
+@interface PECViewController : UIViewController<UIScrollViewDelegate>
 
 // Segmens control
 - (IBAction)segmentCtrlClick:(UISegmentedControl *)sender;
 
 // Header
 - (IBAction)updateJamCard:(UIButton *)sender;
+
+- (IBAction)bTipsEvent:(id)sender;
+
 @end

@@ -107,8 +107,51 @@
     layer.masksToBounds = YES;
 
     return containerCards;
-    
 }
+
+
++(UIView*) addContainerRingViewController: (UIViewController *) uiViewCntr txtNumPhone:(NSString *)txtNumPhone
+{
+    // Подтверждение звонка по номеру телефона
+    UIView *mainContVerifi = [[UIView alloc]initWithFrame:CGRectMake(0, 180, 320, 150)];
+    [mainContVerifi setBackgroundColor:[UIColor whiteColor]];
+    [mainContVerifi setHidden:false];
+    
+    // Надпись
+    UILabel *txtPhone = [[UILabel alloc]initWithFrame:CGRectMake(0, 45, 320, 20)];
+    [txtPhone setFont:[UIFont fontWithName:@"Helvetica-Light" size:14]];
+    txtPhone.textAlignment = NSTextAlignmentCenter;
+    txtPhone.text = @"Набрать номер?";
+    [mainContVerifi addSubview: txtPhone];
+    
+    // Кнопка закрыть
+
+    UIImageView *imgClose = [[UIImageView alloc]initWithFrame:CGRectMake(290, 10, 15, 15)];
+    imgClose.image = [UIImage imageNamed:@"close.png"];
+    [mainContVerifi addSubview: imgClose];
+    
+    UIButton *butClose = [[UIButton alloc]initWithFrame:CGRectMake(270, 0, 50, 50)];
+    //[butClose setBackgroundImage:[UIImage imageNamed:@"close.png"] forState:UIControlStateNormal];
+    [butClose setTitle: @"" forState: UIControlStateNormal];
+    [butClose addTarget: uiViewCntr
+                 action: @selector(bCloseEvent:)
+       forControlEvents: UIControlEventTouchDown];
+    [mainContVerifi addSubview: butClose];
+    
+    // Кнопка позвонить
+    UIButton *butRing = [[UIButton alloc]initWithFrame:CGRectMake(55, 100, 209, 43)];
+    [butRing setBackgroundImage:[UIImage imageNamed:@"green_button_big.png"] forState:UIControlStateNormal];
+    [butRing setTitle: @"Позвонить" forState: UIControlStateNormal];
+    butRing.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
+    [butRing addTarget: uiViewCntr
+                action: @selector(bRingEvent:)
+      forControlEvents: UIControlEventTouchDown];
+    
+    [mainContVerifi addSubview: butRing];
+    
+    return mainContVerifi;
+}
+
 
 +(void) activateDeActivateCardView: (UIView*) viewCard activation: (int) activation
 {

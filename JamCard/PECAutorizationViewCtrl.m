@@ -734,16 +734,23 @@
 // ~ НАСТРОЙКИ
 
 // Segment Control
-- (IBAction)segmentCtrlSettingsEvent:(UISegmentedControl *)sender{
-    
+- (IBAction)segmentCtrlSettingsEvent:(UISegmentedControl *)sender
+{
+    int count;
     if(sender.selectedSegmentIndex == 0)
-       [self countCardInView:1];
+        count = 1;
 
     if(sender.selectedSegmentIndex == 1)
-        [self countCardInView:2];
+        count = 2;
 
     if(sender.selectedSegmentIndex == 2)
-        [self countCardInView:3];
+        count = 3;
+    
+    [self countCardInView:count];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:count forKey:@"countCard"];
+    [defaults synchronize];
 }
 
 -(void)countCardInView:(int)count
@@ -873,6 +880,24 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     
+    
+    if((textField.tag==100))
+    {
+        if([textField.text length]==0){
+            textField.text = [string uppercaseString];
+            return FALSE;
+        }
+    }
+    
+    if((textField.tag==101))
+    {
+        if([textField.text length]==0){
+            textField.text = [string uppercaseString];
+            return FALSE;
+        }
+    }
+    
+    
     if((textField.tag==115))
     {
         textField.text = string;
@@ -901,24 +926,6 @@
         textField.text = string;
         return FALSE;
     }
-
-    
-    /*
-     
-     NSLog(@"replacementString %@", string);
-     NSLog(@"textField %@", textField.text);
-     
-     NSString *didReplace = textField.text;
-     
-     if([textField.text length]<=2)
-     textField.text = @"+7 (";
-     
-     if([textField.text  length]==7)
-     textField.text = [NSString stringWithFormat:@"%@) ",textField.text];
-     
-     if([textField.text  length]==12)
-     textField.text = [NSString stringWithFormat:@"%@ ",textField.text];
-     */
     return TRUE;
 }
 
@@ -948,6 +955,7 @@
     
     return [array count];
 }
+
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSArray *array = [[NSArray alloc]init];
@@ -957,6 +965,7 @@
     
     return [array objectAtIndex:row];
 }
+
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     if(viewPickerId==1)
@@ -964,9 +973,6 @@
     
     if(viewPickerId==2)
     {
-        // Hidden Navigation bar
-//        [[self navigationController] setNavigationBarHidden:YES animated:YES];
-        
         // Если отсутствует интернет игнорируем действие
         if([self notInternetConnection]) return;
         
