@@ -90,8 +90,8 @@
     
     
     descAction.text = currentModelDataAction.textAction;
-   // [descAction sizeToFit];
-//    descAction.numberOfLines = 0;
+    [descAction sizeToFit];
+    descAction.numberOfLines = 0;
 
     
     imgAction.image = [PECBuilderCards createImageViewFromObj:currentModelDataAction keyData:@"logoDataAction" keyUrl:@"logoAction"];
