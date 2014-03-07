@@ -10,6 +10,7 @@
 #import "PECModelsData.h"
 #import "PECModelPoints.h"
 #import "PECBuilderModel.h"
+#import "PECObjectCard.h"
 
 @interface PECAboutPartnerViewCtrl ()
 
@@ -25,6 +26,7 @@
 {
     PECModelPartner *currentModelPartner;
     UIButton *butTel;
+    UIView *mainContVerifi;
 }
 
 
@@ -39,8 +41,16 @@
             currentModelPartner = modelData;
     
     
+    // Подтверждение звонка по номеру телефона
+    mainContVerifi = [PECObjectCard addContainerRingViewController:self txtNumPhone:@""];
+    [self.view addSubview:mainContVerifi];
+    [mainContVerifi setAlpha:0.0];
+    
+    
     _titlePartners.text = currentModelPartner.namePartrner;
     _descPartners.text = currentModelPartner.descPartrner;
+    [_descPartners sizeToFit];
+    
     _mailPartners.text = currentModelPartner.emailPartrner;
     
     // Нахожу информацию о карточке находящейся по определенному адресу
@@ -57,15 +67,35 @@
     [butTel addTarget:self action:@selector(bTelEvent:) forControlEvents:UIControlEventTouchDown];
 }
 
-
 - (IBAction)bTelEvent:(id)sender
 {
-    
+    [self animationHideShowUIView:mainContVerifi showHide:true Select:0];
+}
+
+- (IBAction)bCloseEvent:(id)sender
+{
+    [self animationHideShowUIView:mainContVerifi showHide:false Select:0];
+}
+
+- (IBAction)bRingEvent:(id)sender
+{
     NSString *callNumber = [NSString stringWithFormat:@"tel://%@", _phoneNumberPartners.text];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callNumber]];
-    
-    NSLog(@"%@",callNumber);
-    
+}
+
+
+// Анимация с эффектом Hide и Show
+-(void)animationHideShowUIView: (UIView*) curUIView showHide: (BOOL) showHide Select:(int)SelectPage
+{
+    float alpha;
+    if(showHide){ alpha = 1.0; }else{ alpha = 0.0; }
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseOut
+                     animations:^{
+                         curUIView.alpha = showHide;
+                     } completion:^(BOOL completed) {
+                     }];
 }
 
 // ~ СИСТЕМНЫЕ

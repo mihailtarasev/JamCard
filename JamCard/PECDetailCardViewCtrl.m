@@ -154,7 +154,9 @@
     
     cDeActAddressCompany = (UILabel*)[self.view viewWithTag:203];
     cDeActTimeWorkCompany = (UILabel*)[self.view viewWithTag:204];
+
     cDeActDescCard = (UILabel*)[self.view viewWithTag:205];
+    [cDeActDescCard sizeToFit];
     
     butDeAct = (UIButton*)[self.view viewWithTag:206];
     [butDeAct addTarget:self action:@selector(bDeActEvent:) forControlEvents:UIControlEventTouchDown];

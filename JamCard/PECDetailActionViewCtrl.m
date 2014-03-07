@@ -84,8 +84,16 @@
             currentModelDataAction = modelData;
     
     // Узнаю к какому партнеру пренадлежим акция
-    titleAction.text = [PECBuilderModel getModelParnterAtId:currentModelDataAction.partnerIdAction].namePartrner;;
+    titleAction.text = [PECBuilderModel getModelParnterAtId:currentModelDataAction.partnerIdAction].namePartrner;
+    //[titleAction sizeToFit];
+
+    
+    
     descAction.text = currentModelDataAction.textAction;
+   // [descAction sizeToFit];
+//    descAction.numberOfLines = 0;
+
+    
     imgAction.image = [PECBuilderCards createImageViewFromObj:currentModelDataAction keyData:@"logoDataAction" keyUrl:@"logoAction"];
     discountAction.text = [NSString stringWithFormat:@"Скидка %d%%",currentModelDataAction.discountAction];
     //addressAction.text = currentModelDataAction.
@@ -328,7 +336,6 @@
         [whiteContainer setHidden:true];
         k=0.5; y = 420.0f; x = 220.0f;
     }
-    
     
     [UIView animateWithDuration:0.3
                           delay:0.0

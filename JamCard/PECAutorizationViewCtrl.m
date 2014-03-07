@@ -315,7 +315,7 @@
     // обнуляю модель данных
     [PECModelsData setModelUser:nil];
     [PECModelsData setModelCard:nil];
-    [PECModelsData setModelPartners:nil];
+    //[PECModelsData setModelPartners:nil];
     [PECModelsData setModelPartnersByLoc:nil];
     
     // Сохраняю данные
@@ -581,6 +581,8 @@
     tfUsDate.enabled = true;
     tfUsMail.enabled = true;
     tfUsSex.enabled = true;
+    
+    [tfUsSex setText:@"Сударь"];
     
     [tfUsName setBorderStyle:UITextBorderStyleLine];
     [tfUsFamily setBorderStyle:UITextBorderStyleLine];
@@ -879,8 +881,6 @@
 // Кастомизация ввода номера телефона
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    
-    
     if((textField.tag==100))
     {
         if([textField.text length]==0){

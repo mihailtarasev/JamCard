@@ -16,7 +16,6 @@
 #import "PECAnnotation.h"
 #import "PECBuilderModel.h"
 #import "PECModelsData.h"
-#import "PECModelPoints.h"
 #import "PECModelPartner.h"
 #import "PECDetailCardViewCtrl.h"
 #import "PECAutorizationViewCtrl.h"
@@ -190,15 +189,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    
     // Подтверждение звонка по номеру телефона
     mainContVerifi = [PECObjectCard addContainerRingViewController:self txtNumPhone:@""];
     [self.view addSubview:mainContVerifi];
     [mainContVerifi setAlpha:0.0];
 
-    
     arrPhoneObj = [[NSMutableDictionary alloc]init];
-    
     
     if(_selectedType==0)
     {

@@ -157,17 +157,14 @@
             }];
         }
     }
-    
     [locationManager stopUpdatingLocation];
     locationManager.delegate = nil;
     locationManager = nil;
-    
 }
 
 // Вызываю когда закончил скачивать какую либо информацию с сервера
 - (void)controllerLoadInfo
 {
-    
     if(readyDataPartners && readyDataCategory)
     {
         // Дополнительные данные связанные с геолокацией и авторизацией
@@ -179,9 +176,7 @@
                 [self locationManagerCtrl];
             });
         }
-        
     }
-    
 }
 
 // Скачиваю все необходимые данные с сервера
@@ -360,7 +355,6 @@
 // Скачиваю настройки приложения
 - (void)getSettingsUser
 {
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"countCard %@", [defaults objectForKey:@"countCard"]);
     
