@@ -41,6 +41,7 @@
     UIView *mainContVerifi;
     NSMutableDictionary *arrPhoneObj;
     NSString *phoneNumAck ;
+    NSString *locDistance;
     
 }
 
@@ -190,7 +191,7 @@
 	// Do any additional setup after loading the view.
 
     // Подтверждение звонка по номеру телефона
-    mainContVerifi = [PECObjectCard addContainerRingViewController:self txtNumPhone:@""];
+    mainContVerifi = [PECObjectCard addContainerRingViewController:self txtNumPhone:@""mode:0];
     [self.view addSubview:mainContVerifi];
     [mainContVerifi setAlpha:0.0];
 
@@ -283,6 +284,13 @@
     [cell.phoneCellAddressPartner addTarget:self action:@selector(buttonClickTableCell:) forControlEvents:UIControlEventTouchDown];
     
     [arrPhoneObj setValue:addressesPartner.addressTeleph1Partner forKey:[NSString stringWithFormat:@"%d", indexPath.row]];
+    
+    
+    if(indexPath.row == 0 & _distCurrent!=nil)
+    {
+        [cell.distanceCellAddressPartner setHidden:NO];
+        [cell.distanceCellAddressPartner setText:[NSString stringWithFormat:@"%@ км",_distCurrent]];
+    }
     
     return cell;
 }

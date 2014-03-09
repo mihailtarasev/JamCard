@@ -95,6 +95,8 @@
     [button setTitleColor: [UIColor redColor] forState: UIControlStateNormal];
     [button setTag: tagFromObject];
     
+    [button setExclusiveTouch:YES];
+    
     [button addTarget: uiViewCntr
                action: @selector(buttonCardClicked:)
      forControlEvents: UIControlEventTouchDown];
@@ -110,7 +112,7 @@
 }
 
 
-+(UIView*) addContainerRingViewController: (UIViewController *) uiViewCntr txtNumPhone:(NSString *)txtNumPhone
++(UIView*) addContainerRingViewController: (UIViewController *) uiViewCntr txtNumPhone:(NSString *)txtNumPhone mode:(int)mode
 {
     // Подтверждение звонка по номеру телефона
     UIView *mainContVerifi = [[UIView alloc]initWithFrame:CGRectMake(0, 180, 320, 150)];
@@ -121,7 +123,12 @@
     UILabel *txtPhone = [[UILabel alloc]initWithFrame:CGRectMake(0, 45, 320, 20)];
     [txtPhone setFont:[UIFont fontWithName:@"Helvetica-Light" size:14]];
     txtPhone.textAlignment = NSTextAlignmentCenter;
-    txtPhone.text = @"Набрать номер?";
+
+    if(mode==0)
+        txtPhone.text = @"Набрать номер?";
+    if(mode==1)
+        txtPhone.text = @"Перейти на сайт?";
+    
     [mainContVerifi addSubview: txtPhone];
     
     // Кнопка закрыть
@@ -141,11 +148,27 @@
     // Кнопка позвонить
     UIButton *butRing = [[UIButton alloc]initWithFrame:CGRectMake(55, 100, 209, 43)];
     [butRing setBackgroundImage:[UIImage imageNamed:@"green_button_big.png"] forState:UIControlStateNormal];
-    [butRing setTitle: @"Позвонить" forState: UIControlStateNormal];
+    
+    if(mode==0)
+        [butRing setTitle: @"Позвонить" forState: UIControlStateNormal];
+
+    if(mode==1)
+        [butRing setTitle: @"Перейти" forState: UIControlStateNormal];
+    
+    
     butRing.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
-    [butRing addTarget: uiViewCntr
-                action: @selector(bRingEvent:)
-      forControlEvents: UIControlEventTouchDown];
+
+    if(mode==0)
+        [butRing addTarget: uiViewCntr
+                    action: @selector(bRingEvent:)
+          forControlEvents: UIControlEventTouchDown];
+    
+    if(mode==1)
+        [butRing addTarget: uiViewCntr
+                    action: @selector(bSiteEvent:)
+          forControlEvents: UIControlEventTouchDown];
+
+    
     
     [mainContVerifi addSubview: butRing];
     

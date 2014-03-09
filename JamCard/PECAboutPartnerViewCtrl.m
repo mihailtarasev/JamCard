@@ -19,6 +19,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *descPartners;
 @property (retain, nonatomic) IBOutlet UILabel *mailPartners;
 @property (retain, nonatomic) IBOutlet UILabel *phoneNumberPartners;
+@property (retain, nonatomic) IBOutlet UILabel *sitePartners;
 
 @end
 
@@ -26,7 +27,10 @@
 {
     PECModelPartner *currentModelPartner;
     UIButton *butTel;
+    UIButton *butSite;
+    
     UIView *mainContVerifi;
+    UIView *mainContVerifiSite;
 }
 
 
@@ -42,10 +46,16 @@
     
     
     // Подтверждение звонка по номеру телефона
-    mainContVerifi = [PECObjectCard addContainerRingViewController:self txtNumPhone:@""];
+    mainContVerifi = [PECObjectCard addContainerRingViewController:self txtNumPhone:@"" mode:0];
     [self.view addSubview:mainContVerifi];
     [mainContVerifi setAlpha:0.0];
+
+    // Подтверждение перехода на сайт
+    mainContVerifiSite = [PECObjectCard addContainerRingViewController:self txtNumPhone:@"" mode:1];
+    [self.view addSubview:mainContVerifiSite];
+    [mainContVerifiSite setAlpha:0.0];
     
+    _sitePartners.text = currentModelPartner.mp_site;
     
     _titlePartners.text = currentModelPartner.namePartrner;
     _descPartners.text = currentModelPartner.descPartrner;
@@ -65,6 +75,10 @@
     
     butTel = (UIButton*)[self.view viewWithTag:210];
     [butTel addTarget:self action:@selector(bTelEvent:) forControlEvents:UIControlEventTouchDown];
+
+    butSite = (UIButton*)[self.view viewWithTag:211];
+    [butSite addTarget:self action:@selector(bSiteShowEvent:) forControlEvents:UIControlEventTouchDown];
+
 }
 
 - (IBAction)bTelEvent:(id)sender
@@ -75,6 +89,7 @@
 - (IBAction)bCloseEvent:(id)sender
 {
     [self animationHideShowUIView:mainContVerifi showHide:false Select:0];
+    [self animationHideShowUIView:mainContVerifiSite showHide:false Select:0];
 }
 
 - (IBAction)bRingEvent:(id)sender
@@ -82,6 +97,18 @@
     NSString *callNumber = [NSString stringWithFormat:@"tel://%@", _phoneNumberPartners.text];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callNumber]];
 }
+
+- (IBAction)bSiteShowEvent:(id)sender
+{
+    [self animationHideShowUIView:mainContVerifiSite showHide:true Select:0];
+}
+
+- (IBAction)bSiteEvent:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_sitePartners.text]];
+    
+}
+
 
 
 // Анимация с эффектом Hide и Show

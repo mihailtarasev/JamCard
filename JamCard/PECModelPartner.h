@@ -24,6 +24,8 @@
 @property (strong, nonatomic) NSString *typeCardLogoPartrner;
 @property (strong, nonatomic) NSString *logoPartrner;
 @property (strong, nonatomic) NSString *logoCardPartrner;
+@property (strong, nonatomic) NSString *mp_site;
+
 
 @property (strong, nonatomic) NSArray *arrPoints;
 

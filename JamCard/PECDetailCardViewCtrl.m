@@ -101,7 +101,9 @@
     
     UIScrollView *scrollViewActivated;
     UIScrollView *scrollViewDeActivated;
+
     UIView *activateContainer;
+    UIView *deActivateContainer;
     
     UIControl *whiteContainer;
     
@@ -111,7 +113,15 @@
     UILabel *codeBarActiveContainer;
     
     UIView *mainContVerifi;
+
+    UIView *infoContainer;
+    UIView *infoContainerAck;
+    int kCode;
     
+    float yCoordBarCode;
+    float yCoordQRCode;
+    
+    int acktiveCode;
 }
 
 // ~ ИНИЦИАЛИЗАЦИЯ
@@ -130,11 +140,13 @@
     
     butActAct = (UIButton*)[self.view viewWithTag:102];
     [butActAct addTarget:self action:@selector(bActEvent:) forControlEvents:UIControlEventTouchDown];
+    [butActAct setExclusiveTouch:YES];
     
     cActNumberCard = (UILabel*)[self.view viewWithTag:103];
     
     butNews = (UIButton*)[self.view viewWithTag:105];
     [butNews addTarget:self action:@selector(butNews:) forControlEvents:UIControlEventTouchDown];
+    [butNews setExclusiveTouch:YES];
 
     cActDiscountActionCard = (UILabel*)[self.view viewWithTag:106];
     
@@ -150,39 +162,50 @@
     
     butTel = (UIButton*)[self.view viewWithTag:210];
     [butTel addTarget:self action:@selector(bTelEvent:) forControlEvents:UIControlEventTouchDown];
+    [butTel setExclusiveTouch:YES];
     
     
     cDeActAddressCompany = (UILabel*)[self.view viewWithTag:203];
     cDeActTimeWorkCompany = (UILabel*)[self.view viewWithTag:204];
 
-    cDeActDescCard = (UILabel*)[self.view viewWithTag:205];
-    [cDeActDescCard sizeToFit];
+    //cDeActDescCard = (UILabel*)[self.view viewWithTag:205];
+    //[cDeActDescCard sizeToFit];
     
     butDeAct = (UIButton*)[self.view viewWithTag:206];
     [butDeAct addTarget:self action:@selector(bDeActEvent:) forControlEvents:UIControlEventTouchDown];
+    [butDeAct setExclusiveTouch:YES];
 
     butAboutPartners = (UIButton*)[self.view viewWithTag:209];
     [butAboutPartners addTarget:self action:@selector(bAboutPartnerEvent:) forControlEvents:UIControlEventTouchDown];
+    [butAboutPartners setExclusiveTouch:YES];
     
     //cDeActDiscountActionCard = (UILabel*)[self.view viewWithTag:208];
     
     butAddress2 = (UIButton*)[self.view viewWithTag:107];
     [butAddress2 addTarget:self action:@selector(butAddressEvent2:) forControlEvents:UIControlEventTouchDown];
+    [butAddress2 setExclusiveTouch:YES];
     
     butAddress = (UIButton*)[self.view viewWithTag:108];
     [butAddress addTarget:self action:@selector(butAddressEvent:) forControlEvents:UIControlEventTouchDown];
+    [butAddress setExclusiveTouch:YES];
 
     
     scrollViewActivated = (UIScrollView*)[self.view viewWithTag:600];
     scrollViewDeActivated = (UIScrollView*)[self.view viewWithTag:601];
     activateContainer = (UIView*)[self.view viewWithTag:602];
+    
+    deActivateContainer = (UIView*)[self.view viewWithTag:603];
+    
 
     whiteContainer = (UIControl*)[self.view viewWithTag:400];
+    [whiteContainer addTarget:self action:@selector(bCloseCodeEvent:) forControlEvents:UIControlEventTouchDown];
+    [whiteContainer setExclusiveTouch:YES];
     
     
     imgCardViewBarCode = (UIImageView*)[self.view viewWithTag:110];
     contCardViewBarCode = (UIControl*)[self.view viewWithTag:111];
     [contCardViewBarCode addTarget:self action:@selector(bViewBarCodeEvent:) forControlEvents:UIControlEventTouchDown];
+    [contCardViewBarCode setExclusiveTouch:YES];
     
     //Adds a shadow to sampleView
     CALayer *layerBarCode = contCardViewBarCode.layer;
@@ -192,13 +215,17 @@
     imgCardViewQRCode = (UIImageView*)[self.view viewWithTag:120];
     contCardViewQRCode = (UIControl*)[self.view viewWithTag:121];
     [contCardViewQRCode addTarget:self action:@selector(bViewQRCodeEvent:) forControlEvents:UIControlEventTouchDown];
+    [contCardViewQRCode setExclusiveTouch:YES];
     
     //Adds a shadow to sampleView
     CALayer *layerQRCode = contCardViewQRCode.layer;
     layerQRCode.cornerRadius = 5;
     layerQRCode.masksToBounds = YES;
     
-        codeBarActiveContainer = (UILabel*)[self.view viewWithTag:306];
+    codeBarActiveContainer = (UILabel*)[self.view viewWithTag:306];
+    
+    infoContainer = (UIView*)[self.view viewWithTag:322];
+    infoContainerAck = (UIView*)[self.view viewWithTag:323];
     
 }
 
@@ -231,13 +258,14 @@
         scrollViewActivated.contentSize = CGSizeMake(320, 600);
         
         scrollViewDeActivated.frame = (CGRect){scrollViewDeActivated.frame.origin, CGSizeMake(320, 446)};
-        scrollViewDeActivated.contentSize = CGSizeMake(320, 560);
+        scrollViewDeActivated.contentSize = CGSizeMake(320, 530);
         
         activateContainer.frame = CGRectOffset( activateContainer.frame, 0.0f, -90.0f);
+        deActivateContainer.frame = CGRectOffset( deActivateContainer.frame, 0.0f, -90.0f);
     }
     
     // Подтверждение звонка по номеру телефона
-    mainContVerifi = [PECObjectCard addContainerRingViewController:self txtNumPhone:@""];
+    mainContVerifi = [PECObjectCard addContainerRingViewController:self txtNumPhone:@"" mode:0];
     [self.view addSubview:mainContVerifi];
     [mainContVerifi setAlpha:0.0];
     
@@ -276,24 +304,59 @@
             [self showDeActivateCard];
             NSLog(@"status card no valid %d",stCard);
         }
+    
+    
+    yCoordBarCode = 150;
+    
+    NSString *textTitle = currentModelPartner.namePartrner;
+    cDeActTitleCard.text = textTitle;
+    [cDeActTitleCard sizeToFit];
+
+    cActTitleCard.text = textTitle;
+    [cActTitleCard sizeToFit];
+    
+    int numLine = ceil(cDeActTitleCard.frame.size.height/26.0f);
+    kCode = numLine*14;
+    
+    if(numLine>1)
+    {
+        cDeActTitleCard.numberOfLines = numLine;
+        infoContainer.frame = CGRectOffset(infoContainer.frame, 0.0f, kCode);
+        [cDeActTitleCard setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:22-numLine]];
+        
+        
+        cActTitleCard.numberOfLines = numLine;
+        infoContainerAck.frame = CGRectOffset(infoContainerAck.frame, 0.0f, kCode);
+        [cActTitleCard setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:22-numLine]];
+        
+        contCardViewBarCode.frame = CGRectOffset(contCardViewBarCode.frame, 0.0f, kCode);
+        contCardViewQRCode.frame = CGRectOffset(contCardViewQRCode.frame, 0.0f, kCode);
+        
+        scrollViewActivated.contentSize = CGSizeMake(320, 600+kCode);
+        scrollViewDeActivated.contentSize = CGSizeMake(320, 530+kCode);
+    }
+    
+    yCoordBarCode = contCardViewBarCode.frame.origin.y;
+    yCoordQRCode = contCardViewQRCode.frame.origin.y;
+
+    
  }
 
 // ~ КАРТОЧКА АКТИВИРОВАНА
 
 - (IBAction)bViewBarCodeEvent:(id)sender
 {
-    
     if(qrCodeBig)[self bViewQRCodeEvent:nil];
     
-    float k = 1.0f, y = 370.0f;
+    float k, y;
     if(!barCodeBig)
     {
         [whiteContainer setAlpha:0.0];
         [whiteContainer setHidden:false];
-        k=2; y = 100.0f;
+        k=2; y = 130.0f; acktiveCode = 1;
     }else{
         [whiteContainer setHidden:true];
-        k=0.5; y = 370.0f;
+        k=0.5; y = yCoordBarCode;
     }
     
     [UIView animateWithDuration:0.3
@@ -315,15 +378,15 @@
 {
     if(barCodeBig)[self bViewBarCodeEvent:nil];
     
-    float k = 1.0f, y = 370.0f, x = 220.0f;
+    float k, y, x;
     if(!qrCodeBig)
     {
         [whiteContainer setAlpha:0.0];
         [whiteContainer setHidden:false];
-        k=2; y = 100.0f; x = 90.0f;
+        k=2; y = 130.0f; x = 90.0f; acktiveCode = 2;
     }else{
         [whiteContainer setHidden:true];
-        k=0.5; y = 370.0f; x = 220.0f;
+        k=0.5; y = yCoordBarCode; x = 220.0f;
     }
     
     
@@ -339,6 +402,15 @@
                      completion:^(BOOL finished){
                          qrCodeBig = !qrCodeBig;
                      }];
+    
+}
+
+
+- (IBAction)bCloseCodeEvent:(id)sender
+{
+    NSLog(@"Close");
+    if(acktiveCode==1) [self bViewBarCodeEvent:nil];
+    if(acktiveCode==2) [self bViewQRCodeEvent:nil];
     
 }
 
@@ -575,7 +647,7 @@
     // Заполняю контент
     cDeActImgCard.image = [PECBuilderCards createImageViewFromObj:currentModelDataCard keyData:@"dataImgCard" keyUrl:@"urlImgCard"];
     cDeActTitleCard.text = currentModelPartner.namePartrner;
-    cDeActDescCard.text = currentModelPartner.descPartrner;
+    //cDeActDescCard.text = currentModelPartner.descPartrner;
 
     // Нахожу информацию о карточке находящейся по определенному адресу
     NSArray *arrPointsOnMap = [PECBuilderModel parserJSONPoints:[PECModelsData getModelPartners] error:nil];
@@ -658,6 +730,10 @@
     NSLog(@"address");
     PECAddressPartnerViewCtrl *addressController = [self.storyboard instantiateViewControllerWithIdentifier:@"addressPartenrController"];
     addressController.idCurrentPartner = currentModelPartner.idPartner;
+
+    if(currentModelDataCard.distanceCard != 0.0f)
+        addressController.distCurrent = [NSString stringWithFormat:@"%.1f",currentModelDataCard.distanceCard];
+
     [self.navigationController pushViewController: addressController animated:YES];
 }
 

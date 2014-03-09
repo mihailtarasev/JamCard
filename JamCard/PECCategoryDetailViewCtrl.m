@@ -158,7 +158,8 @@
     cell.titleTbCellAllCards.text = modelCard.nameCard;
     
     [cell.buttonClickTableCell setTag:modelCard.idCard];
-    [cell.buttonClickTableCell addTarget:self action:@selector(buttonCardClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.buttonClickTableCell addTarget:self action:@selector(buttonCardClicked:) forControlEvents:UIControlEventTouchDown];
+    [cell.buttonClickTableCell setExclusiveTouch:YES];
     
     // Расчитываю размер карточки
     PECObjectCard *objCard = [[PECObjectCard alloc]init];

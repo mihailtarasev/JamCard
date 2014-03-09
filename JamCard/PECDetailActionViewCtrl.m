@@ -29,7 +29,7 @@
     // Заголовок акции
     UILabel *titleAction;
     
-    UILabel *descAction;
+    //UITextView *descAction;
     
     UILabel *discountAction;
     UILabel *addressAction;
@@ -60,7 +60,15 @@
     UIControl *whiteContainer;
     
     UILabel *codeBarActiveContainer;
+    UILabel *limitTimeAction;
     
+    
+    UIView *infoContainer;
+    int kCode;
+    float yCoordBarCode;
+    float yCoordQRCode;
+    
+    int acktiveCode;
 }
 
 - (void)viewDidLoad
@@ -77,6 +85,7 @@
         containerCode.frame = CGRectOffset( containerCode.frame, 0.0f, -90.0f);
     }
     
+    //yCoordBarCode = 365.0;
     
     // Получаю данные выбранной акции
     for(PECModelDataAction *modelData in [PECModelsData getModelAction])
@@ -84,18 +93,33 @@
             currentModelDataAction = modelData;
     
     // Узнаю к какому партнеру пренадлежим акция
-    titleAction.text = [PECBuilderModel getModelParnterAtId:currentModelDataAction.partnerIdAction].namePartrner;
-    //[titleAction sizeToFit];
-
     
     
-    descAction.text = currentModelDataAction.textAction;
-    [descAction sizeToFit];
-    descAction.numberOfLines = 0;
-
+    
+    NSString *textTitle = [PECBuilderModel getModelParnterAtId:currentModelDataAction.partnerIdAction].namePartrner;
+    titleAction.text = textTitle;
+    [titleAction sizeToFit];
+    
+    int numLine = ceil(titleAction.frame.size.height/26.0f);
+    kCode = numLine*14;
+    
+    if(numLine>1)
+    {
+        titleAction.numberOfLines = numLine;
+        infoContainer.frame = CGRectOffset(infoContainer.frame, 0.0f, kCode);
+        [titleAction setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:22-numLine]];
+        
+        contCardViewBarCode.frame = CGRectOffset(contCardViewBarCode.frame, 0.0f, kCode);
+        contCardViewQRCode.frame = CGRectOffset(contCardViewQRCode.frame, 0.0f, kCode);
+    }
+    
+    yCoordBarCode = contCardViewBarCode.frame.origin.y;
+    yCoordQRCode = contCardViewQRCode.frame.origin.y;
     
     imgAction.image = [PECBuilderCards createImageViewFromObj:currentModelDataAction keyData:@"logoDataAction" keyUrl:@"logoAction"];
     discountAction.text = [NSString stringWithFormat:@"Скидка %d%%",currentModelDataAction.discountAction];
+    
+    limitTimeAction.text = [NSString stringWithFormat:@"с %@ по %@",currentModelDataAction.startDateAction,currentModelDataAction.endDateAction];
     //addressAction.text = currentModelDataAction.
     
     // Получаю id пользователя зарегестрированного в системе
@@ -295,16 +319,16 @@
     
     if(qrCodeBig)[self bViewQRCodeEvent:nil];
     
-    float k = 1.0f, y = 420.0f;
+    float k, y;
     if(!barCodeBig)
     {
         [whiteContainer setAlpha:0.0];
         [whiteContainer setHidden:false];
 
-        k=2; y = 130.0f;
+        k=2; y = 130.0f; acktiveCode = 1;
     }else{
         [whiteContainer setHidden:true];
-        k=0.5; y = 420.0f;
+        k=0.5; y = yCoordBarCode;
     }
     
     
@@ -316,6 +340,7 @@
                          CGRect contFrame = contCardViewBarCode.frame;
                          [contCardViewBarCode setFrame:CGRectMake(20, y, contFrame.size.width*k, contFrame.size.height*k)];
                          [whiteContainer setAlpha:0.9];
+//                         contCardViewBarCode.transform = CGAffineTransformMakeRotation(M_PI_2);
                      }
                      completion:^(BOOL finished){
                          barCodeBig = !barCodeBig;
@@ -324,25 +349,27 @@
 
 - (IBAction)bViewQRCodeEvent:(id)sender
 {
+    
+    CGRect contFrame = contCardViewQRCode.frame;
+    
     if(barCodeBig)[self bViewBarCodeEvent:nil];
     
-    float k = 1.0f, y = 420.0f, x = 220.0f;
+    float k, y, x;
     if(!qrCodeBig)
     {
         [whiteContainer setAlpha:0.0];
         [whiteContainer setHidden:false];
-        k=2; y = 130.0f; x = 90.0f;
+        
+        k=2; y = 130.0f; x = 90.0f; acktiveCode = 2;
     }else{
         [whiteContainer setHidden:true];
-        k=0.5; y = 420.0f; x = 220.0f;
+        k=0.5; y = yCoordQRCode; x = 220.0f;
     }
     
     [UIView animateWithDuration:0.3
                           delay:0.0
                         options: UIViewAnimationCurveEaseOut
                      animations:^{
-                         
-                         CGRect contFrame = contCardViewQRCode.frame;
                          [contCardViewQRCode setFrame:CGRectMake(x, y, contFrame.size.width*k, contFrame.size.height*k)];
                          [whiteContainer setAlpha:0.9];
                      }
@@ -350,6 +377,14 @@
                          qrCodeBig = !qrCodeBig;
                      }];
 }
+
+- (IBAction)bCloseCodeEvent:(id)sender
+{
+    NSLog(@"Close");
+    if(acktiveCode==1) [self bViewBarCodeEvent:nil];
+    if(acktiveCode==2) [self bViewQRCodeEvent:nil];
+    
+ }
 
 
 // ~ ИНИЦИАЛИЗАЦИЯ
@@ -360,7 +395,7 @@
     // Контейнеры для хранения фреймов
     containerCode = (UIView*)[self.view viewWithTag:108];
 
-    descAction = (UILabel*)[self.view viewWithTag:100];
+    //descAction = (UITextView*)[self.view viewWithTag:100];
     
     imgAction = (UIImageView*)[self.view viewWithTag:101];
     //Adds a shadow to sampleView
@@ -371,19 +406,23 @@
     discountAction = (UILabel*)[self.view viewWithTag:102];
     titleAction = (UILabel*)[self.view viewWithTag:103];
     addressAction = (UILabel*)[self.view viewWithTag:104];
+    limitTimeAction = (UILabel*)[self.view viewWithTag:105];
     
     butAddress = (UIButton*)[self.view viewWithTag:118];
     [butAddress addTarget:self action:@selector(butAddressActionEvent:) forControlEvents:UIControlEventTouchDown];
+    [butAddress setExclusiveTouch:YES];
     
     
     butActAct = (UIButton*)[self.view viewWithTag:130];
     [butActAct addTarget:self action:@selector(bActEvent:) forControlEvents:UIControlEventTouchDown];
+    [butActAct setExclusiveTouch:YES];
     
     scrollViewAction = (UIScrollView*)[self.view viewWithTag:601];
     
     imgCardViewBarCode = (UIImageView*)[self.view viewWithTag:110];
     contCardViewBarCode = (UIControl*)[self.view viewWithTag:111];
     [contCardViewBarCode addTarget:self action:@selector(bViewBarCodeEvent:) forControlEvents:UIControlEventTouchDown];
+    [contCardViewBarCode setExclusiveTouch:YES];
     
     
     //Adds a shadow to sampleView
@@ -394,6 +433,7 @@
     imgCardViewQRCode = (UIImageView*)[self.view viewWithTag:120];
     contCardViewQRCode = (UIControl*)[self.view viewWithTag:121];
     [contCardViewQRCode addTarget:self action:@selector(bViewQRCodeEvent:) forControlEvents:UIControlEventTouchDown];
+    [contCardViewQRCode setExclusiveTouch:YES];
     
     //Adds a shadow to sampleView
     CALayer *layerQRCode = contCardViewQRCode.layer;
@@ -401,8 +441,14 @@
     layerQRCode.masksToBounds = YES;
     
     whiteContainer = (UIControl*)[self.view viewWithTag:400];
+    [whiteContainer addTarget:self action:@selector(bCloseCodeEvent:) forControlEvents:UIControlEventTouchDown];
+    [whiteContainer setExclusiveTouch:YES];
     
     codeBarActiveContainer = (UILabel*)[self.view viewWithTag:306];
+    
+    infoContainer = (UIView*)[self.view viewWithTag:322];
+    
+    
 
 }
 
@@ -413,6 +459,10 @@
     PECAddressPartnerViewCtrl *addressController = [self.storyboard instantiateViewControllerWithIdentifier:@"addressPartenrController"];
     addressController.idCurrentPartner = currentModelDataAction.idAction;
     addressController.selectedType = 1;
+
+    if(currentModelDataAction.distAction != 0.0f)
+        addressController.distCurrent = [NSString stringWithFormat:@"%.1f",currentModelDataAction.distAction];
+    
     [self.navigationController pushViewController: addressController animated:YES];
 }
 

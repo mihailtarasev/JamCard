@@ -22,6 +22,6 @@
 
 +(void) activateDeActivateCardView: (UIView*) viewCard activation: (int) activation;
 
-+(UIView*) addContainerRingViewController: (UIViewController *) uiViewCntr txtNumPhone:(NSString *)txtNumPhone;
++(UIView*) addContainerRingViewController: (UIViewController *) uiViewCntr txtNumPhone:(NSString *)txtNumPhone mode:(int)mode;
 
 @end

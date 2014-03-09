@@ -259,6 +259,7 @@
     
     [cell.buttonClickTableCell setTag:actions.idAction];
     [cell.buttonClickTableCell addTarget:self action:@selector(buttonClickTableCell:) forControlEvents:UIControlEventTouchDown];
+    [cell.buttonClickTableCell setExclusiveTouch:YES];
     
     return cell;
 }

@@ -21,7 +21,7 @@
 
 @property int typeIdPartrner;
 @property (strong, nonatomic) NSString *typeNamePartrner;
-
+@property (strong, nonatomic) NSString *mp_site;
 
 @property double addrDistPartrner;
 @property (strong, nonatomic) NSString *logoPartrner;

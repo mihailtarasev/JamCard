@@ -227,7 +227,7 @@
         NSLog(@"There IS NO internet connection");
         [self cellAlertMsg:@"Нет связи с интернет"];
         
-        self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:3.0f
+        self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:8.0f
                                                                target:self
                                                              selector:@selector(animationTick)
                                                              userInfo:nil
@@ -264,11 +264,7 @@
     if([self.animationTimer isValid])
             [self.animationTimer invalidate];
     
-    // Скачиваю настройки приложения
-    [self getSettingsUser];
-    
-    // Скачиваю все необходимые данные с сервера
-    [self uploadDataFromServer];
+    [self viewDidLoad];
 }
 
 // Save Data

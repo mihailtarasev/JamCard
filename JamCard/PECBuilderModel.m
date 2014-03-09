@@ -211,7 +211,7 @@ static NSMutableArray* sArrObjectsCards;
         resParse.discountCard       = [items[@"mc_discount"] doubleValue];
         resParse.statusCard         = [items[@"mc_status"] integerValue];
         resParse.activationDateCards  = items[@"mc_activation_date"];
-        resParse.descCard        = items[@"mc_description"];
+        resParse.descCard           = items[@"mc_description"];
         
         [groups addObject:resParse];
     }
@@ -383,7 +383,7 @@ static NSMutableArray* sArrObjectsCards;
         resParse.namePartrner       = items[@"mp_name"];
         resParse.nickNamePartrner   = items[@"mp_nickname"];
         resParse.openingHoursPartrner = items[@"mp_opening_hours"];
-        resParse.descPartrner = items[@"mp_description"];
+        resParse.descPartrner       = items[@"mp_description"];
         resParse.descShortPartrner  = items[@"mp_description_short"];
         resParse.emailPartrner      = items[@"mp_email"];
         resParse.licensePartrner    = items[@"mp_license"];
@@ -391,7 +391,8 @@ static NSMutableArray* sArrObjectsCards;
         resParse.typeNamePartrner   = items[@"mp_type_name"];
         resParse.logoCardPartrner   = items[@"mp_card_logo"];
         resParse.logoPartrner       = items[@"mp_logo"];
-        resParse.arrPoints  = items[@"addresses"];
+        resParse.arrPoints          = items[@"addresses"];
+        resParse.mp_site            = items[@"mp_site"];
         
         [groups addObject:resParse];
     }
@@ -422,6 +423,7 @@ static NSMutableArray* sArrObjectsCards;
         resParse.addrDistPartrner       = [items[@"address_distance"] doubleValue];
         resParse.logoPartrner           = items[@"mp_logo"];
         resParse.logoCardPartrner       = items[@"mp_card_logo"];
+        resParse.mp_site                = items[@"mp_site"];
         
         
         [groups addObject:resParse];

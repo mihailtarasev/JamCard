@@ -11,6 +11,7 @@
 
 @interface PECAddressPartnerViewCtrl : UIViewController<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
+@property NSString *distCurrent;
 @property int idCurrentPartner;
 @property int selectedType; // 0 - Cards 1 - Actions
 

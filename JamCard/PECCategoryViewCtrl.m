@@ -61,7 +61,8 @@
     
     cell.typeCellCategoryPartner.text = category.nameCategory;
     [cell.buttonClickCategoryTableCell setTag:category.idCategory];
-    [cell.buttonClickCategoryTableCell addTarget:self action:@selector(buttonClickCategoryTableCell:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.buttonClickCategoryTableCell addTarget:self action:@selector(buttonClickCategoryTableCell:) forControlEvents:UIControlEventTouchDown];
+    [cell.buttonClickCategoryTableCell setExclusiveTouch:YES];
 
     return cell;
 }
